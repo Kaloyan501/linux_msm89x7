@@ -1215,6 +1215,9 @@ disable_outputs(struct drm_device *dev, struct drm_atomic_state *state)
 
 		/* Right function depends upon target state. */
 		if (funcs) {
+			if (funcs->late_enable)
+				drm_atomic_bridge_chain_post_disable(bridge, state);
+
 			if (funcs->atomic_disable)
 				funcs->atomic_disable(encoder, state);
 			else if (new_conn_state->crtc && funcs->prepare)
@@ -1225,7 +1228,8 @@ disable_outputs(struct drm_device *dev, struct drm_atomic_state *state)
 				funcs->dpms(encoder, DRM_MODE_DPMS_OFF);
 		}
 
-		drm_atomic_bridge_chain_post_disable(bridge, state);
+		if (!funcs || !funcs->late_enable)
+			drm_atomic_bridge_chain_post_disable(bridge, state);
 	}
 
 	for_each_oldnew_crtc_in_state(state, crtc, old_crtc_state, new_crtc_state, i) {
@@ -1555,6 +1559,9 @@ void drm_atomic_helper_commit_modeset_enables(struct drm_device *dev,
 		drm_atomic_bridge_chain_pre_enable(bridge, state);
 
 		if (funcs) {
+			if (funcs->late_enable)
+				drm_atomic_bridge_chain_enable(bridge, state);
+
 			if (funcs->atomic_enable)
 				funcs->atomic_enable(encoder, state);
 			else if (funcs->enable)
@@ -1563,7 +1570,8 @@ void drm_atomic_helper_commit_modeset_enables(struct drm_device *dev,
 				funcs->commit(encoder);
 		}
 
-		drm_atomic_bridge_chain_enable(bridge, state);
+		if (!funcs || !funcs->late_enable)
+			drm_atomic_bridge_chain_enable(bridge, state);
 	}
 
 	drm_atomic_helper_commit_writebacks(dev, state);
