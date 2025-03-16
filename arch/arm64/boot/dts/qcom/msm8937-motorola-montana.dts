@@ -67,6 +67,21 @@
 			status = "disabled";
 		};
 	};
+
+	gpio-keys {
+		compatible = "gpio-keys";
+
+		pinctrl-0 = <&gpio_keys_default>;
+		pinctrl-names = "default";
+
+		key-volup {
+			label = "Volume Up";
+			linux,code = <KEY_VOLUMEUP>;
+			gpios = <&tlmm 91 GPIO_ACTIVE_LOW>;
+			debounce-interval = <15>;
+		};
+	};
+
 	reserved-memory {
 		qseecom_mem: qseecom@84300000 {
 			reg = <0x0 0x84300000 0x0 0x2000000>;
@@ -101,20 +116,6 @@
 		regulator-max-microvolt = <3700000>;
 		regulator-always-on;
 		regulator-boot-on;
-	};
-
-	gpio-keys {
-		compatible = "gpio-keys";
-
-		pinctrl-0 = <&gpio_keys_default>;
-		pinctrl-names = "default";
-
-		key-volup {
-			label = "Volume Up";
-			linux,code = <KEY_VOLUMEUP>;
-			gpios = <&tlmm 91 GPIO_ACTIVE_LOW>;
-			debounce-interval = <15>;
-		};
 	};
 };
 
