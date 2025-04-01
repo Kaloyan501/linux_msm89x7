@@ -10,8 +10,6 @@
 #include <linux/module.h>
 #include <linux/regulator/consumer.h>
 
-#include <video/mipi_display.h>
-
 #include <drm/drm_mipi_dsi.h>
 #include <drm/drm_modes.h>
 #include <drm/drm_panel.h>
@@ -270,15 +268,15 @@ static int hx_otm1901a_on(struct hx_otm1901a *ctx)
 	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0xa5, 0x1f);
 	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x00, 0x00);
 	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x1c, 0x05);
-	mipi_dsi_dcs_set_column_address_multi(&dsi_ctx, 0x0000, 0x02cf);
-	mipi_dsi_dcs_set_page_address_multi(&dsi_ctx, 0x0000, 0x04ff);
+	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x2a, 0x00, 0x00, 0x02, 0xcf);
+	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x2b, 0x00, 0x00, 0x04, 0xff);
 	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x00, 0x90);
 	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0xd7, 0x00);
 	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x00, 0x91);
 	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0xd7, 0xc8);
 	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x00, 0xba);
 	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0xc0, 0xc2, 0x01);
-	mipi_dsi_dcs_set_tear_on_multi(&dsi_ctx, MIPI_DSI_DCS_TEAR_MODE_VBLANK);
+	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x35, 0x00);
 	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x00, 0x94);
 	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0xc1, 0x84);
 	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x00, 0x98);
@@ -307,7 +305,7 @@ static int hx_otm1901a_on(struct hx_otm1901a *ctx)
 	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0xca, 0x80);
 	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x00, 0x86);
 	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0xf3, 0xe0);
-	mipi_dsi_dcs_set_tear_on_multi(&dsi_ctx, MIPI_DSI_DCS_TEAR_MODE_VBLANK);
+	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x35, 0x00);
 	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x00, 0x00);
 	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0xd4,
 				     0xfc, 0x3d, 0xfc, 0x3d, 0xfc, 0x3d, 0xfc,
@@ -534,8 +532,7 @@ static int hx_otm1901a_on(struct hx_otm1901a *ctx)
 	mipi_dsi_msleep(&dsi_ctx, 120);
 	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x29, 0x00);
 	mipi_dsi_msleep(&dsi_ctx, 21);
-	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, MIPI_DCS_WRITE_CONTROL_DISPLAY,
-				     0x24);
+	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x53, 0x24);
 
 	return dsi_ctx.accum_err;
 }

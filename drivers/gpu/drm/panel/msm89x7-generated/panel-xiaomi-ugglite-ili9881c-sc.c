@@ -10,8 +10,6 @@
 #include <linux/module.h>
 #include <linux/regulator/consumer.h>
 
-#include <video/mipi_display.h>
-
 #include <drm/drm_mipi_dsi.h>
 #include <drm/drm_modes.h>
 #include <drm/drm_panel.h>
@@ -57,15 +55,13 @@ static int sc_ili9881c_on(struct sc_ili9881c *ctx)
 	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x29, 0x00);
 	mipi_dsi_usleep_range(&dsi_ctx, 10000, 11000);
 	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x68, 0x04, 0x01);
-	mipi_dsi_dcs_set_tear_on_multi(&dsi_ctx, MIPI_DSI_DCS_TEAR_MODE_VBLANK);
-	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, MIPI_DCS_WRITE_CONTROL_DISPLAY,
-				     0x2c);
+	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x35, 0x00);
+	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x53, 0x2c);
 	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0xff, 0x98, 0x81, 0x02);
 	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x06, 0x40);
 	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x07, 0x05);
 	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0xff, 0x98, 0x81, 0x03);
-	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, MIPI_DCS_WRITE_MEMORY_START,
-				     0x0c);
+	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0x2c, 0x0c);
 	mipi_dsi_dcs_write_seq_multi(&dsi_ctx, 0xff, 0x98, 0x81, 0x00);
 
 	return dsi_ctx.accum_err;
