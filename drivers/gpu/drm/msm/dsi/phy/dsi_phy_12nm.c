@@ -212,7 +212,7 @@ static bool pll_12nm_poll_for_ready(struct dsi_pll_12nm *pll_12nm,
 	bool pll_locked;
 
 	while (nb_tries--) {
-		status = dsi_phy_read(pll_12nm->phy->pll_base + DSIPHY_STAT0);
+		status = readl(pll_12nm->phy->pll_base + DSIPHY_STAT0);
 		pll_locked = !!(status & BIT(1));
 
 		if (pll_locked)
@@ -465,52 +465,52 @@ static void pll_12nm_ssc_commit(struct dsi_pll_12nm *pll_12nm,
 	void __iomem *base = pll_12nm->phy->pll_base;
 	char data = 0;
 
-	dsi_phy_write(base + DSIPHY_SSC0, 0x27);
+	writel(0x27, base + DSIPHY_SSC0);
 
 	data = (config->mpll_mint_i & 0xff);
-	dsi_phy_write(base + DSIPHY_SSC7, data);
+	writel(data, base + DSIPHY_SSC7);
 
 	data = ((config->mpll_mint_i & 0xff00) >> 8);
-	dsi_phy_write(base + DSIPHY_SSC8, data);
+	writel(data, base + DSIPHY_SSC8);
 
 	data = (config->mpll_ssc_peak_i & 0xff);
-	dsi_phy_write(base + DSIPHY_SSC1, data);
+	writel(data, base + DSIPHY_SSC1);
 
 	data = ((config->mpll_ssc_peak_i & 0xff00) >> 8);
-	dsi_phy_write(base + DSIPHY_SSC2, data);
+	writel(data, base + DSIPHY_SSC2);
 
 	data = ((config->mpll_ssc_peak_i & 0xf0000) >> 16);
-	dsi_phy_write(base + DSIPHY_SSC3, data);
+	writel(data, base + DSIPHY_SSC3);
 
 	data = (config->mpll_stepsize_i & 0xff);
-	dsi_phy_write(base + DSIPHY_SSC4, data);
+	writel(data, base + DSIPHY_SSC4);
 
 	data = ((config->mpll_stepsize_i & 0xff00) >> 8);
-	dsi_phy_write(base + DSIPHY_SSC5, data);
+	writel(data, base + DSIPHY_SSC5);
 
 	data = ((config->mpll_stepsize_i & 0x1f0000) >> 16);
-	dsi_phy_write(base + DSIPHY_SSC6, data);
+	writel(data, base + DSIPHY_SSC6);
 
 	data = (config->mpll_frac_quot_i & 0xff);
-	dsi_phy_write(base + DSIPHY_SSC10, data);
+	writel(data, base + DSIPHY_SSC10);
 
 	data = ((config->mpll_frac_quot_i & 0xff00) >> 8);
-	dsi_phy_write(base + DSIPHY_SSC11, data);
+	writel(data, base + DSIPHY_SSC11);
 
 	data = (config->mpll_frac_rem & 0xff);
-	dsi_phy_write(base + DSIPHY_SSC12, data);
+	writel(data, base + DSIPHY_SSC12);
 
 	data = ((config->mpll_frac_rem & 0xff00) >> 8);
-	dsi_phy_write(base + DSIPHY_SSC13, data);
+	writel(data, base + DSIPHY_SSC13);
 
 	data = (config->mpll_frac_den & 0xff);
-	dsi_phy_write(base + DSIPHY_SSC14, data);
+	writel(data, base + DSIPHY_SSC14);
 
 	data = ((config->mpll_frac_den & 0xff00) >> 8);
-	dsi_phy_write(base + DSIPHY_SSC15, data);
+	writel(data, base + DSIPHY_SSC15);
 }
 
-int dsi_pll_12nm_clk_set_rate(struct clk_hw *hw, unsigned long rate,
+static int dsi_pll_12nm_clk_set_rate(struct clk_hw *hw, unsigned long rate,
 			unsigned long parent_rate)
 {
 	struct dsi_pll_12nm *pll_12nm = to_pll_12nm(hw);
@@ -526,10 +526,10 @@ int dsi_pll_12nm_clk_set_rate(struct clk_hw *hw, unsigned long rate,
 
 	config.vco_current_rate = rate;
 
-	vco_cntrl = dsi_phy_read(base + DSIPHY_PLL_VCO_CTRL);
+	vco_cntrl = readl(base + DSIPHY_PLL_VCO_CTRL);
 	vco_cntrl &= 0x30;
 
-	cpbias_cntrl = dsi_phy_read(base + DSIPHY_PLL_CHAR_PUMP_BIAS_CTRL);
+	cpbias_cntrl = readl(base + DSIPHY_PLL_CHAR_PUMP_BIAS_CTRL);
 	cpbias_cntrl = ((cpbias_cntrl >> 6) & 0x1);
 
 	if (cpbias_cntrl == 0) {
@@ -559,45 +559,45 @@ int dsi_pll_12nm_clk_set_rate(struct clk_hw *hw, unsigned long rate,
 		pll_12nm_ssc_param_calc(pll_12nm, &config);
 	}
 
-	dsi_phy_write(base + DSIPHY_CTRL0, 0x01);
-	dsi_phy_write(base + DSIPHY_PLL_CTRL, 0x05);
-	dsi_phy_write(base + DSIPHY_SLEWRATE_DDL_LOOP_CTRL, 0x01);
+	writel(0x01, base + DSIPHY_CTRL0);
+	writel(0x05, base + DSIPHY_PLL_CTRL);
+	writel(0x01, base + DSIPHY_SLEWRATE_DDL_LOOP_CTRL);
 
 	data = ((hsfreqrange & 0x7f) | BIT(7));
-	dsi_phy_write(base + DSIPHY_HS_FREQ_RAN_SEL, data);
+	writel(data, base + DSIPHY_HS_FREQ_RAN_SEL);
 
 	data = (osc_freq_target & 0x7f);
-	dsi_phy_write(base + DSIPHY_SLEWRATE_DDL_CYC_FRQ_ADJ_0, data);
+	writel(data, base + DSIPHY_SLEWRATE_DDL_CYC_FRQ_ADJ_0);
 
 	data = ((osc_freq_target & 0xf80) >> 7);
-	dsi_phy_write(base + DSIPHY_SLEWRATE_DDL_CYC_FRQ_ADJ_1, data);
-	dsi_phy_write(base + DSIPHY_PLL_INPUT_LOOP_DIV_RAT_CTRL, 0x30);
+	writel(data, base + DSIPHY_SLEWRATE_DDL_CYC_FRQ_ADJ_1);
+	writel(0x30, base + DSIPHY_PLL_INPUT_LOOP_DIV_RAT_CTRL);
 
 	data = (m_div & 0x3f);
-	dsi_phy_write(base + DSIPHY_PLL_LOOP_DIV_RATIO_0, data);
+	writel(data, base + DSIPHY_PLL_LOOP_DIV_RATIO_0);
 
 	data = ((m_div & 0xfc0) >> 6);
-	dsi_phy_write(base + DSIPHY_PLL_LOOP_DIV_RATIO_1, data);
-	dsi_phy_write(base + DSIPHY_PLL_INPUT_DIV_PLL_OVR, 0x60);
+	writel(data, base + DSIPHY_PLL_LOOP_DIV_RATIO_1);
+	writel(0x60, base + DSIPHY_PLL_INPUT_DIV_PLL_OVR);
 
 	data = (prop_cntrl & 0x3f);
-	dsi_phy_write(base + DSIPHY_PLL_PROP_CHRG_PUMP_CTRL, data);
+	writel(data, base + DSIPHY_PLL_PROP_CHRG_PUMP_CTRL);
 
 	data = (int_cntrl & 0x3f);
-	dsi_phy_write(base + DSIPHY_PLL_INTEG_CHRG_PUMP_CTRL, data);
+	writel(data, base + DSIPHY_PLL_INTEG_CHRG_PUMP_CTRL);
 
 	data = ((gmp_cntrl & 0x3) << 4);
-	dsi_phy_write(base + DSIPHY_PLL_GMP_CTRL_DIG_TST, data);
+	writel(data, base + DSIPHY_PLL_GMP_CTRL_DIG_TST);
 
-	dsi_phy_write(base + DSIPHY_PLL_ANA_PROG_CTRL, 0x03);
-	dsi_phy_write(base + DSIPHY_PLL_ANA_TST_LOCK_ST_OVR_CTRL, 0x50);
-	dsi_phy_write(base + DSIPHY_SLEWRATE_FSM_OVR_CTRL, fsm_ovr_ctrl);
-	dsi_phy_write(base + DSIPHY_PLL_PHA_ERR_CTRL_0, 0x01);
-	dsi_phy_write(base + DSIPHY_PLL_PHA_ERR_CTRL_1, 0x00);
-	dsi_phy_write(base + DSIPHY_PLL_LOCK_FILTER, 0xff);
-	dsi_phy_write(base + DSIPHY_PLL_UNLOCK_FILTER, 0x03);
-	dsi_phy_write(base + DSIPHY_PLL_PRO_DLY_RELOCK, 0x0c);
-	dsi_phy_write(base + DSIPHY_PLL_LOCK_DET_MODE_SEL, 0x02);
+	writel(0x03, base + DSIPHY_PLL_ANA_PROG_CTRL);
+	writel(0x50, base + DSIPHY_PLL_ANA_TST_LOCK_ST_OVR_CTRL);
+	writel(fsm_ovr_ctrl, base + DSIPHY_SLEWRATE_FSM_OVR_CTRL);
+	writel(0x01, base + DSIPHY_PLL_PHA_ERR_CTRL_0);
+	writel(0x00, base + DSIPHY_PLL_PHA_ERR_CTRL_1);
+	writel(0xff, base + DSIPHY_PLL_LOCK_FILTER);
+	writel(0x03, base + DSIPHY_PLL_UNLOCK_FILTER);
+	writel(0x0c, base + DSIPHY_PLL_PRO_DLY_RELOCK);
+	writel(0x02, base + DSIPHY_PLL_LOCK_DET_MODE_SEL);
 
 	if(config.enable_ssc) {
 		pll_12nm_ssc_commit(pll_12nm, &config);
@@ -613,7 +613,7 @@ static int dsi_pll_12nm_clk_is_enabled(struct clk_hw *hw)
 					POLL_TIMEOUT_US);
 }
 
-unsigned long dsi_pll_12nm_clk_recalc_rate(struct clk_hw *hw,
+static unsigned long dsi_pll_12nm_clk_recalc_rate(struct clk_hw *hw,
 					unsigned long parent_rate)
 {
 	struct dsi_pll_12nm *pll_12nm = to_pll_12nm(hw);
@@ -627,10 +627,10 @@ unsigned long dsi_pll_12nm_clk_recalc_rate(struct clk_hw *hw,
 		return vco_current_rate;
 	}
 
-	m_div_5_0 = dsi_phy_read(base +
+	m_div_5_0 = readl(base +
 			DSIPHY_PLL_LOOP_DIV_RATIO_0);
 	m_div_5_0 &= 0x3f;
-	m_div_11_6 = dsi_phy_read(base +
+	m_div_11_6 = readl(base +
 			DSIPHY_PLL_LOOP_DIV_RATIO_1);
 	m_div_11_6 &= 0x3f;
 	m_div = ((m_div_11_6 << 6) | (m_div_5_0));
@@ -641,9 +641,8 @@ unsigned long dsi_pll_12nm_clk_recalc_rate(struct clk_hw *hw,
 	return (unsigned long)vco_rate;
 }
 
-int dsi_pll_12nm_vco_prepare(struct clk_hw *hw)
+static int dsi_pll_12nm_vco_prepare(struct clk_hw *hw)
 {
-	
 	struct dsi_pll_12nm *pll_12nm = to_pll_12nm(hw);
 	void __iomem *base = pll_12nm->phy->pll_base;
 	u32 data = 0;
@@ -659,14 +658,17 @@ int dsi_pll_12nm_vco_prepare(struct clk_hw *hw)
 	 * 3.) Boot up with cont splash enabled where PHY is programmed in LK
 	 * Execute the Re-lock sequence to enable the DSI PLL.
 	 */
-	data = dsi_phy_read(base + DSIPHY_SYS_CTRL);
+	data = readl(base + DSIPHY_SYS_CTRL);
 	if (data & BIT(7)) {
-		data = dsi_phy_read(base + DSIPHY_PLL_POWERUP_CTRL);
+		data = readl(base + DSIPHY_PLL_POWERUP_CTRL);
 		data &= ~BIT(1); /* remove ONPLL_OVR_EN bit */
 		data |= 0x1; /* set ONPLL_OVN to 0x1 */
-		dsi_phy_write_ndelay(base + DSIPHY_PLL_POWERUP_CTRL, data, 500);
-		dsi_phy_write_udelay(base + DSIPHY_SYS_CTRL, 0x49, 5);
-		dsi_phy_write_udelay(base + DSIPHY_SYS_CTRL, 0xc9, 50);
+		writel(data, base + DSIPHY_PLL_POWERUP_CTRL);
+		ndelay(500);
+		writel(0x49, base + DSIPHY_SYS_CTRL);
+		udelay(5);
+		writel(0xc9, base + DSIPHY_SYS_CTRL);
+		udelay(50);
 
 		locked = pll_12nm_poll_for_ready(pll_12nm, POLL_MAX_READS,
 					 POLL_TIMEOUT_US);
@@ -676,13 +678,16 @@ int dsi_pll_12nm_vco_prepare(struct clk_hw *hw)
 			return -EINVAL;
 		}
 
-		data = dsi_phy_read(base + DSIPHY_PLL_CTRL);
+		data = readl(base + DSIPHY_PLL_CTRL);
 		data |= 0x01; /* set CLK_SEL bits to 0x1 */
-		dsi_phy_write_ndelay(base + DSIPHY_PLL_CTRL, data, 500);
+		writel(data, base + DSIPHY_PLL_CTRL);
+		ndelay(500);
 	}
 
-	dsi_phy_write_udelay(base + DSIPHY_SYS_CTRL, 0x49, 5);
-	dsi_phy_write_udelay(base + DSIPHY_SYS_CTRL, 0xc9, 50);
+	writel(0x49, base + DSIPHY_SYS_CTRL);
+	udelay(5);
+	writel(0xc9, base + DSIPHY_SYS_CTRL);
+	udelay(50);
 
 	locked = pll_12nm_poll_for_ready(pll_12nm, POLL_MAX_READS,
 					 POLL_TIMEOUT_US);
@@ -697,7 +702,7 @@ int dsi_pll_12nm_vco_prepare(struct clk_hw *hw)
 	return 0;
 }
 
-void dsi_pll_12nm_vco_unprepare(struct clk_hw *hw)
+static void dsi_pll_12nm_vco_unprepare(struct clk_hw *hw)
 {
 	struct dsi_pll_12nm *pll_12nm = to_pll_12nm(hw);
 	void __iomem *base = pll_12nm->phy->pll_base;
@@ -706,18 +711,21 @@ void dsi_pll_12nm_vco_unprepare(struct clk_hw *hw)
 	if (unlikely(!pll_12nm->phy->pll_on))
 		return;
 
-	data = dsi_phy_read(base + DSIPHY_SSC0);
+	data = readl(base + DSIPHY_SSC0);
 	data &= ~BIT(6); /* disable GP_CLK_EN */
-	dsi_phy_write_ndelay(base + DSIPHY_SSC0, data, 500);
+	writel(data, base + DSIPHY_SSC0);
+	ndelay(500);
 
-	data = dsi_phy_read(base + DSIPHY_PLL_CTRL);
+	data = readl(base + DSIPHY_PLL_CTRL);
 	data &= ~0x03; /* remove CLK_SEL bits */
-	dsi_phy_write_ndelay(base + DSIPHY_PLL_CTRL, data, 500);
+	writel(data, base + DSIPHY_PLL_CTRL);
+	ndelay(500);
 
-	data = dsi_phy_read(base + DSIPHY_PLL_POWERUP_CTRL);
+	data = readl(base + DSIPHY_PLL_POWERUP_CTRL);
 	data &= ~0x1; /* remove ONPLL_OVR bit */
 	data |= BIT(1); /* set ONPLL_OVR_EN to 0x1 */
-	dsi_phy_write_ndelay(base + DSIPHY_PLL_POWERUP_CTRL, data, 500);
+	writel(data, base + DSIPHY_PLL_POWERUP_CTRL);
+	ndelay(500);
 
 	pll_12nm->phy->pll_on = false;
 }
@@ -744,9 +752,9 @@ static int dsi_pll_12nm_clk_enable(struct clk_hw *hw)
 	if (unlikely(!pll_12nm->phy->pll_on))
 		return 0;
 
-	data = dsi_phy_read(base + DSIPHY_SSC0);
+	data = readl(base + DSIPHY_SSC0);
 	data |= BIT(6); /* enable GP_CLK_EN */
-	dsi_phy_write(base + DSIPHY_SSC0, data);
+	writel(data, base + DSIPHY_SSC0);
 	wmb(); /* make sure register committed before enabling branch clocks */
 
 	return 0;
@@ -770,10 +778,10 @@ static u8 dsi_pll_12nm_postdiv_get_parent(struct clk_hw *hw)
 	void __iomem *base = pll_12nm->phy->pll_base;
 	u32 val = 0, vco_cntrl = 0, cpbias_cntrl = 0;
 
-	vco_cntrl = dsi_phy_read(base + DSIPHY_PLL_VCO_CTRL);
+	vco_cntrl = readl(base + DSIPHY_PLL_VCO_CTRL);
 	vco_cntrl &= 0x30;
 
-	cpbias_cntrl = dsi_phy_read(base +
+	cpbias_cntrl = readl(base +
 		DSIPHY_PLL_CHAR_PUMP_BIAS_CTRL);
 	cpbias_cntrl = ((cpbias_cntrl >> 6) & 0x1);
 
@@ -870,10 +878,10 @@ static int dsi_pll_12nm_postdiv_set_parent(struct clk_hw *hw, u8 index)
 		vco_cntrl =  vco_cntrl | 2;
 
 	data = ((vco_cntrl & 0x3f) | BIT(6));
-	dsi_phy_write(base +  DSIPHY_PLL_VCO_CTRL, data);
+	writel(data, base +  DSIPHY_PLL_VCO_CTRL);
 
 	data = ((cpbias_cntrl & 0x1) << 6) | BIT(4);
-	dsi_phy_write(base +  DSIPHY_PLL_CHAR_PUMP_BIAS_CTRL, data);
+	writel(data, base +  DSIPHY_PLL_CHAR_PUMP_BIAS_CTRL);
 
 	spin_unlock_irqrestore(lock, flags);
 
@@ -901,9 +909,9 @@ static u8 dsi_pll_12nm_gpdiv_get_parent(struct clk_hw *hw)
 	void __iomem *base = pll_12nm->phy->pll_base;
 	u32 val = 0;
 
-	val = dsi_phy_read(base + DSIPHY_PLL_CTRL);
+	val = readl(base + DSIPHY_PLL_CTRL);
 	val = (val >> 5) & 0x7;
-	pr_err("get_gp_val = %lu\n", val);
+	pr_err("get_gp_val = %u\n", val);
 
 	return val;
 }
@@ -920,8 +928,8 @@ static int dsi_pll_12nm_gpdiv_set_parent(struct clk_hw *hw, u8 index)
 	spin_lock_irqsave(lock, flags);
 
 	val = ((index & 0x7) << 5) | 0x5;
-	pr_err("set_gp_val = %lu\n", val);
-	dsi_phy_write(base +  DSIPHY_PLL_CTRL, val);
+	pr_err("set_gp_val = %u\n", val);
+	writel(val, base +  DSIPHY_PLL_CTRL);
 
 	spin_unlock_irqrestore(lock, flags);
 
@@ -949,14 +957,13 @@ static unsigned long dsi_pll_12nm_pixel_recalc_rate(struct clk_hw *hw,
 	struct dsi_pll_12nm_pixel *postdiv = to_pll_12nm_pixel(hw);
 	struct dsi_pll_12nm *pll_12nm = postdiv->pll;
 	void __iomem *base = pll_12nm->phy->base;
-	u8 shift = postdiv->shift;
 	u8 width = postdiv->width;
 	u32 val;
 
 	pr_err("DSI%d PLL parent rate=%lu\n", pll_12nm->phy->id, parent_rate);
 
-	val = dsi_phy_read(base + DSIPHY_SSC9) & 0x7F;
-	pr_err("pixel_val = %lu\n", val);
+	val = readl(base + DSIPHY_SSC9) & 0x7F;
+	pr_err("pixel_val = %u\n", val);
 
 	return divider_recalc_rate(hw, parent_rate, val, NULL,
 				   postdiv->flags, width);
@@ -983,7 +990,6 @@ static int dsi_pll_12nm_pixel_set_rate(struct clk_hw *hw, unsigned long rate,
 	struct dsi_pll_12nm *pll_12nm = postdiv->pll;
 	void __iomem *base = pll_12nm->phy->base;
 	spinlock_t *lock = &pll_12nm->postdiv_lock;
-	u8 shift = postdiv->shift;
 	u8 width = postdiv->width;
 	unsigned int value;
 	unsigned long flags = 0;
@@ -992,17 +998,16 @@ static int dsi_pll_12nm_pixel_set_rate(struct clk_hw *hw, unsigned long rate,
 	DBG("DSI%d PLL parent rate=%lu parent rate %lu", pll_12nm->phy->id, rate,
 	    parent_rate);
 
-	value = divider_get_val(rate, parent_rate, NULL, postdiv->width,
-				postdiv->flags);
+	value = divider_get_val(rate, parent_rate, NULL, width, postdiv->flags);
 
-	pr_err("div_val = %lu\n", value);
+	pr_err("div_val = %u\n", value);
 
 	spin_lock_irqsave(lock, flags);
 
-	val = dsi_phy_read(base + DSIPHY_SSC9) & 0x7F;
+	val = readl(base + DSIPHY_SSC9) & 0x7F;
 
 	val |= value;
-	dsi_phy_write(base + DSIPHY_SSC9, val);
+	writel(val, base + DSIPHY_SSC9);
 
 	spin_unlock_irqrestore(lock, flags);
 
@@ -1025,10 +1030,10 @@ static void dsi_12nm_pll_save_state(struct msm_dsi_phy *phy)
 	struct pll_12nm_cached_state *cached_state = &pll_12nm->cached_state;
 	void __iomem *base = pll_12nm->phy->pll_base;
 
-	cached_state->cfg0 = dsi_phy_read(base + DSIPHY_PLL_VCO_CTRL);
-	cached_state->cfg1 = dsi_phy_read(base + DSIPHY_PLL_CHAR_PUMP_BIAS_CTRL);
-	cached_state->postdiv1 = dsi_phy_read(base + DSIPHY_PLL_CTRL);
-	cached_state->postdiv3 = dsi_phy_read(base + DSIPHY_SSC9);
+	cached_state->cfg0 = readl(base + DSIPHY_PLL_VCO_CTRL);
+	cached_state->cfg1 = readl(base + DSIPHY_PLL_CHAR_PUMP_BIAS_CTRL);
+	cached_state->postdiv1 = readl(base + DSIPHY_PLL_CTRL);
+	cached_state->postdiv3 = readl(base + DSIPHY_SSC9);
 	if (dsi_pll_12nm_clk_is_enabled(phy->vco_hw))
 		cached_state->vco_rate = clk_hw_get_rate(phy->vco_hw);
 	else
@@ -1050,11 +1055,10 @@ static int dsi_12nm_pll_restore_state(struct msm_dsi_phy *phy)
 		return ret;
 	}
 
-	dsi_phy_write(base + DSIPHY_PLL_VCO_CTRL, cached_state->cfg0);
-	dsi_phy_write(base + DSIPHY_PLL_CHAR_PUMP_BIAS_CTRL,
-		      cached_state->cfg1);
-	dsi_phy_write(base + DSIPHY_PLL_CTRL, cached_state->postdiv3);
-	dsi_phy_write(base + DSIPHY_SSC9, cached_state->postdiv1);
+	writel(cached_state->cfg0, base + DSIPHY_PLL_VCO_CTRL);
+	writel(cached_state->cfg1, base + DSIPHY_PLL_CHAR_PUMP_BIAS_CTRL);
+	writel(cached_state->postdiv3, base + DSIPHY_PLL_CTRL);
+	writel(cached_state->postdiv1, base + DSIPHY_SSC9);
 
 	return 0;
 }
@@ -1188,7 +1192,7 @@ static int pll_12nm_register(struct dsi_pll_12nm *pll_12nm, struct clk_hw **prov
 		return PTR_ERR(postdiv32);
 
 	snprintf(clk_name, sizeof(clk_name), "dsi%dpostdiv_mux", pll_12nm->phy->id);
-	post_div_mux = pll_12nm_postdiv_register(pll_12nm, clk_name, 
+	post_div_mux = pll_12nm_postdiv_register(pll_12nm, clk_name,
 			((const struct clk_hw *[]){
 				postdiv1, postdiv2, postdiv4, postdiv8, postdiv16, postdiv32
 			}), CLK_SET_RATE_PARENT);
@@ -1239,7 +1243,7 @@ static int pll_12nm_register(struct dsi_pll_12nm *pll_12nm, struct clk_hw **prov
 		return PTR_ERR(gpdiv32);
 
 	snprintf(clk_name, sizeof(clk_name), "dsi%dgpdiv_mux", pll_12nm->phy->id);
-	gp_div_mux = pll_12nm_gpdiv_register(pll_12nm, clk_name, 
+	gp_div_mux = pll_12nm_gpdiv_register(pll_12nm, clk_name,
 			((const struct clk_hw *[]){
 				gpdiv1, gpdiv2, gpdiv4, gpdiv8, gpdiv16, gpdiv32
 			}), CLK_SET_RATE_PARENT);
@@ -1251,7 +1255,7 @@ static int pll_12nm_register(struct dsi_pll_12nm *pll_12nm, struct clk_hw **prov
 			gp_div_mux, 0, pll_12nm->phy->pll_base +
 				DSIPHY_SSC9,
 			0, 8, 0, NULL);
-		 
+
 	if (IS_ERR(hw))
 		return PTR_ERR(hw);
 	provided_clocks[DSI_PIXEL_PLL_CLK] = hw;
@@ -1325,44 +1329,31 @@ static int dsi_12nm_phy_enable(struct msm_dsi_phy *phy,
 	}
 
 	/* CTRL0: CFG_CLK_EN */
-	dsi_phy_write(phy->base + CTRL0, BIT(0));
+	writel(BIT(0), phy->base + CTRL0);
 
 	/* DSI PHY clock lane timings */
-	dsi_phy_write(phy->base + HSTX_CLKLANE_HS0STATE_TIM_CTRL,
-		(timing->clk_zero | BIT(7)));
-	dsi_phy_write(phy->base + HSTX_CLKLANE_TRALSTATE_TIM_CTRL,
-		(timing->clk_trail | BIT(6)));
-	dsi_phy_write(phy->base + HSTX_CLKLANE_CLKPOSTSTATE_TIM_CTRL,
-		(timing->clk_post | BIT(6)));
-	dsi_phy_write(phy->base + HSTX_CLKLANE_REQSTATE_TIM_CTRL,
-		timing->clk_rqst);
-	dsi_phy_write(phy->base + HSTX_CLKLANE_EXITSTATE_TIM_CTRL,
-		(timing->hs_exit | BIT(6) | BIT(7)));
+	writel((timing->clk_zero | BIT(7)), phy->base + HSTX_CLKLANE_HS0STATE_TIM_CTRL);
+	writel((timing->clk_trail | BIT(6)), phy->base + HSTX_CLKLANE_TRALSTATE_TIM_CTRL);
+	writel((timing->clk_post | BIT(6)), phy->base + HSTX_CLKLANE_CLKPOSTSTATE_TIM_CTRL);
+	writel(timing->clk_rqst, phy->base + HSTX_CLKLANE_REQSTATE_TIM_CTRL);
+	writel((timing->hs_exit | BIT(6) | BIT(7)), phy->base + HSTX_CLKLANE_EXITSTATE_TIM_CTRL);
 
 	/* DSI PHY data lane timings */
-	dsi_phy_write(phy->base + HSTX_DATALANE_HS0STATE_TIM_CTRL,
-		(timing->hs_zero | BIT(7)));
-	dsi_phy_write(phy->base + HSTX_DATALANE_TRAILSTATE_TIM_CTRL,
-		(timing->hs_trail | BIT(6)));
-	dsi_phy_write(phy->base + HSTX_DATALANE_REQSTATE_TIM_CTRL,
-		timing->hs_rqst);
-	dsi_phy_write(phy->base + HSTX_DATALANE_EXITSTATE_TIM_CTRL,
-		(timing->hs_exit | BIT(6) | BIT(7)));
+	writel((timing->hs_zero | BIT(7)), phy->base + HSTX_DATALANE_HS0STATE_TIM_CTRL);
+	writel((timing->hs_trail | BIT(6)), phy->base + HSTX_DATALANE_TRAILSTATE_TIM_CTRL);
+	writel(timing->hs_rqst, phy->base + HSTX_DATALANE_REQSTATE_TIM_CTRL);
+	writel((timing->hs_exit | BIT(6) | BIT(7)), phy->base + HSTX_DATALANE_EXITSTATE_TIM_CTRL);
 
-	dsi_phy_write(phy->base + T_TA_GO_TIM_COUNT, 0x03);
-	dsi_phy_write(phy->base + T_TA_SURE_TIM_COUNT, 0x01);
-	dsi_phy_write(phy->base + REQ_DLY, 0x85);
+	writel(0x03, phy->base + T_TA_GO_TIM_COUNT);
+	writel(0x01, phy->base + T_TA_SURE_TIM_COUNT);
+	writel(0x85, phy->base + REQ_DLY);
 
 	/* DSI lane control registers */
-	dsi_phy_write(phy->base +
-		HSTX_READY_DLY_DATA_REV_CTRL_LANE0, 0x00);
-	dsi_phy_write(phy->base +
-		HSTX_READY_DLY_DATA_REV_CTRL_LANE1, 0x00);
-	dsi_phy_write(phy->base +
-		HSTX_READY_DLY_DATA_REV_CTRL_LANE2, 0x00);
-	dsi_phy_write(phy->base +
-		HSTX_READY_DLY_DATA_REV_CTRL_LANE3, 0x00);
-	dsi_phy_write(phy->base + HSTX_DATAREV_CTRL_CLKLANE, 0x00);
+	writel(0x00, phy->base + HSTX_READY_DLY_DATA_REV_CTRL_LANE0);
+	writel(0x00, phy->base + HSTX_READY_DLY_DATA_REV_CTRL_LANE1);
+	writel(0x00, phy->base + HSTX_READY_DLY_DATA_REV_CTRL_LANE2);
+	writel(0x00, phy->base + HSTX_READY_DLY_DATA_REV_CTRL_LANE3);
+	writel(0x00, phy->base + HSTX_DATAREV_CTRL_CLKLANE);
 	wmb(); /* make sure DSI PHY registers are programmed */
 
 	return 0;
@@ -1370,7 +1361,7 @@ static int dsi_12nm_phy_enable(struct msm_dsi_phy *phy,
 
 static void dsi_12nm_phy_disable(struct msm_dsi_phy *phy)
 {
-	dsi_phy_write(phy->base + SYS_CTRL, BIT(0) | BIT(3));
+	writel(BIT(0) | BIT(3), phy->base + SYS_CTRL);
 
 	/*
 	 * Wait for the registers writes to complete in order to
@@ -1379,7 +1370,7 @@ static void dsi_12nm_phy_disable(struct msm_dsi_phy *phy)
 	wmb();
 }
 
-void mdss_dsi_12nm_phy_hstx_drv_ctrl(struct msm_dsi_phy *phy,
+static void mdss_dsi_12nm_phy_hstx_drv_ctrl(struct msm_dsi_phy *phy,
 				bool enable)
 {
 	u32 data = 0;
@@ -1387,11 +1378,11 @@ void mdss_dsi_12nm_phy_hstx_drv_ctrl(struct msm_dsi_phy *phy,
 	if (enable)
 		data = BIT(2) | BIT(3);
 
-	dsi_phy_write(phy->base + HSTX_DRIV_INDATA_CTRL_CLKLANE, data);
-	dsi_phy_write(phy->base + HSTX_DRIV_INDATA_CTRL_LANE0, data);
-	dsi_phy_write(phy->base + HSTX_DRIV_INDATA_CTRL_LANE1, data);
-	dsi_phy_write(phy->base + HSTX_DRIV_INDATA_CTRL_LANE2, data);
-	dsi_phy_write(phy->base + HSTX_DRIV_INDATA_CTRL_LANE3, data);
+	writel(data, phy->base + HSTX_DRIV_INDATA_CTRL_CLKLANE);
+	writel(data, phy->base + HSTX_DRIV_INDATA_CTRL_LANE0);
+	writel(data, phy->base + HSTX_DRIV_INDATA_CTRL_LANE1);
+	writel(data, phy->base + HSTX_DRIV_INDATA_CTRL_LANE2);
+	writel(data, phy->base + HSTX_DRIV_INDATA_CTRL_LANE3);
 	wmb(); /* make sure DSI PHY registers are programmed */
 }
 
