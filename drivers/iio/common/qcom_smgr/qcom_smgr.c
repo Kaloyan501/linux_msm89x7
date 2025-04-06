@@ -4,7 +4,7 @@
  *
  * Copyright (c) 2021, Yassine Oudjana <y.oudjana@protonmail.com>
  */
-
+#define DEBUG
 #include <linux/iio/buffer.h>
 #include <linux/iio/common/qcom_smgr.h>
 #include <linux/iio/iio.h>
@@ -185,10 +185,10 @@ static int qcom_smgr_request_single_sensor_info(struct qcom_smgr *smgr,
 			resp.native_sample_rates[i].rate_count;
 		if (sensor->data_types[i].native_sample_rate_count) {
 			sensor->data_types[i]
-				.native_sample_rates = devm_kmemdup_array(
+				.native_sample_rates = devm_kmemdup(
 				smgr->dev, resp.native_sample_rates[i].rates,
-				sensor->data_types[i].native_sample_rate_count,
-				sizeof(u16), GFP_KERNEL);
+				sensor->data_types[i].native_sample_rate_count * sizeof(u16),
+				GFP_KERNEL);
 			if (!sensor->data_types[i].native_sample_rates)
 				return -ENOMEM;
 		}
