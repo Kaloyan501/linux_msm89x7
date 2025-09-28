@@ -353,13 +353,11 @@
 		pm8937_s1: s1 {
 			regulator-min-microvolt = <1000000>;
 			regulator-max-microvolt = <1225000>;
-			regulator-always-on;
 		};
 
 		pm8937_s3: s3 {
 			regulator-min-microvolt = <1300000>;
 			regulator-max-microvolt = <1300000>;
-			regulator-always-on;
 		};
 
 		pm8937_s4: s4 {
