@@ -689,6 +689,8 @@ static const struct rpmpd_desc msm8916_desc = {
 };
 
 static struct rpmpd *msm8917_rpmpds[] = {
+	[MSM8917_VDDMD] =	&md_s1a_lvl,
+	[MSM8917_VDDMD_AO] =	&md_s1a_lvl_ao,
 	[MSM8917_VDDCX] =	&cx_s2a_lvl,
 	[MSM8917_VDDCX_AO] =	&cx_s2a_lvl_ao,
 	[MSM8917_VDDCX_VFL] =	&cx_s2a_vfl,
