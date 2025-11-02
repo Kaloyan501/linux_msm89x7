@@ -4,6 +4,14 @@
 
 &gcc {
 	compatible = "qcom,gcc-qm215";
+	clocks = <&xo_board>,
+		 <&sleep_clk>,
+		 <0>,
+		 <0>;
+		clock-names = "xo",
+			      "sleep_clk",
+			      "dsi0pll",
+			      "dsi0pllbyte";
 };
 
 &rpmpd {
