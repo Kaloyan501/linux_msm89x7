@@ -135,7 +135,7 @@
 			 <&gcc GCC_BIMC_GFX_CLK>;
 		clock-names = "iface", "bus";
 
-		power-domains = <&gcc OXILI_CX_GDSC>;
+		power-domains = <&gcc MSM8937_OXILI_CX_GDSC>;
 
 		qcom,iommu-secure-id = <18>;
 
