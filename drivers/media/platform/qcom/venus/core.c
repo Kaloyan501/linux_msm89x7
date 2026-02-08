@@ -761,7 +761,7 @@ static const struct freq_tbl msm8937_freq_table[] = {
 };
 
 static const struct venus_resources msm8937_res = {
-	.freq_tbl = msm8917_freq_table,
+	.freq_tbl = msm8937_freq_table,
 	.freq_tbl_size = ARRAY_SIZE(msm8937_freq_table),
 	.reg_tbl = msm8916_reg_preset,
 	.reg_tbl_size = ARRAY_SIZE(msm8916_reg_preset),
