@@ -262,6 +262,7 @@
 };
 
 &modem {
+	mss-supply = <&pm8937_s1>;
 	pll-supply = <&pm8937_l7>;
 	status = "okay";
 };
