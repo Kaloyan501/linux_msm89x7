@@ -702,6 +702,12 @@ static const struct rpmpd_desc msm8917_desc = {
 	.max_state = RPM_SMD_LEVEL_TURBO,
 };
 
+static const struct rpmpd_desc msm8937_desc = {
+	.rpmpds = msm8917_rpmpds,
+	.num_pds = ARRAY_SIZE(msm8917_rpmpds),
+	.max_state = RPM_SMD_LEVEL_BINNING,
+};
+
 static struct rpmpd *msm8953_rpmpds[] = {
 	[MSM8953_VDDMD] =	&md_s1a_lvl,
 	[MSM8953_VDDMD_AO] =	&md_s1a_lvl_ao,
@@ -953,6 +959,7 @@ static const struct of_device_id rpmpd_match_table[] = {
 	{ .compatible = "qcom,msm8909-rpmpd", .data = &msm8916_desc },
 	{ .compatible = "qcom,msm8916-rpmpd", .data = &msm8916_desc },
 	{ .compatible = "qcom,msm8917-rpmpd", .data = &msm8917_desc },
+	{ .compatible = "qcom,msm8937-rpmpd", .data = &msm8937_desc },
 	{ .compatible = "qcom,msm8939-rpmpd", .data = &msm8939_desc },
 	{ .compatible = "qcom,msm8953-rpmpd", .data = &msm8953_desc },
 	{ .compatible = "qcom,msm8974-rpmpd", .data = &msm8974_desc },
