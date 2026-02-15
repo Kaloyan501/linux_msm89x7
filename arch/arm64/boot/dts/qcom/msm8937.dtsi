@@ -6,6 +6,8 @@
 #include <dt-bindings/clock/qcom,dsi-phy-28nm.h>
 #include <dt-bindings/clock/qcom,gcc-msm8917.h>
 #include <dt-bindings/clock/qcom,rpmcc.h>
+#include <dt-bindings/interconnect/qcom,msm8937.h>
+#include <dt-bindings/interconnect/qcom,rpm-icc.h>
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include <dt-bindings/power/qcom-rpmpd.h>
 #include <dt-bindings/thermal/thermal.h>
@@ -43,6 +45,8 @@
 			device_type = "cpu";
 			enable-method = "psci";
 			clocks = <&apcs0>;
+			interconnects = <&bimc MAS_APPS_PROC RPM_ACTIVE_TAG
+					 &bimc SLV_EBI RPM_ACTIVE_TAG>;
 			operating-points-v2 = <&cpu_opp_table_c0>;
 			next-level-cache = <&l2_0>;
 			#cooling-cells = <2>;
@@ -62,6 +66,8 @@
 			enable-method = "psci";
 			clocks = <&apcs0>;
 			operating-points-v2 = <&cpu_opp_table_c0>;
+			interconnects = <&bimc MAS_APPS_PROC RPM_ACTIVE_TAG
+					 &bimc SLV_EBI RPM_ACTIVE_TAG>;
 			next-level-cache = <&l2_0>;
 			#cooling-cells = <2>;
 		};
@@ -73,6 +79,8 @@
 			enable-method = "psci";
 			clocks = <&apcs0>;
 			operating-points-v2 = <&cpu_opp_table_c0>;
+			interconnects = <&bimc MAS_APPS_PROC RPM_ACTIVE_TAG
+					 &bimc SLV_EBI RPM_ACTIVE_TAG>;
 			next-level-cache = <&l2_0>;
 			#cooling-cells = <2>;
 		};
@@ -84,6 +92,8 @@
 			enable-method = "psci";
 			clocks = <&apcs0>;
 			operating-points-v2 = <&cpu_opp_table_c0>;
+			interconnects = <&bimc MAS_APPS_PROC RPM_ACTIVE_TAG
+					 &bimc SLV_EBI RPM_ACTIVE_TAG>;
 			next-level-cache = <&l2_0>;
 			#cooling-cells = <2>;
 		};
@@ -96,6 +106,8 @@
 			enable-method = "psci";
 			clocks = <&apcs1>;
 			operating-points-v2 = <&cpu_opp_table_c1>;
+			interconnects = <&bimc MAS_APPS_PROC RPM_ACTIVE_TAG
+					 &bimc SLV_EBI RPM_ACTIVE_TAG>;
 			#cooling-cells = <2>;
 			power-domains = <&cpu_pd0>;
 			power-domain-names = "psci";
@@ -116,6 +128,8 @@
 			enable-method = "psci";
 			clocks = <&apcs1>;
 			operating-points-v2 = <&cpu_opp_table_c1>;
+			interconnects = <&bimc MAS_APPS_PROC RPM_ACTIVE_TAG
+					 &bimc SLV_EBI RPM_ACTIVE_TAG>;
 			#cooling-cells = <2>;
 			power-domains = <&cpu_pd1>;
 			power-domain-names = "psci";
@@ -129,6 +143,8 @@
 			enable-method = "psci";
 			clocks = <&apcs1>;
 			operating-points-v2 = <&cpu_opp_table_c1>;
+			interconnects = <&bimc MAS_APPS_PROC RPM_ACTIVE_TAG
+					 &bimc SLV_EBI RPM_ACTIVE_TAG>;
 			#cooling-cells = <2>;
 			power-domains = <&cpu_pd2>;
 			power-domain-names = "psci";
@@ -142,6 +158,8 @@
 			enable-method = "psci";
 			clocks = <&apcs1>;
 			operating-points-v2 = <&cpu_opp_table_c1>;
+			interconnects = <&bimc MAS_APPS_PROC RPM_ACTIVE_TAG
+					 &bimc SLV_EBI RPM_ACTIVE_TAG>;
 			#cooling-cells = <2>;
 			power-domains = <&cpu_pd3>;
 			power-domain-names = "psci";
@@ -785,6 +803,13 @@
 			clock-names = "core";
 		};
 
+		bimc: interconnect@400000 {
+			compatible = "qcom,msm8937-bimc";
+			reg = <0x00400000 0x5a000>;
+
+			#interconnect-cells = <2>;
+		};
+
 		tsens: thermal-sensor@4a9000 {
 			compatible = "qcom,msm8937-tsens", "qcom,tsens-v1";
 			reg = <0x004a9000 0x1000>,
@@ -824,6 +849,26 @@
 		restart@4ab000 {
 			compatible = "qcom,pshold";
 			reg = <0x004ab000 0x4>;
+		};
+
+		pcnoc: interconnect@500000 {
+			compatible = "qcom,msm8937-pcnoc";
+			reg = <0x00500000 0x13080>;
+
+			#interconnect-cells = <2>;
+		};
+
+		snoc: interconnect@580000 {
+			compatible = "qcom,msm8937-snoc";
+			reg = <0x00580000 0x16080>;
+
+			#interconnect-cells = <2>;
+
+			snoc_mm: interconnect-snoc {
+				compatible = "qcom,msm8937-snoc-mm";
+
+				#interconnect-cells = <2>;
+			};
 		};
 
 		tlmm: pinctrl@1000000 {
@@ -1211,6 +1256,13 @@
 			interrupt-controller;
 			#interrupt-cells = <1>;
 
+			interconnects = <&snoc_mm MAS_MDP RPM_ALWAYS_TAG
+					 &bimc SLV_EBI RPM_ALWAYS_TAG>,
+					<&bimc MAS_APPS_PROC RPM_ACTIVE_TAG
+					 &pcnoc SLV_DISP_SS_CFG RPM_ACTIVE_TAG>;
+			interconnect-names = "mdp0-mem",
+					     "cpu-cfg";
+
 			#address-cells = <1>;
 			#size-cells = <1>;
 
@@ -1595,6 +1647,10 @@
 			operating-points-v2 = <&gpu_opp_table>;
 			power-domains = <&gcc OXILI_GX_GDSC>;
 
+			interconnects = <&bimc MAS_OXILI RPM_ALWAYS_TAG
+					 &bimc SLV_EBI RPM_ALWAYS_TAG>,
+					<&bimc MAS_APPS_PROC RPM_ACTIVE_TAG
+					 &pcnoc SLV_GPU_CFG RPM_ACTIVE_TAG>;
 			iommus = <&adreno_smmu 0>;
 
 			nvmem-cells = <&gpu_speed_bin>;
@@ -1825,6 +1881,12 @@
 			clock-names = "iface",
 				      "core",
 				      "xo";
+			interconnects = <&pcnoc MAS_SDCC_1 RPM_ALWAYS_TAG
+					 &bimc SLV_EBI RPM_ALWAYS_TAG>,
+					<&bimc MAS_APPS_PROC RPM_ACTIVE_TAG
+					 &pcnoc SLV_SDCC_1 RPM_ACTIVE_TAG>;
+			interconnect-names = "sdhc-ddr",
+					     "cpu-sdhc";
 			pinctrl-0 = <&sdc1_default>;
 			pinctrl-1 = <&sdc1_sleep>;
 			pinctrl-names = "default",
