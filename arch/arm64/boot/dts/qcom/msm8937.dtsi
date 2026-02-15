@@ -423,7 +423,7 @@
 				};
 
 				rpmpd: power-controller {
-					compatible = "qcom,msm8937-rpmpd", "qcom,msm8917-rpmpd";
+					compatible = "qcom,msm8937-rpmpd";
 					#power-domain-cells = <1>;
 					operating-points-v2 = <&rpmpd_opp_table>;
 
@@ -464,6 +464,10 @@
 
 						rpmpd_opp_turbo: opp9 {
 							opp-level = <RPM_SMD_LEVEL_TURBO>;
+						};
+
+						rpmpd_opp_turbo_plus: opp10 {
+							opp-level = <RPM_SMD_LEVEL_BINNING>;
 						};
 					};
 				};
@@ -2313,7 +2317,7 @@
 			clocks = <&rpmcc RPM_SMD_BB_CLK1>;
 			clock-names = "xo";
 
-			power-domains = <&rpmpd MSM8917_VDDCX>;
+			power-domains = <&rpmpd MSM8937_VDDCX>;
 			power-domain-names = "cx";
 
 			qcom,smem-states = <&adsp_smp2p_out 0>;
