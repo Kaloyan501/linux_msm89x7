@@ -118,6 +118,11 @@
 	};
 };
 
+&adsp {
+	power-domains = <&rpmpd SDM439_VDDCX>;
+	power-domain-names = "cx";
+};
+
 &gpu {
 	iommus = <&adreno_smmu 0>;
 };
@@ -159,6 +164,14 @@
 	};
 };
 
+&mdss_dsi0 {
+	power-domains = <&rpmpd SDM439_VDDCX>;
+};
+
+&mdss_dsi1 {
+	power-domains = <&rpmpd SDM439_VDDCX>;
+};
+
 &mdss_dsi0_phy {
 	compatible = "qcom,dsi-phy-12nm";
 
@@ -183,6 +196,34 @@
 		    "dsi_phy_regulator";
 };
 
+&modem {
+	compatible = "qcom,sdm439-mss-pil";
+	power-domains = <&rpmpd SDM439_VDDCX>,
+			<&rpmpd SDM439_VDDMX>,
+			<&rpmpd SDM439_VDDMD>;
+	power-domain-names = "cx", "mx", "mss";
+
+};
+
 &rpmcc {
 	compatible = "qcom,rpmcc-sdm429", "qcom,rpmcc";
+};
+
+&rpmpd {
+	compatible = "qcom,sdm439-rpmpd";
+};
+
+&sdhc_1 {
+	power-domains = <&rpmpd SDM439_VDDCX>;
+};
+
+&sdhc_2 {
+	power-domains = <&rpmpd SDM439_VDDCX>;
+};
+
+&wcnss {
+	power-domains = <&rpmpd SDM439_VDDCX>,
+			<&rpmpd SDM439_VDDMX>;
+	power-domain-names = "cx",
+			     "mx";
 };
