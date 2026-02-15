@@ -25,6 +25,7 @@ properties:
           - qcom,msm8909-rpmpd
           - qcom,msm8916-rpmpd
           - qcom,msm8917-rpmpd
+          - qcom,msm8937-rpmpd
           - qcom,msm8939-rpmpd
           - qcom,msm8953-rpmpd
           - qcom,msm8974-rpmpd
@@ -68,10 +69,6 @@ properties:
           - qcom,sm8650-rpmhpd
           - qcom,sm8750-rpmhpd
           - qcom,x1e80100-rpmhpd
-      - items:
-          - enum:
-              - qcom,msm8937-rpmpd
-          - const: qcom,msm8917-rpmpd
 
   '#power-domain-cells':
     const: 1
