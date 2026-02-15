@@ -6,7 +6,7 @@
 #include <dt-bindings/arm/qcom,ids.h>
 #include <dt-bindings/gpio/gpio.h>
 #include <dt-bindings/input/qcom,spmi-haptics.h>
-#include "sdm429.dtsi"
+#include "sdm429w.dtsi"
 #include "pm660.dtsi"
 
 / {
