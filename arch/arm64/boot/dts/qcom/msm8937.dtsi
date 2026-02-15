@@ -1653,48 +1653,90 @@
 					 &pcnoc SLV_GPU_CFG RPM_ACTIVE_TAG>;
 			iommus = <&adreno_smmu 0>;
 
-			nvmem-cells = <&gpu_speed_bin>;
-			nvmem-cell-names = "speed_bin";
+			// nvmem-cells = <&gpu_speed_bin>;
+			// nvmem-cell-names = "speed_bin";
 
 			status = "disabled";
 
 			gpu_opp_table: opp-table {
+
+				// <26 512 0 0>,	    /*    off        */
+				// <26 512 0  806400>, /* 1. 100.80 MHz */
+				// <26 512 0 1689600>, /* 2. 211.20 MHz */
+				// <26 512 0 2227200>, /* 3. 278.40 MHz */
+				// <26 512 0 3072000>, /* 4. 384.00 MHz */
+				// <26 512 0 4300800>, /* 5. 537.60 MHz */
+				// <26 512 0 4454400>, /* 6. 556.80 MHz */
+				// <26 512 0 5299200>, /* 7. 662.40 MHz */
+				// <26 512 0 5990400>, /* 8. 748.80 MHz */
+				// <26 512 0 6451200>, /* 9. 806.40 MHz */
+				// <26 512 0 7372800>; /* 10. 921.60 MHz */
 				compatible = "operating-points-v2";
 
-				opp-19200000 {
+				/* opp-19200000 {
 					opp-hz = /bits/ 64 <19200000>;
 					opp-supported-hw = <0xff>;
+					opp-avg-kBps = <0>, <0>;
+					opp-peak-kBps = <0>, <0>;
 					required-opps = <&rpmpd_opp_min_svs>;
-				};
+				// qcom,bus-freq = <0>;
+				// qcom,bus-min = <0>;
+				// qcom,bus-max = <0>;
+				}; */
 
 				opp-216000000 {
 					opp-hz = /bits/ 64 <216000000>;
 					opp-supported-hw = <0xff>;
+					opp-avg-kBps = <1939200>, <50000>;
+					opp-peak-kBps = <3072000>, <500000>;
 					required-opps = <&rpmpd_opp_svs>;
+				// qcom,bus-freq = <3>;
+				// qcom,bus-min = <1>;
+				// qcom,bus-max = <4>;
 				};
 
 				opp-300000000 {
 					opp-hz = /bits/ 64 <300000000>;
 					opp-supported-hw = <0xff>;
+					opp-avg-kBps = <4185600>, <50000>;
+					opp-peak-kBps = <5299200>, <500000>;
 					required-opps = <&rpmpd_opp_svs_plus>;
+				// qcom,bus-freq = <5>;
+				// qcom,bus-min = <4>;
+				// qcom,bus-max = <7>;
 				};
 
 				opp-375000000 {
 					opp-hz = /bits/ 64 <375000000>;
 					opp-supported-hw = <0xff>;
+					opp-avg-kBps = <5145600>, <50000>;
+					opp-peak-kBps = <5990400>, <500000>;
 					required-opps = <&rpmpd_opp_nom>;
+				// qcom,bus-freq = <6>;
+				// qcom,bus-min = <5>;
+				// qcom,bus-max = <8>;
 				};
 
 				opp-400000000 {
 					opp-hz = /bits/ 64 <400000000>;
 					opp-supported-hw = <0xff>;
+					opp-avg-kBps = <5452800>, <50000>;
+					opp-peak-kBps = <6451200>, <500000>;
 					required-opps = <&rpmpd_opp_nom_plus>;
+				// qcom,bus-freq = <7>;
+				// qcom,bus-min = <6>;
+				// qcom,bus-max = <9>;
 				};
 
 				opp-450000000 {
 					opp-hz = /bits/ 64 <450000000>;
 					opp-supported-hw = <0xff>;
+					opp-avg-kBps = <6451200>, <50000>;
+					opp-peak-kBps = <6451200>, <500000>;
 					required-opps = <&rpmpd_opp_turbo>;
+				// qcom,bus-freq = <9>;
+				// qcom,bus-min = <9>;
+				// qcom,bus-max = <9>;
 				};
 			};
 		};
@@ -1752,7 +1794,7 @@
 
 			/* VENUS_NS */
 			iommu-ctx@16000 {
-				compatible = "qcom,msm-iommu-v1-ns";
+				compatible = "qcom,msm-iommu-v1-sec";
 				reg = <0x16000 0x1000>;
 				interrupts = <GIC_SPI 113 IRQ_TYPE_LEVEL_HIGH>;
 			};

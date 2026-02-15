@@ -3,7 +3,7 @@
  * Qualcomm BAM-DMUX WWAN network driver
  * Copyright (c) 2020, Stephan Gerhold <stephan@gerhold.net>
  */
-
+#define DEBUG
 #include <linux/atomic.h>
 #include <linux/bitops.h>
 #include <linux/completion.h>
