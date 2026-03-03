@@ -329,7 +329,7 @@
 };
 
 &pm8937_gpios {
-	pwm_enable_default: pwm-eanble-default-state {
+	pwm_enable_default: pwm-enable-default-state {
 		pins = "gpio8";
 		function = "dtest2";
 		output-low;
