@@ -2,7 +2,7 @@
 VERSION = 7
 PATCHLEVEL = 0
 SUBLEVEL = 2
-EXTRAVERSION =
+EXTRAVERSION = -tbx505f-audiotest
 NAME = Baby Opossum Posse
 
 # *DOCUMENTATION*
