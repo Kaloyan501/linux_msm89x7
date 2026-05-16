@@ -481,6 +481,7 @@
 	};
 
 	/* Voice call — hostless, routed through ADSP */
+	/*
 	dai-link-voice-call {
 		link-name = "Voice Call";
 		no-pcm;
@@ -493,6 +494,7 @@
 			sound-dai = <&q6voicedai VOICE_SESSION_VSID>;
 		};
 	};
+	*/
 };
 
 /*
