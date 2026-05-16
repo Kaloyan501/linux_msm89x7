@@ -48,13 +48,12 @@
 	};
 
 	sound {
-    		compatible = "qcom,msm8916-qdsp6-sndcard";
-    		model = "tbx505f-audio";
-    		qcom,msm-mbhc-hphl-swh = <1>;
-    		qcom,msm-hs-micbias-type = "internal";
-    		audio-routing =
-        		"Headphone Jack", "HPH_L",
-        		"Headphone Jack", "HPH_R";
+    		compatible = "qcom,msm8952-audio-codec";
+    		qcom,model = "tbx505f-audio";
+
+    		asoc-codec = <&stub_codec &digital_codec &analog_codec>;
+    		asoc-codec-names = "msm-stub-codec.1", "msm-dig-codec", "analog-codec";
+
     		status = "okay";
 	};
 
