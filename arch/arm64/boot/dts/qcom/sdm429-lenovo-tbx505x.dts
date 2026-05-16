@@ -48,15 +48,11 @@
 	};
 
 	sound {
-    		compatible = "qcom,msm8952-audio-codec";
-    		qcom,model = "tbx505f-audio";
-
-    		asoc-codec = <&stub_codec &digital_codec &analog_codec>;
-    		asoc-codec-names = "msm-stub-codec.1", "msm-dig-codec", "analog-codec";
+    		compatible = "qcom,msm8916-qdsp6-sndcard";
+   		model = "tbx505f-audio";
 
     		status = "okay";
 	};
-
 	usb_vbus: extcon-usb-dummy {
 		compatible = "linux,extcon-usb-dummy";
 	};
