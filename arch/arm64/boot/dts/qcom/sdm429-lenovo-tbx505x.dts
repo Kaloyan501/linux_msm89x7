@@ -9,6 +9,8 @@
 #include <dt-bindings/arm/qcom,ids.h>
 #include <dt-bindings/gpio/gpio.h>
 #include <dt-bindings/leds/common.h>
+#include <dt-bindings/sound/qcom,q6afe.h>
+#include <dt-bindings/sound/qcom,q6asm.h>
 #include "sdm429.dtsi"
 #include "pm8953.dtsi"
 #include "pmi632.dtsi"
@@ -47,12 +49,78 @@
 		};
 	};
 
-	sound {
-    		compatible = "qcom,msm8916-qdsp6-sndcard";
-   		model = "tbx505f-audio";
+	sound: sound {
+		compatible = "qcom,msm8916-qdsp6-sndcard";
+		model = "tbx505x-audio";
 
-    		status = "okay";
+		/*
+		 * Downstream "pri-mi2s-gpios" is actually the PDM bus
+		 * (cdc_pdm0, GPIOs 69-74) for the internal WCD codec,
+		 * not MI2S. Pinctrl for it lives on &lpass_codec below.
+		 *
+		 * MIC BIAS External  → Handset Mic → AMIC1
+		 * MIC BIAS External2 → Headset Mic → AMIC2 (MBHC)
+		 */
+		audio-routing =
+			"MIC BIAS External",  "Handset Mic",
+			"MIC BIAS External2", "Headset Mic",
+			"AMIC1", "MIC BIAS External",
+			"AMIC2", "MIC BIAS External2";
+
+		/* Internal codec — headphone + speaker playback via PDM */
+		dai-link-primary-playback {
+			link-name = "Primary MI2S Playback";
+
+			cpu {
+				sound-dai = <&q6afedai PRIMARY_MI2S_RX>;
+			};
+
+			platform {
+				sound-dai = <&q6routing>;
+			};
+
+			/*
+			 * lpass_codec 0 = LPASS digital interpolator
+			 * wcd_codec 0   = PM8953 analog RX (DAC + amp)
+			 * Verify labels against your sdm429.dtsi/pm8953.dtsi.
+			 */
+			codec {
+				sound-dai = <&lpass_codec 0>, <&wcd_codec 0>;
+			};
+		};
+
+		/* Internal codec — handset + headset mic capture via PDM */
+		dai-link-primary-capture {
+			link-name = "Primary MI2S Capture";
+
+			cpu {
+				sound-dai = <&q6afedai PRIMARY_MI2S_TX>;
+			};
+
+			platform {
+				sound-dai = <&q6routing>;
+			};
+
+			codec {
+				sound-dai = <&lpass_codec 1>, <&wcd_codec 1>;
+			};
+		};
+
+		/* Voice call — hostless, routed internally through ADSP */
+		dai-link-voice-call {
+			link-name = "Voice Call";
+			no-pcm;
+
+			cpu {
+				sound-dai = <&q6voicedai VOICE_SESSION_VSID>;
+			};
+
+			codec {
+				sound-dai = <&q6voicedai VOICE_SESSION_VSID>;
+			};
+		};
 	};
+
 	usb_vbus: extcon-usb-dummy {
 		compatible = "linux,extcon-usb-dummy";
 	};
@@ -143,6 +211,19 @@
 		touchscreen-size-x = <800>;
 		touchscreen-size-y = <1280>;
 	};
+};
+
+/*
+ * LPASS internal digital codec — hosts the PDM bus pinctrl.
+ * GPIOs 69,73,74 = cdc_pdm0 group A (CLK + DATA)
+ * GPIOs 70,71,72 = cdc_pdm0 group B (DATA)
+ * Adjust label if sdm429.dtsi exports it as &digital_codec
+ * or similar rather than &lpass_codec.
+ */
+&lpass_codec {
+	pinctrl-names = "default", "sleep";
+	pinctrl-0 = <&cdc_pdm_a_active &cdc_pdm_b_active>;
+	pinctrl-1 = <&cdc_pdm_a_sleep  &cdc_pdm_b_sleep>;
 };
 
 &pm8953_resin {
@@ -450,6 +531,90 @@
 		drive-strength = <2>;
 		bias-disable;
 	};
+
+	/*
+	 * PDM bus for the internal WCD analog codec.
+	 * Downstream misleadingly calls this "pri-mi2s-gpios" but the
+	 * pin function is cdc_pdm0 — it is PDM, not MI2S.
+	 */
+	cdc_pdm_a_active: cdc-pdm-a-active-state {
+		pins = "gpio69", "gpio73", "gpio74";
+		function = "cdc_pdm0";
+		drive-strength = <8>;
+		bias-disable;
+	};
+
+	cdc_pdm_a_sleep: cdc-pdm-a-sleep-state {
+		pins = "gpio69", "gpio73", "gpio74";
+		function = "cdc_pdm0";
+		drive-strength = <2>;
+		bias-disable;
+	};
+
+	cdc_pdm_b_active: cdc-pdm-b-active-state {
+		pins = "gpio70", "gpio71", "gpio72";
+		function = "cdc_pdm0";
+		drive-strength = <8>;
+		bias-disable;
+	};
+
+	cdc_pdm_b_sleep: cdc-pdm-b-sleep-state {
+		pins = "gpio70", "gpio71", "gpio72";
+		function = "cdc_pdm0";
+		drive-strength = <2>;
+		bias-disable;
+	};
+
+	/* External speaker PA enable — confirmed GPIO 48 */
+	ext_spk_pa_active: ext-spk-pa-active-state {
+		pins = "gpio48";
+		function = "gpio";
+		drive-strength = <8>;
+		bias-disable;
+		output-high;
+	};
+
+	ext_spk_pa_sleep: ext-spk-pa-sleep-state {
+		pins = "gpio48";
+		function = "gpio";
+		drive-strength = <2>;
+		bias-disable;
+		output-low;
+	};
+
+	/*
+	 * Quinary MI2S — downstream "quin-mi2s-gpios" (0xeb).
+	 * GPIO 88 = SCK  (confirmed, phandle 0x120)
+	 * GPIO 89 = WS   (confirmed by gpio89 grep; decompiler dropped
+	 *                 the pins field from phandle 0x121/0x123)
+	 */
+	quin_mi2s_active: quin-mi2s-active-state {
+		pins = "gpio88";
+		function = "pri_mi2s";
+		drive-strength = <8>;
+		bias-disable;
+	};
+
+	quin_mi2s_sleep: quin-mi2s-sleep-state {
+		pins = "gpio88";
+		function = "pri_mi2s";
+		drive-strength = <2>;
+		bias-pull-down;
+	};
+
+	quin_mi2s_ws_active: quin-mi2s-ws-active-state {
+		pins = "gpio89";
+		function = "pri_mi2s_ws";
+		drive-strength = <8>;
+		bias-disable;
+	};
+
+	quin_mi2s_ws_sleep: quin-mi2s-ws-sleep-state {
+		pins = "gpio89";
+		function = "pri_mi2s_ws";
+		drive-strength = <2>;
+		bias-pull-down;
+	};
 };
 
 &usb {
@@ -464,6 +629,24 @@
 	vdda3p3-supply = <&pm8953_l13>;
 
 	status = "okay";
+};
+
+/*
+ * WCD analog codec — PM8953 internal (msm8x16_wcd analog half).
+ * hphl/gnd normally-open matches downstream qcom,msm-mbhc-hphl/gnd-swh = 1.
+ * micbias1/2-ext-cap from downstream qcom,msm-micbias1/2-ext-cap flags.
+ * spkr-pa-gpios drives GPIO 48 to enable the external speaker amplifier.
+ * Adjust label to match pm8953.dtsi (may be &pm8953_codec or &wcd_codec).
+ */
+&wcd_codec {
+	qcom,hphl-jack-type-normally-open;
+	qcom,gnd-jack-type-normally-open;
+	qcom,micbias1-ext-cap;
+	qcom,micbias2-ext-cap;
+	qcom,mbhc-vthreshold-low = <75 150 237 450 500>;
+	qcom,mbhc-vthreshold-high = <75 150 237 450 500>;
+
+	spkr-pa-gpios = <&tlmm 48 GPIO_ACTIVE_HIGH>;
 };
 
 &wcnss {
