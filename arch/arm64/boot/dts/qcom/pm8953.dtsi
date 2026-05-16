@@ -164,7 +164,7 @@
 
 			#sound-dai-cells = <1>;
 
-			status = "enabled";
+			status = "disabled";
 		};
 	};
 };
