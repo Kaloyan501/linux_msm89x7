@@ -48,12 +48,14 @@
 	};
 
 	sound {
-		compatible = "qcom,msm8916-qdsp6-sndcard";
-		model = "tbx505f-audio";
-		audio-routing =
-		"Headphone Jack", "HPH_L",
-		"Headphone Jack", "HPH_R";
-		status = "okay";
+    		compatible = "qcom,msm8916-qdsp6-sndcard";
+    		model = "tbx505f-audio";
+    		qcom,msm-mbhc-hphl-swh = <1>;
+    		qcom,msm-hs-micbias-type = "internal";
+    		audio-routing =
+        		"Headphone Jack", "HPH_L",
+        		"Headphone Jack", "HPH_R";
+    		status = "okay";
 	};
 
 	usb_vbus: extcon-usb-dummy {
