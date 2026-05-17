@@ -469,15 +469,36 @@
 			sound-dai = <&q6routing>;
 		};
 
+		/* TEMPORARILY SIMPLIFIED. ENABLE LATER
+		codec {
+			sound-dai = <&lpass_codec 0>, <&wcd_codec 0>;
+		};
+		*/
 		codec {
 			sound-dai = <&lpass_codec 0>, <&wcd_codec 0>;
 		};
 	};
 
+
 	/* Internal codec — mic capture via PDM */
+	/* TEMPORARILY DISABLED. ENABLE LATER.
 	dai-link-primary-capture {
 		link-name = "Primary MI2S Capture";
 
+		cpu {
+			sound-dai = <&q6afedai PRIMARY_MI2S_TX>;
+		};
+
+		platform {
+			sound-dai = <&q6routing>;
+		};
+
+		codec {
+			sound-dai = <&lpass_codec 1>, <&wcd_codec 1>;
+		};
+	};
+	*/
+	dai-link-primary-capture {
 		cpu {
 			sound-dai = <&q6afedai PRIMARY_MI2S_TX>;
 		};
