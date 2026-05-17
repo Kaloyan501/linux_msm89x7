@@ -443,9 +443,9 @@
 	status = "okay";
 	model = "tbx505x-audio";
 
-	pinctrl-names = "default", "sleep";
-	pinctrl-0 = <&cdc_pdm_a_active &cdc_pdm_b_active>;
-	pinctrl-1 = <&cdc_pdm_a_sleep  &cdc_pdm_b_sleep>;
+	// pinctrl-names = "default", "sleep";
+	// pinctrl-0 = <&cdc_pdm_a_active &cdc_pdm_b_active>;
+	// pinctrl-1 = <&cdc_pdm_a_sleep  &cdc_pdm_b_sleep>;
 
 	/*
 	 * MIC BIAS External  → Handset Mic → AMIC1
