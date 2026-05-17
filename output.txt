@@ -1,0 +1,1103 @@
+arch/arm64/boot/dts/qcom/sdm439.dtsi:121:&adsp {
+arch/arm64/boot/dts/qcom/agatti.dtsi:220:			mboxes = <&apcs_glb 0>;
+arch/arm64/boot/dts/qcom/agatti.dtsi:281:			mboxes = <&apcs_glb 1>;
+arch/arm64/boot/dts/qcom/agatti.dtsi:340:		pil_adsp_mem: adsp@51a00000 {
+arch/arm64/boot/dts/qcom/agatti.dtsi:386:	smp2p-adsp {
+arch/arm64/boot/dts/qcom/agatti.dtsi:392:		mboxes = <&apcs_glb 10>;
+arch/arm64/boot/dts/qcom/agatti.dtsi:397:		adsp_smp2p_out: master-kernel {
+arch/arm64/boot/dts/qcom/agatti.dtsi:402:		adsp_smp2p_in: slave-kernel {
+arch/arm64/boot/dts/qcom/agatti.dtsi:415:		mboxes = <&apcs_glb 14>;
+arch/arm64/boot/dts/qcom/agatti.dtsi:2135:				mboxes = <&apcs_glb 12>;
+arch/arm64/boot/dts/qcom/agatti.dtsi:2139:		remoteproc_adsp: remoteproc@ab00000 {
+arch/arm64/boot/dts/qcom/agatti.dtsi:2140:			compatible = "qcom,qcm2290-adsp-pas", "qcom,sm6115-adsp-pas";
+arch/arm64/boot/dts/qcom/agatti.dtsi:2144:					      <&adsp_smp2p_in 0 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/agatti.dtsi:2145:					      <&adsp_smp2p_in 1 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/agatti.dtsi:2146:					      <&adsp_smp2p_in 2 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/agatti.dtsi:2147:					      <&adsp_smp2p_in 3 IRQ_TYPE_EDGE_RISING>;
+arch/arm64/boot/dts/qcom/agatti.dtsi:2160:			memory-region = <&pil_adsp_mem>;
+arch/arm64/boot/dts/qcom/agatti.dtsi:2162:			qcom,smem-states = <&adsp_smp2p_out 0>;
+arch/arm64/boot/dts/qcom/agatti.dtsi:2171:				mboxes = <&apcs_glb 8>;
+arch/arm64/boot/dts/qcom/agatti.dtsi:2176:					qcom,domain = <APR_DOMAIN_ADSP>;
+arch/arm64/boot/dts/qcom/agatti.dtsi:2181:						reg = <APR_SVC_ADSP_CORE>;
+arch/arm64/boot/dts/qcom/agatti.dtsi:2184:									 "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/agatti.dtsi:2191:									 "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/agatti.dtsi:2209:									 "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/agatti.dtsi:2235:									 "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/apq8096-db820c.dts:162:&adsp_pil {
+arch/arm64/boot/dts/qcom/apq8096-db820c.dts:164:	firmware-name = "qcom/apq8096/adsp.mbn";
+arch/arm64/boot/dts/qcom/hamoa-iot-som.dtsi:439:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/hamoa-iot-som.dtsi:440:	firmware-name = "qcom/x1e80100/adsp.mbn",
+arch/arm64/boot/dts/qcom/hamoa-iot-som.dtsi:441:			"qcom/x1e80100/adsp_dtb.mbn";
+arch/arm64/boot/dts/qcom/hamoa-pmics.dtsi:226:			qcom,no-alarm; /* alarm owned by ADSP */
+arch/arm64/boot/dts/qcom/hamoa.dtsi:318:			mboxes = <&cpucp_mbox 0>, <&cpucp_mbox 2>;
+arch/arm64/boot/dts/qcom/hamoa.dtsi:319:			mbox-names = "tx", "rx";
+arch/arm64/boot/dts/qcom/hamoa.dtsi:586:		adsp_rpc_remote_heap_mem: adsp-rpc-remote-heap@84b00000 {
+arch/arm64/boot/dts/qcom/hamoa.dtsi:596:		adsp_boot_dtb_mem: adsp-boot-dtb@866c0000 {
+arch/arm64/boot/dts/qcom/hamoa.dtsi:606:		adsp_boot_mem: adsp-boot@86b00000 {
+arch/arm64/boot/dts/qcom/hamoa.dtsi:616:		adspslpi_mem: adspslpi@87e00000 {
+arch/arm64/boot/dts/qcom/hamoa.dtsi:621:		q6_adsp_dtb_mem: q6-adsp-dtb@8b800000 {
+arch/arm64/boot/dts/qcom/hamoa.dtsi:737:	smp2p-adsp {
+arch/arm64/boot/dts/qcom/hamoa.dtsi:744:		mboxes = <&ipcc IPCC_CLIENT_LPASS
+arch/arm64/boot/dts/qcom/hamoa.dtsi:751:		smp2p_adsp_out: master-kernel {
+arch/arm64/boot/dts/qcom/hamoa.dtsi:756:		smp2p_adsp_in: slave-kernel {
+arch/arm64/boot/dts/qcom/hamoa.dtsi:770:		mboxes = <&ipcc IPCC_CLIENT_CDSP
+arch/arm64/boot/dts/qcom/hamoa.dtsi:4146:		remoteproc_adsp: remoteproc@6800000 {
+arch/arm64/boot/dts/qcom/hamoa.dtsi:4147:			compatible = "qcom,x1e80100-adsp-pas";
+arch/arm64/boot/dts/qcom/hamoa.dtsi:4151:					      <&smp2p_adsp_in 0 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/hamoa.dtsi:4152:					      <&smp2p_adsp_in 1 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/hamoa.dtsi:4153:					      <&smp2p_adsp_in 2 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/hamoa.dtsi:4154:					      <&smp2p_adsp_in 3 IRQ_TYPE_EDGE_RISING>;
+arch/arm64/boot/dts/qcom/hamoa.dtsi:4172:			memory-region = <&adspslpi_mem>,
+arch/arm64/boot/dts/qcom/hamoa.dtsi:4173:					<&q6_adsp_dtb_mem>;
+arch/arm64/boot/dts/qcom/hamoa.dtsi:4177:			qcom,smem-states = <&smp2p_adsp_out 0>;
+arch/arm64/boot/dts/qcom/hamoa.dtsi:4186:				mboxes = <&ipcc IPCC_CLIENT_LPASS
+arch/arm64/boot/dts/qcom/hamoa.dtsi:4195:					label = "adsp";
+arch/arm64/boot/dts/qcom/hamoa.dtsi:4243:					qcom,glink-channels = "adsp_apps";
+arch/arm64/boot/dts/qcom/hamoa.dtsi:4244:					qcom,domain = <GPR_DOMAIN_ID_ADSP>;
+arch/arm64/boot/dts/qcom/hamoa.dtsi:4254:									 "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/hamoa.dtsi:4272:									 "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/hamoa.dtsi:5975:			mboxes = <&ipcc IPCC_CLIENT_AOP IPCC_MPROC_SIGNAL_GLINK_QMP>;
+arch/arm64/boot/dts/qcom/hamoa.dtsi:8723:				mboxes = <&ipcc IPCC_CLIENT_CDSP
+arch/arm64/boot/dts/qcom/ipq6018.dtsi:178:			mboxes = <&apcs_glb 0>;
+arch/arm64/boot/dts/qcom/ipq6018.dtsi:857:				mboxes = <&apcs_glb 8>;
+arch/arm64/boot/dts/qcom/ipq6018.dtsi:1081:		mboxes = <&apcs_glb 9>;
+arch/arm64/boot/dts/qcom/ipq9574.dtsi:194:			mboxes = <&apcs_glb 0>;
+arch/arm64/boot/dts/qcom/kodiak.dtsi:150:		adsp_mem: adsp@86700000 {
+arch/arm64/boot/dts/qcom/kodiak.dtsi:733:	smp2p-adsp {
+arch/arm64/boot/dts/qcom/kodiak.dtsi:739:		mboxes = <&ipcc IPCC_CLIENT_LPASS
+arch/arm64/boot/dts/qcom/kodiak.dtsi:745:		adsp_smp2p_out: master-kernel {
+arch/arm64/boot/dts/qcom/kodiak.dtsi:750:		adsp_smp2p_in: slave-kernel {
+arch/arm64/boot/dts/qcom/kodiak.dtsi:763:		mboxes = <&ipcc IPCC_CLIENT_CDSP
+arch/arm64/boot/dts/qcom/kodiak.dtsi:787:		mboxes = <&ipcc IPCC_CLIENT_MPSS
+arch/arm64/boot/dts/qcom/kodiak.dtsi:822:		mboxes = <&ipcc IPCC_CLIENT_WPSS
+arch/arm64/boot/dts/qcom/kodiak.dtsi:2667:			status = "reserved"; /* Owned by ADSP firmware */
+arch/arm64/boot/dts/qcom/kodiak.dtsi:2876:			status = "reserved"; /* Owned by ADSP firmware */
+arch/arm64/boot/dts/qcom/kodiak.dtsi:2887:			status = "reserved"; /* Owned by ADSP firmware */
+arch/arm64/boot/dts/qcom/kodiak.dtsi:2983:			status = "reserved"; /* Owned by ADSP firmware */
+arch/arm64/boot/dts/qcom/kodiak.dtsi:3316:				mboxes = <&ipcc IPCC_CLIENT_MPSS
+arch/arm64/boot/dts/qcom/kodiak.dtsi:4313:		remoteproc_adsp: remoteproc@3700000 {
+arch/arm64/boot/dts/qcom/kodiak.dtsi:4314:			compatible = "qcom,sc7280-adsp-pas";
+arch/arm64/boot/dts/qcom/kodiak.dtsi:4318:					      <&adsp_smp2p_in 0 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/kodiak.dtsi:4319:					      <&adsp_smp2p_in 1 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/kodiak.dtsi:4320:					      <&adsp_smp2p_in 2 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/kodiak.dtsi:4321:					      <&adsp_smp2p_in 3 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/kodiak.dtsi:4322:					      <&adsp_smp2p_in 7 IRQ_TYPE_EDGE_RISING>;
+arch/arm64/boot/dts/qcom/kodiak.dtsi:4333:			memory-region = <&adsp_mem>;
+arch/arm64/boot/dts/qcom/kodiak.dtsi:4337:			qcom,smem-states = <&adsp_smp2p_out 0>;
+arch/arm64/boot/dts/qcom/kodiak.dtsi:4342:			remoteproc_adsp_glink: glink-edge {
+arch/arm64/boot/dts/qcom/kodiak.dtsi:4347:				mboxes = <&ipcc IPCC_CLIENT_LPASS
+arch/arm64/boot/dts/qcom/kodiak.dtsi:4356:					qcom,domain = <APR_DOMAIN_ADSP>;
+arch/arm64/boot/dts/qcom/kodiak.dtsi:4361:						reg = <APR_SVC_ADSP_CORE>;
+arch/arm64/boot/dts/qcom/kodiak.dtsi:4363:						qcom,protection-domain = "avs/audio", "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/kodiak.dtsi:4369:						qcom,protection-domain = "avs/audio", "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/kodiak.dtsi:4394:						qcom,protection-domain = "avs/audio", "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/kodiak.dtsi:4420:						qcom,protection-domain = "avs/audio", "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/kodiak.dtsi:4432:					label = "adsp";
+arch/arm64/boot/dts/qcom/kodiak.dtsi:4495:				mboxes = <&ipcc IPCC_CLIENT_WPSS
+arch/arm64/boot/dts/qcom/kodiak.dtsi:4670:				mboxes = <&ipcc IPCC_CLIENT_CDSP
+arch/arm64/boot/dts/qcom/kodiak.dtsi:5671:			mboxes = <&ipcc IPCC_CLIENT_AOP
+arch/arm64/boot/dts/qcom/kodiak.dtsi:6714:		adsp_tbu: tbu@151f5000 {
+arch/arm64/boot/dts/qcom/lemans-auto.dtsi:11:/delete-node/ &pil_adsp_mem;
+arch/arm64/boot/dts/qcom/lemans-auto.dtsi:12:/delete-node/ &q6_adsp_dtb_mem;
+arch/arm64/boot/dts/qcom/lemans-auto.dtsi:43:		pil_adsp_mem: pil-adsp@95c00000 {
+arch/arm64/boot/dts/qcom/lemans-evk.dts:630:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/lemans-evk.dts:631:	firmware-name = "qcom/sa8775p/adsp.mbn";
+arch/arm64/boot/dts/qcom/lemans-ride-common.dtsi:926:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/lemans-ride-common.dtsi:927:	firmware-name = "qcom/sa8775p/adsp.mbn";
+arch/arm64/boot/dts/qcom/lemans.dtsi:811:		adsp_rpc_remote_heap_mem: adsp-rpc-remote-heap@94a00000 {
+arch/arm64/boot/dts/qcom/lemans.dtsi:821:		pil_adsp_mem: pil-adsp@95900000 {
+arch/arm64/boot/dts/qcom/lemans.dtsi:826:		q6_adsp_dtb_mem: q6-adsp-dtb@97700000 {
+arch/arm64/boot/dts/qcom/lemans.dtsi:947:	smp2p-adsp {
+arch/arm64/boot/dts/qcom/lemans.dtsi:953:		mboxes = <&ipcc IPCC_CLIENT_LPASS IPCC_MPROC_SIGNAL_SMP2P>;
+arch/arm64/boot/dts/qcom/lemans.dtsi:958:		smp2p_adsp_out: master-kernel {
+arch/arm64/boot/dts/qcom/lemans.dtsi:963:		smp2p_adsp_in: slave-kernel {
+arch/arm64/boot/dts/qcom/lemans.dtsi:976:		mboxes = <&ipcc IPCC_CLIENT_CDSP IPCC_MPROC_SIGNAL_SMP2P>;
+arch/arm64/boot/dts/qcom/lemans.dtsi:999:		mboxes = <&ipcc IPCC_CLIENT_NSP1 IPCC_MPROC_SIGNAL_SMP2P>;
+arch/arm64/boot/dts/qcom/lemans.dtsi:1022:		mboxes = <&ipcc IPCC_CLIENT_GPDSP0 IPCC_MPROC_SIGNAL_SMP2P>;
+arch/arm64/boot/dts/qcom/lemans.dtsi:1045:		mboxes = <&ipcc IPCC_CLIENT_GPDSP1 IPCC_MPROC_SIGNAL_SMP2P>;
+arch/arm64/boot/dts/qcom/lemans.dtsi:5378:			mboxes = <&ipcc IPCC_CLIENT_AOP IPCC_MPROC_SIGNAL_GLINK_QMP>;
+arch/arm64/boot/dts/qcom/lemans.dtsi:6682:				mboxes = <&ipcc IPCC_CLIENT_GPDSP0
+arch/arm64/boot/dts/qcom/lemans.dtsi:6754:				mboxes = <&ipcc IPCC_CLIENT_GPDSP1
+arch/arm64/boot/dts/qcom/lemans.dtsi:6927:				mboxes = <&ipcc IPCC_CLIENT_CDSP
+arch/arm64/boot/dts/qcom/lemans.dtsi:7059:				mboxes = <&ipcc IPCC_CLIENT_NSP1
+arch/arm64/boot/dts/qcom/lemans.dtsi:7179:		remoteproc_adsp: remoteproc@30000000 {
+arch/arm64/boot/dts/qcom/lemans.dtsi:7180:			compatible = "qcom,sa8775p-adsp-pas";
+arch/arm64/boot/dts/qcom/lemans.dtsi:7184:					      <&smp2p_adsp_in 0 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/lemans.dtsi:7185:					      <&smp2p_adsp_in 1 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/lemans.dtsi:7186:					      <&smp2p_adsp_in 2 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/lemans.dtsi:7187:					      <&smp2p_adsp_in 3 IRQ_TYPE_EDGE_RISING>;
+arch/arm64/boot/dts/qcom/lemans.dtsi:7200:			memory-region = <&pil_adsp_mem>;
+arch/arm64/boot/dts/qcom/lemans.dtsi:7204:			qcom,smem-states = <&smp2p_adsp_out 0>;
+arch/arm64/boot/dts/qcom/lemans.dtsi:7209:			remoteproc_adsp_glink: glink-edge {
+arch/arm64/boot/dts/qcom/lemans.dtsi:7213:				mboxes = <&ipcc IPCC_CLIENT_LPASS
+arch/arm64/boot/dts/qcom/lemans.dtsi:7222:					label = "adsp";
+arch/arm64/boot/dts/qcom/lemans.dtsi:7223:					memory-region = <&adsp_rpc_remote_heap_mem>;
+arch/arm64/boot/dts/qcom/lemans.dtsi:7225:							  QCOM_SCM_VMID_ADSP_HEAP>;
+arch/arm64/boot/dts/qcom/lemans.dtsi:7254:					qcom,glink-channels = "adsp_apps";
+arch/arm64/boot/dts/qcom/lemans.dtsi:7255:					qcom,domain = <GPR_DOMAIN_ID_ADSP>;
+arch/arm64/boot/dts/qcom/lemans.dtsi:7265:									 "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/lemans.dtsi:7282:									 "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/monaco-evk.dts:413:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/monaco-evk.dts:414:	firmware-name = "qcom/qcs8300/adsp.mbn";
+arch/arm64/boot/dts/qcom/monaco.dtsi:765:		adsp_rpc_remote_heap_mem: adsp-rpc-remote-heap-region@94a00000 {
+arch/arm64/boot/dts/qcom/monaco.dtsi:775:		adsp_mem: adsp-region@95c00000 {
+arch/arm64/boot/dts/qcom/monaco.dtsi:780:		q6_adsp_dtb_mem: q6-adsp-dtb-region@97a00000 {
+arch/arm64/boot/dts/qcom/monaco.dtsi:821:	smp2p-adsp {
+arch/arm64/boot/dts/qcom/monaco.dtsi:826:		mboxes = <&ipcc IPCC_CLIENT_LPASS
+arch/arm64/boot/dts/qcom/monaco.dtsi:833:		smp2p_adsp_in: slave-kernel {
+arch/arm64/boot/dts/qcom/monaco.dtsi:839:		smp2p_adsp_out: master-kernel {
+arch/arm64/boot/dts/qcom/monaco.dtsi:850:		mboxes = <&ipcc IPCC_CLIENT_CDSP
+arch/arm64/boot/dts/qcom/monaco.dtsi:874:		mboxes = <&ipcc IPCC_CLIENT_GPDSP0
+arch/arm64/boot/dts/qcom/monaco.dtsi:2364:		remoteproc_adsp: remoteproc@3000000 {
+arch/arm64/boot/dts/qcom/monaco.dtsi:2365:			compatible = "qcom,qcs8300-adsp-pas", "qcom,sa8775p-adsp-pas";
+arch/arm64/boot/dts/qcom/monaco.dtsi:2369:					      <&smp2p_adsp_in 0 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/monaco.dtsi:2370:					      <&smp2p_adsp_in 1 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/monaco.dtsi:2371:					      <&smp2p_adsp_in 2 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/monaco.dtsi:2372:					      <&smp2p_adsp_in 3 IRQ_TYPE_EDGE_RISING>;
+arch/arm64/boot/dts/qcom/monaco.dtsi:2387:			memory-region = <&adsp_mem>;
+arch/arm64/boot/dts/qcom/monaco.dtsi:2391:			qcom,smem-states = <&smp2p_adsp_out 0>;
+arch/arm64/boot/dts/qcom/monaco.dtsi:2396:			remoteproc_adsp_glink: glink-edge {
+arch/arm64/boot/dts/qcom/monaco.dtsi:2400:				mboxes = <&ipcc IPCC_CLIENT_LPASS
+arch/arm64/boot/dts/qcom/monaco.dtsi:2409:					label = "adsp";
+arch/arm64/boot/dts/qcom/monaco.dtsi:2410:					memory-region = <&adsp_rpc_remote_heap_mem>;
+arch/arm64/boot/dts/qcom/monaco.dtsi:2412:						      QCOM_SCM_VMID_ADSP_HEAP>;
+arch/arm64/boot/dts/qcom/monaco.dtsi:2440:					qcom,glink-channels = "adsp_apps";
+arch/arm64/boot/dts/qcom/monaco.dtsi:2441:					qcom,domain = <GPR_DOMAIN_ID_ADSP>;
+arch/arm64/boot/dts/qcom/monaco.dtsi:2451:									 "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/monaco.dtsi:2468:									 "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/monaco.dtsi:4860:			mboxes = <&ipcc IPCC_CLIENT_AOP IPCC_MPROC_SIGNAL_GLINK_QMP>;
+arch/arm64/boot/dts/qcom/monaco.dtsi:6083:				mboxes = <&ipcc IPCC_CLIENT_GPDSP0
+arch/arm64/boot/dts/qcom/monaco.dtsi:6174:				mboxes = <&ipcc IPCC_CLIENT_CDSP
+arch/arm64/boot/dts/qcom/msm8916.dtsi:344:			mboxes = <&apcs 0>;
+arch/arm64/boot/dts/qcom/msm8916.dtsi:396:		mboxes = <&apcs 14>;
+arch/arm64/boot/dts/qcom/msm8916.dtsi:421:		mboxes = <&apcs 18>;
+arch/arm64/boot/dts/qcom/msm8916.dtsi:446:		mboxes = <0>, <&apcs 13>, <0>, <&apcs 19>;
+arch/arm64/boot/dts/qcom/msm8916.dtsi:2028:				mboxes = <&apcs 12>;
+arch/arm64/boot/dts/qcom/msm8916.dtsi:2036:					qcom,domain = <APR_DOMAIN_ADSP>;
+arch/arm64/boot/dts/qcom/msm8916.dtsi:2043:						reg = <APR_SVC_ADSP_CORE>;
+arch/arm64/boot/dts/qcom/msm8916.dtsi:2082:						reg = <APR_SVC_ADSP_MVM>;
+arch/arm64/boot/dts/qcom/msm8916.dtsi:2092:						reg = <APR_SVC_ADSP_CVS>;
+arch/arm64/boot/dts/qcom/msm8916.dtsi:2097:						reg = <APR_SVC_ADSP_CVP>;
+arch/arm64/boot/dts/qcom/msm8916.dtsi:2104:					label = "adsp";
+arch/arm64/boot/dts/qcom/msm8916.dtsi:2525:				mboxes = <&apcs 17>;
+arch/arm64/boot/dts/qcom/msm8917-huawei-agassi.dts:99:&adsp_mem {
+arch/arm64/boot/dts/qcom/msm8917-huawei-agassi.dts:103:&adsp {
+arch/arm64/boot/dts/qcom/msm8917-motorola-nora.dts:83:	 * normally proxied via ADSP firmware. GPIOs aren't protected.
+arch/arm64/boot/dts/qcom/msm8917-motorola-nora.dts:138:&adsp {
+arch/arm64/boot/dts/qcom/msm8917-motorola-nora.dts:142:&adsp_mem {
+arch/arm64/boot/dts/qcom/msm8917-xiaomi-riva.dts:132:&adsp {
+arch/arm64/boot/dts/qcom/msm8917-xiaomi-riva.dts:136:&adsp_mem {
+arch/arm64/boot/dts/qcom/msm8917-xiaomi-rolex.dts:121:&adsp {
+arch/arm64/boot/dts/qcom/msm8917-xiaomi-rolex.dts:125:&adsp_mem {
+arch/arm64/boot/dts/qcom/msm8917-xiaomi-tiare.dts:112:&adsp {
+arch/arm64/boot/dts/qcom/msm8917-xiaomi-tiare.dts:116:&adsp_mem {
+arch/arm64/boot/dts/qcom/msm8917-xiaomi-ugglite.dts:159:&adsp {
+arch/arm64/boot/dts/qcom/msm8917-xiaomi-ugglite.dts:163:&adsp_mem {
+arch/arm64/boot/dts/qcom/msm8917.dtsi:363:		adsp_mem: adsp {
+arch/arm64/boot/dts/qcom/msm8917.dtsi:404:	smp2p-adsp {
+arch/arm64/boot/dts/qcom/msm8917.dtsi:410:		mboxes = <&apcs 10>;
+arch/arm64/boot/dts/qcom/msm8917.dtsi:415:		adsp_smp2p_out: master-kernel {
+arch/arm64/boot/dts/qcom/msm8917.dtsi:421:		adsp_smp2p_in: slave-kernel {
+arch/arm64/boot/dts/qcom/msm8917.dtsi:435:		mboxes = <&apcs 14>;
+arch/arm64/boot/dts/qcom/msm8917.dtsi:460:		mboxes = <&apcs 18>;
+arch/arm64/boot/dts/qcom/msm8917.dtsi:485:		mboxes = <0>, <&apcs 13>, <0>, <&apcs 19>;
+arch/arm64/boot/dts/qcom/msm8917.dtsi:1640:				mboxes = <&apcs 12>;
+arch/arm64/boot/dts/qcom/msm8917.dtsi:1912:				mboxes = <&apcs 17>;
+arch/arm64/boot/dts/qcom/msm8917.dtsi:2081:		adsp: remoteproc@c200000 {
+arch/arm64/boot/dts/qcom/msm8917.dtsi:2082:			compatible = "qcom,msm8996-adsp-pil";
+arch/arm64/boot/dts/qcom/msm8917.dtsi:2085:			memory-region = <&adsp_mem>;
+arch/arm64/boot/dts/qcom/msm8917.dtsi:2088:					      <&adsp_smp2p_in 0 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/msm8917.dtsi:2089:					      <&adsp_smp2p_in 1 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/msm8917.dtsi:2090:					      <&adsp_smp2p_in 2 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/msm8917.dtsi:2091:					      <&adsp_smp2p_in 3 IRQ_TYPE_EDGE_RISING>;
+arch/arm64/boot/dts/qcom/msm8917.dtsi:2100:			qcom,smem-states = <&adsp_smp2p_out 0>;
+arch/arm64/boot/dts/qcom/msm8917.dtsi:2108:				mboxes = <&apcs 8>;
+arch/arm64/boot/dts/qcom/msm8917.dtsi:2116:					qcom,apr-domain = <APR_DOMAIN_ADSP>;
+arch/arm64/boot/dts/qcom/msm8917.dtsi:2122:						reg = <APR_SVC_ADSP_CORE>;
+arch/arm64/boot/dts/qcom/msm8917.dtsi:2203:						reg = <APR_SVC_ADSP_MVM>;
+arch/arm64/boot/dts/qcom/msm8917.dtsi:2213:						reg = <APR_SVC_ADSP_CVS>;
+arch/arm64/boot/dts/qcom/msm8917.dtsi:2218:						reg = <APR_SVC_ADSP_CVP>;
+arch/arm64/boot/dts/qcom/msm8937-motorola-cedric.dts:118:&adsp {
+arch/arm64/boot/dts/qcom/msm8937-motorola-cedric.dts:122:&adsp_mem {
+arch/arm64/boot/dts/qcom/msm8937-motorola-hannah.dts:111:&adsp {
+arch/arm64/boot/dts/qcom/msm8937-motorola-hannah.dts:115:&adsp_mem {
+arch/arm64/boot/dts/qcom/msm8937-motorola-montana.dts:139:&adsp {
+arch/arm64/boot/dts/qcom/msm8937-motorola-montana.dts:143:&adsp_mem {
+arch/arm64/boot/dts/qcom/msm8937-xiaomi-land.dts:125:&adsp {
+arch/arm64/boot/dts/qcom/msm8937-xiaomi-land.dts:129:&adsp_mem {
+arch/arm64/boot/dts/qcom/msm8937-xiaomi-prada.dts:128:&adsp {
+arch/arm64/boot/dts/qcom/msm8937-xiaomi-prada.dts:132:&adsp_mem {
+arch/arm64/boot/dts/qcom/msm8937.dtsi:45:			clocks = <&apcs0>;
+arch/arm64/boot/dts/qcom/msm8937.dtsi:63:			clocks = <&apcs0>;
+arch/arm64/boot/dts/qcom/msm8937.dtsi:74:			clocks = <&apcs0>;
+arch/arm64/boot/dts/qcom/msm8937.dtsi:85:			clocks = <&apcs0>;
+arch/arm64/boot/dts/qcom/msm8937.dtsi:307:		adsp_mem: adsp {
+arch/arm64/boot/dts/qcom/msm8937.dtsi:506:	smp2p-adsp {
+arch/arm64/boot/dts/qcom/msm8937.dtsi:512:		mboxes = <&apcs1 10>;
+arch/arm64/boot/dts/qcom/msm8937.dtsi:517:		adsp_smp2p_out: master-kernel {
+arch/arm64/boot/dts/qcom/msm8937.dtsi:523:		adsp_smp2p_in: slave-kernel {
+arch/arm64/boot/dts/qcom/msm8937.dtsi:537:		mboxes = <&apcs1 14>;
+arch/arm64/boot/dts/qcom/msm8937.dtsi:562:		mboxes = <&apcs1 18>;
+arch/arm64/boot/dts/qcom/msm8937.dtsi:587:		mboxes = <0>, <&apcs1 13>, <0>, <&apcs1 19>;
+arch/arm64/boot/dts/qcom/msm8937.dtsi:1792:				mboxes = <&apcs1 12>;
+arch/arm64/boot/dts/qcom/msm8937.dtsi:2094:				mboxes = <&apcs1 17>;
+arch/arm64/boot/dts/qcom/msm8937.dtsi:2188:		apcs0: mailbox@b111000 {
+arch/arm64/boot/dts/qcom/msm8937.dtsi:2324:		adsp: remoteproc@c200000 {
+arch/arm64/boot/dts/qcom/msm8937.dtsi:2325:			compatible = "qcom,msm8996-adsp-pil";
+arch/arm64/boot/dts/qcom/msm8937.dtsi:2328:			memory-region = <&adsp_mem>;
+arch/arm64/boot/dts/qcom/msm8937.dtsi:2331:					      <&adsp_smp2p_in 0 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/msm8937.dtsi:2332:					      <&adsp_smp2p_in 1 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/msm8937.dtsi:2333:					      <&adsp_smp2p_in 2 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/msm8937.dtsi:2334:					      <&adsp_smp2p_in 3 IRQ_TYPE_EDGE_RISING>;
+arch/arm64/boot/dts/qcom/msm8937.dtsi:2343:			qcom,smem-states = <&adsp_smp2p_out 0>;
+arch/arm64/boot/dts/qcom/msm8937.dtsi:2351:				mboxes = <&apcs1 8>;
+arch/arm64/boot/dts/qcom/msm8937.dtsi:2359:					qcom,apr-domain = <APR_DOMAIN_ADSP>;
+arch/arm64/boot/dts/qcom/msm8937.dtsi:2366:						reg = <APR_SVC_ADSP_CORE>;
+arch/arm64/boot/dts/qcom/msm8937.dtsi:2446:						reg = <APR_SVC_ADSP_MVM>;
+arch/arm64/boot/dts/qcom/msm8937.dtsi:2456:						reg = <APR_SVC_ADSP_CVS>;
+arch/arm64/boot/dts/qcom/msm8937.dtsi:2461:						reg = <APR_SVC_ADSP_CVP>;
+arch/arm64/boot/dts/qcom/msm8939.dtsi:117:			clocks = <&apcs0_mbox>;
+arch/arm64/boot/dts/qcom/msm8939.dtsi:137:			clocks = <&apcs0_mbox>;
+arch/arm64/boot/dts/qcom/msm8939.dtsi:151:			clocks = <&apcs0_mbox>;
+arch/arm64/boot/dts/qcom/msm8939.dtsi:165:			clocks = <&apcs0_mbox>;
+arch/arm64/boot/dts/qcom/msm8939.dtsi:437:		mboxes = <&apcs1_mbox 14>;
+arch/arm64/boot/dts/qcom/msm8939.dtsi:462:		mboxes = <&apcs1_mbox 18>;
+arch/arm64/boot/dts/qcom/msm8939.dtsi:487:		mboxes = <0>, <&apcs1_mbox 13>, <0>, <&apcs1_mbox 19>;
+arch/arm64/boot/dts/qcom/msm8939.dtsi:1665:				mboxes = <&apcs1_mbox 12>;
+arch/arm64/boot/dts/qcom/msm8939.dtsi:1673:					qcom,domain = <APR_DOMAIN_ADSP>;
+arch/arm64/boot/dts/qcom/msm8939.dtsi:1680:						reg = <APR_SVC_ADSP_CORE>;
+arch/arm64/boot/dts/qcom/msm8939.dtsi:1719:						reg = <APR_SVC_ADSP_MVM>;
+arch/arm64/boot/dts/qcom/msm8939.dtsi:1729:						reg = <APR_SVC_ADSP_CVS>;
+arch/arm64/boot/dts/qcom/msm8939.dtsi:1734:						reg = <APR_SVC_ADSP_CVP>;
+arch/arm64/boot/dts/qcom/msm8939.dtsi:2144:				mboxes = <&apcs1_mbox 17>;
+arch/arm64/boot/dts/qcom/msm8939.dtsi:2240:		apcs0_mbox: mailbox@b111000 {
+arch/arm64/boot/dts/qcom/msm8940-xiaomi-santoni.dts:113:&adsp {
+arch/arm64/boot/dts/qcom/msm8940-xiaomi-santoni.dts:117:&adsp_mem {
+arch/arm64/boot/dts/qcom/msm8940-xiaomi-ugg.dts:156:&adsp {
+arch/arm64/boot/dts/qcom/msm8940-xiaomi-ugg.dts:160:&adsp_mem {
+arch/arm64/boot/dts/qcom/msm8953-xiaomi-daisy.dts:11:/delete-node/ &adsp_fw_mem;
+arch/arm64/boot/dts/qcom/msm8953-xiaomi-daisy.dts:67:		adsp_fw_mem: adsp@8d600000 {
+arch/arm64/boot/dts/qcom/msm8953-xiaomi-daisy.dts:80:	 * normally proxied via ADSP firmware. GPIOs aren't protected.
+arch/arm64/boot/dts/qcom/msm8953-xiaomi-tissot.dts:13:/delete-node/ &adsp_fw_mem;
+arch/arm64/boot/dts/qcom/msm8953-xiaomi-tissot.dts:51:		adsp_fw_mem: adsp@8d600000 {
+arch/arm64/boot/dts/qcom/msm8953-xiaomi-vince.dts:13:/delete-node/ &adsp_fw_mem;
+arch/arm64/boot/dts/qcom/msm8953-xiaomi-vince.dts:49:		adsp_fw_mem: adsp@8d600000 {
+arch/arm64/boot/dts/qcom/msm8953-xiaomi-vince.dts:71:	 * normally proxied via ADSP firmware. GPIOs aren't protected.
+arch/arm64/boot/dts/qcom/msm8953.dtsi:217:			mboxes = <&apcs 0>;
+arch/arm64/boot/dts/qcom/msm8953.dtsi:314:		adsp_fw_mem: adsp@8d600000 {
+arch/arm64/boot/dts/qcom/msm8953.dtsi:353:	smp2p-adsp {
+arch/arm64/boot/dts/qcom/msm8953.dtsi:359:		mboxes = <&apcs 10>;
+arch/arm64/boot/dts/qcom/msm8953.dtsi:364:		smp2p_adsp_out: master-kernel {
+arch/arm64/boot/dts/qcom/msm8953.dtsi:369:		smp2p_adsp_in: slave-kernel {
+arch/arm64/boot/dts/qcom/msm8953.dtsi:383:		mboxes = <&apcs 14>;
+arch/arm64/boot/dts/qcom/msm8953.dtsi:408:		mboxes = <&apcs 18>;
+arch/arm64/boot/dts/qcom/msm8953.dtsi:433:		mboxes = <0>, <&apcs 13>, <0>, <&apcs 19>;
+arch/arm64/boot/dts/qcom/msm8953.dtsi:1436:				mboxes = <&apcs 12>;
+arch/arm64/boot/dts/qcom/msm8953.dtsi:2014:				mboxes = <&apcs 17>;
+arch/arm64/boot/dts/qcom/msm8953.dtsi:2117:			compatible = "qcom,msm8953-adsp-pil";
+arch/arm64/boot/dts/qcom/msm8953.dtsi:2121:					      <&smp2p_adsp_in 0 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/msm8953.dtsi:2122:					      <&smp2p_adsp_in 1 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/msm8953.dtsi:2123:					      <&smp2p_adsp_in 2 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/msm8953.dtsi:2124:					      <&smp2p_adsp_in 3 IRQ_TYPE_EDGE_RISING>;
+arch/arm64/boot/dts/qcom/msm8953.dtsi:2133:			memory-region = <&adsp_fw_mem>;
+arch/arm64/boot/dts/qcom/msm8953.dtsi:2135:			qcom,smem-states = <&smp2p_adsp_out 0>;
+arch/arm64/boot/dts/qcom/msm8953.dtsi:2144:				mboxes = <&apcs 8>;
+arch/arm64/boot/dts/qcom/msm8953.dtsi:2151:					qcom,domain = <APR_DOMAIN_ADSP>;
+arch/arm64/boot/dts/qcom/msm8953.dtsi:2156:						reg = <APR_SVC_ADSP_CORE>;
+arch/arm64/boot/dts/qcom/msm8976.dtsi:247:			mboxes = <&apcs 0>;
+arch/arm64/boot/dts/qcom/msm8976.dtsi:371:		mboxes = <&apcs 10>;
+arch/arm64/boot/dts/qcom/msm8976.dtsi:377:		adsp_smp2p_out: master-kernel {
+arch/arm64/boot/dts/qcom/msm8976.dtsi:383:		adsp_smp2p_in: slave-kernel {
+arch/arm64/boot/dts/qcom/msm8976.dtsi:394:		mboxes = <&apcs 14>;
+arch/arm64/boot/dts/qcom/msm8976.dtsi:417:		mboxes = <&apcs 18>;
+arch/arm64/boot/dts/qcom/msm8976.dtsi:443:		mboxes = <0>, <&apcs 13>, <&apcs 9>, <&apcs 19>;
+arch/arm64/boot/dts/qcom/msm8976.dtsi:1582:				mboxes = <&apcs 17>;
+arch/arm64/boot/dts/qcom/msm8992-xiaomi-libra.dts:14:/delete-node/ &adsp_mem;
+arch/arm64/boot/dts/qcom/msm8992-xiaomi-libra.dts:118:		adsp_rfsa_mem: adsp-rfsa@cd000000 {
+arch/arm64/boot/dts/qcom/msm8994-msft-lumia-octagon.dtsi:20:/delete-node/ &adsp_mem;
+arch/arm64/boot/dts/qcom/msm8994-msft-lumia-octagon.dtsi:213:		rfsa_adsp_mem: memory@6e60000 {
+arch/arm64/boot/dts/qcom/msm8994-msft-lumia-octagon.dtsi:245:		adsp_mem: memory@ca00000 {
+arch/arm64/boot/dts/qcom/msm8994.dtsi:186:			mboxes = <&apcs 0>;
+arch/arm64/boot/dts/qcom/msm8994.dtsi:279:		adsp_mem: memory@c9400000 {
+arch/arm64/boot/dts/qcom/msm8994.dtsi:303:		mboxes = <&apcs 10>;
+arch/arm64/boot/dts/qcom/msm8994.dtsi:308:		adsp_smp2p_out: master-kernel {
+arch/arm64/boot/dts/qcom/msm8994.dtsi:313:		adsp_smp2p_in: slave-kernel {
+arch/arm64/boot/dts/qcom/msm8994.dtsi:328:		mboxes = <&apcs 14>;
+arch/arm64/boot/dts/qcom/msm8996-oneplus3.dts:18:&adsp_pil {
+arch/arm64/boot/dts/qcom/msm8996-oneplus3.dts:19:	firmware-name = "qcom/msm8996/oneplus3/adsp.mbn";
+arch/arm64/boot/dts/qcom/msm8996-oneplus3t.dts:19:&adsp_pil {
+arch/arm64/boot/dts/qcom/msm8996-oneplus3t.dts:20:	firmware-name = "qcom/msm8996/oneplus3t/adsp.mbn";
+arch/arm64/boot/dts/qcom/msm8996-sony-xperia-tone.dtsi:18:/delete-node/ &adsp_mem;
+arch/arm64/boot/dts/qcom/msm8996-sony-xperia-tone.dtsi:42:		adsp_mem: adsp@8ea00000 {
+arch/arm64/boot/dts/qcom/msm8996-xiaomi-common.dtsi:75:		/delete-node/ adsp@8ea00000;
+arch/arm64/boot/dts/qcom/msm8996-xiaomi-common.dtsi:76:		adsp_mem: adsp@8fe00000 {
+arch/arm64/boot/dts/qcom/msm8996-xiaomi-common.dtsi:182:&adsp_pil {
+arch/arm64/boot/dts/qcom/msm8996-xiaomi-gemini.dts:34:&adsp_pil {
+arch/arm64/boot/dts/qcom/msm8996-xiaomi-gemini.dts:35:	firmware-name = "qcom/msm8996/gemini/adsp.mbn";
+arch/arm64/boot/dts/qcom/msm8996.dtsi:473:			mboxes = <&apcs_glb 0>;
+arch/arm64/boot/dts/qcom/msm8996.dtsi:564:		adsp_mem: adsp@8ea00000 {
+arch/arm64/boot/dts/qcom/msm8996.dtsi:603:	smp2p-adsp {
+arch/arm64/boot/dts/qcom/msm8996.dtsi:609:		mboxes = <&apcs_glb 10>;
+arch/arm64/boot/dts/qcom/msm8996.dtsi:614:		adsp_smp2p_out: master-kernel {
+arch/arm64/boot/dts/qcom/msm8996.dtsi:619:		adsp_smp2p_in: slave-kernel {
+arch/arm64/boot/dts/qcom/msm8996.dtsi:633:		mboxes = <&apcs_glb 14>;
+arch/arm64/boot/dts/qcom/msm8996.dtsi:657:		mboxes = <&apcs_glb 26>;
+arch/arm64/boot/dts/qcom/msm8996.dtsi:2496:			clocks = <&gcc GCC_HLOS1_VOTE_LPASS_ADSP_SMMU_CLK>,
+arch/arm64/boot/dts/qcom/msm8996.dtsi:2533:				mboxes = <&apcs_glb 27>;
+arch/arm64/boot/dts/qcom/msm8996.dtsi:2540:				mboxes = <&apcs_glb 25>;
+arch/arm64/boot/dts/qcom/msm8996.dtsi:2609:				mboxes = <&apcs_glb 15>;
+arch/arm64/boot/dts/qcom/msm8996.dtsi:2616:				mboxes = <&apcs_glb 12>;
+arch/arm64/boot/dts/qcom/msm8996.dtsi:3541:		adsp_pil: remoteproc@9300000 {
+arch/arm64/boot/dts/qcom/msm8996.dtsi:3542:			compatible = "qcom,msm8996-adsp-pil";
+arch/arm64/boot/dts/qcom/msm8996.dtsi:3546:					      <&adsp_smp2p_in 0 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/msm8996.dtsi:3547:					      <&adsp_smp2p_in 1 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/msm8996.dtsi:3548:					      <&adsp_smp2p_in 2 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/msm8996.dtsi:3549:					      <&adsp_smp2p_in 3 IRQ_TYPE_EDGE_RISING>;
+arch/arm64/boot/dts/qcom/msm8996.dtsi:3556:			memory-region = <&adsp_mem>;
+arch/arm64/boot/dts/qcom/msm8996.dtsi:3558:			qcom,smem-states = <&adsp_smp2p_out 0>;
+arch/arm64/boot/dts/qcom/msm8996.dtsi:3570:				mboxes = <&apcs_glb 9>;
+arch/arm64/boot/dts/qcom/msm8996.dtsi:3578:				mboxes = <&apcs_glb 8>;
+arch/arm64/boot/dts/qcom/msm8996.dtsi:3583:					power-domains = <&gcc HLOS1_VOTE_LPASS_ADSP_GDSC>;
+arch/arm64/boot/dts/qcom/msm8996.dtsi:3586:					qcom,domain = <APR_DOMAIN_ADSP>;
+arch/arm64/boot/dts/qcom/msm8996.dtsi:3591:						reg = <APR_SVC_ADSP_CORE>;
+arch/arm64/boot/dts/qcom/msm8996.dtsi:3634:					label = "adsp";
+arch/arm64/boot/dts/qcom/msm8996pro-xiaomi-natrium.dts:22:&adsp_pil {
+arch/arm64/boot/dts/qcom/msm8996pro-xiaomi-natrium.dts:23:	firmware-name = "qcom/msm8996/natrium/adsp.mbn";
+arch/arm64/boot/dts/qcom/msm8996pro-xiaomi-scorpio.dts:60:&adsp_pil {
+arch/arm64/boot/dts/qcom/msm8996pro-xiaomi-scorpio.dts:61:	firmware-name = "qcom/msm8996/scorpio/adsp.mbn";
+arch/arm64/boot/dts/qcom/msm8998-fxtec-pro1.dts:595:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/msm8998-lenovo-miix-630.dts:73:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/msm8998-lenovo-miix-630.dts:74:	firmware-name = "qcom/msm8998/LENOVO/81F1/qcadsp8998.mbn";
+arch/arm64/boot/dts/qcom/msm8998-mtp.dts:379:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/msm8998-oneplus-common.dtsi:136: * OnePlus' ADSP firmware requires 30 MiB in total, so increase the adsp_mem
+arch/arm64/boot/dts/qcom/msm8998-oneplus-common.dtsi:140:&adsp_mem {
+arch/arm64/boot/dts/qcom/msm8998-sony-xperia-yoshino.dtsi:171:		adsp_region: memory@fe000000 {
+arch/arm64/boot/dts/qcom/msm8998-xiaomi-sagit.dts:24:/delete-node/ &adsp_mem;
+arch/arm64/boot/dts/qcom/msm8998-xiaomi-sagit.dts:43:		 * Xiaomi's ADSP firmware requires 30 MiB in total, so increase the adsp_mem
+arch/arm64/boot/dts/qcom/msm8998-xiaomi-sagit.dts:47:		adsp_mem: memory@8b200000 {
+arch/arm64/boot/dts/qcom/msm8998.dtsi:69:		adsp_mem: memory@8b200000 {
+arch/arm64/boot/dts/qcom/msm8998.dtsi:353:			mboxes = <&apcs_glb 0>;
+arch/arm64/boot/dts/qcom/msm8998.dtsi:431:		mboxes = <&apcs_glb 10>;
+arch/arm64/boot/dts/qcom/msm8998.dtsi:436:		adsp_smp2p_out: master-kernel {
+arch/arm64/boot/dts/qcom/msm8998.dtsi:441:		adsp_smp2p_in: slave-kernel {
+arch/arm64/boot/dts/qcom/msm8998.dtsi:453:		mboxes = <&apcs_glb 14>;
+arch/arm64/boot/dts/qcom/msm8998.dtsi:473:		mboxes = <&apcs_glb 26>;
+arch/arm64/boot/dts/qcom/msm8998.dtsi:1522:				mboxes = <&apcs_glb 15>;
+arch/arm64/boot/dts/qcom/msm8998.dtsi:1637:			clocks = <&gcc HLOS1_VOTE_LPASS_ADSP_SMMU_CLK>;
+arch/arm64/boot/dts/qcom/msm8998.dtsi:1657:			power-domains = <&gcc LPASS_ADSP_GDSC>;
+arch/arm64/boot/dts/qcom/msm8998.dtsi:1692:				mboxes = <&apcs_glb 27>;
+arch/arm64/boot/dts/qcom/msm8998.dtsi:3260:		remoteproc_adsp: remoteproc@17300000 {
+arch/arm64/boot/dts/qcom/msm8998.dtsi:3261:			compatible = "qcom,msm8998-adsp-pas";
+arch/arm64/boot/dts/qcom/msm8998.dtsi:3265:					      <&adsp_smp2p_in 0 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/msm8998.dtsi:3266:					      <&adsp_smp2p_in 1 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/msm8998.dtsi:3267:					      <&adsp_smp2p_in 2 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/msm8998.dtsi:3268:					      <&adsp_smp2p_in 3 IRQ_TYPE_EDGE_RISING>;
+arch/arm64/boot/dts/qcom/msm8998.dtsi:3275:			memory-region = <&adsp_mem>;
+arch/arm64/boot/dts/qcom/msm8998.dtsi:3277:			qcom,smem-states = <&adsp_smp2p_out 0>;
+arch/arm64/boot/dts/qcom/msm8998.dtsi:3289:				mboxes = <&apcs_glb 9>;
+arch/arm64/boot/dts/qcom/qcm6490-fairphone-fp5.dts:1147:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/qcm6490-fairphone-fp5.dts:1148:	firmware-name = "qcom/qcm6490/fairphone5/adsp.mbn";
+arch/arm64/boot/dts/qcom/qcm6490-idp.dts:25:/delete-node/ &adsp_mem;
+arch/arm64/boot/dts/qcom/qcm6490-idp.dts:101:		adsp_mem: adsp@86100000 {
+arch/arm64/boot/dts/qcom/qcm6490-idp.dts:702:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/qcm6490-idp.dts:703:	firmware-name = "qcom/qcm6490/adsp.mbn";
+arch/arm64/boot/dts/qcom/qcm6490-idp.dts:920:	gpio-reserved-ranges = <32 2>, /* ADSP */
+arch/arm64/boot/dts/qcom/qcm6490-particle-tachyon.dts:21:/delete-node/ &adsp_mem;
+arch/arm64/boot/dts/qcom/qcm6490-particle-tachyon.dts:147:		adsp_mem: adsp@86100000 {
+arch/arm64/boot/dts/qcom/qcm6490-particle-tachyon.dts:621:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/qcm6490-particle-tachyon.dts:622:	firmware-name = "qcom/qcm6490/particle/tachyon/adsp.mbn";
+arch/arm64/boot/dts/qcom/qcm6490-shift-otter.dts:777:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/qcm6490-shift-otter.dts:778:	firmware-name = "qcom/qcm6490/SHIFT/otter/adsp.mbn";
+arch/arm64/boot/dts/qcom/qcs404-evb.dtsi:117:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/qcs404.dtsi:177:			mboxes = <&apcs_glb 0>;
+arch/arm64/boot/dts/qcom/qcs404.dtsi:277:		adsp_fw_mem: memory@87500000 {
+arch/arm64/boot/dts/qcom/qcs404.dtsi:658:				mboxes = <&apcs_glb 12>;
+arch/arm64/boot/dts/qcom/qcs404.dtsi:962:				mboxes = <&apcs_glb 16>;
+arch/arm64/boot/dts/qcom/qcs404.dtsi:1444:		remoteproc_adsp: remoteproc@c700000 {
+arch/arm64/boot/dts/qcom/qcs404.dtsi:1445:			compatible = "qcom,qcs404-adsp-pas";
+arch/arm64/boot/dts/qcom/qcs404.dtsi:1449:					      <&adsp_smp2p_in 0 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/qcs404.dtsi:1450:					      <&adsp_smp2p_in 1 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/qcs404.dtsi:1451:					      <&adsp_smp2p_in 2 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/qcs404.dtsi:1452:					      <&adsp_smp2p_in 3 IRQ_TYPE_EDGE_RISING>;
+arch/arm64/boot/dts/qcom/qcs404.dtsi:1459:			memory-region = <&adsp_fw_mem>;
+arch/arm64/boot/dts/qcom/qcs404.dtsi:1461:			qcom,smem-states = <&adsp_smp2p_out 0>;
+arch/arm64/boot/dts/qcom/qcs404.dtsi:1470:				mboxes = <&apcs_glb 8>;
+arch/arm64/boot/dts/qcom/qcs404.dtsi:1472:				label = "adsp";
+arch/arm64/boot/dts/qcom/qcs404.dtsi:1545:	smp2p-adsp {
+arch/arm64/boot/dts/qcom/qcs404.dtsi:1549:		mboxes = <&apcs_glb 10>;
+arch/arm64/boot/dts/qcom/qcs404.dtsi:1553:		adsp_smp2p_out: master-kernel {
+arch/arm64/boot/dts/qcom/qcs404.dtsi:1558:		adsp_smp2p_in: slave-kernel {
+arch/arm64/boot/dts/qcom/qcs404.dtsi:1569:		mboxes = <&apcs_glb 14>;
+arch/arm64/boot/dts/qcom/qcs404.dtsi:1589:		mboxes = <&apcs_glb 18>;
+arch/arm64/boot/dts/qcom/qcs615-ride.dts:504:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/qcs615-ride.dts:505:	firmware-name = "qcom/qcs615/adsp.mbn";
+arch/arm64/boot/dts/qcom/qcs6490-audioreach.dtsi:80:&remoteproc_adsp_glink {
+arch/arm64/boot/dts/qcom/qcs6490-audioreach.dtsi:85:		qcom,glink-channels = "adsp_apps";
+arch/arm64/boot/dts/qcom/qcs6490-audioreach.dtsi:86:		qcom,domain = <GPR_DOMAIN_ID_ADSP>;
+arch/arm64/boot/dts/qcom/qcs6490-audioreach.dtsi:95:			qcom,protection-domain = "avs/audio", "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/qcs6490-audioreach.dtsi:111:			qcom,protection-domain = "avs/audio", "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/qcs6490-radxa-dragon-q6a.dts:24:/delete-node/ &adsp_mem;
+arch/arm64/boot/dts/qcom/qcs6490-radxa-dragon-q6a.dts:146:		adsp_mem: adsp@84800000 {
+arch/arm64/boot/dts/qcom/qcs6490-radxa-dragon-q6a.dts:700:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/qcs6490-radxa-dragon-q6a.dts:701:	firmware-name = "qcom/qcs6490/radxa/dragon-q6a/adsp.mbn";
+arch/arm64/boot/dts/qcom/qcs6490-rb3gen2.dts:26:/delete-node/ &adsp_mem;
+arch/arm64/boot/dts/qcom/qcs6490-rb3gen2.dts:101:		adsp_mem: adsp@86100000 {
+arch/arm64/boot/dts/qcom/qcs6490-rb3gen2.dts:981:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/qcs6490-rb3gen2.dts:982:	firmware-name = "qcom/qcs6490/adsp.mbn";
+arch/arm64/boot/dts/qcom/qcs6490-rb3gen2.dts:1085:	gpio-reserved-ranges = <32 2>, /* ADSP */
+arch/arm64/boot/dts/qcom/qcs8300-ride.dts:324:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/qcs8300-ride.dts:325:	firmware-name = "qcom/qcs8300/adsp.mbn";
+arch/arm64/boot/dts/qcom/qcs8550-aim300-aiot.dts:248:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/qcs8550-aim300-aiot.dts:249:	firmware-name = "qcom/qcs8550/adsp.mbn",
+arch/arm64/boot/dts/qcom/qcs8550-aim300-aiot.dts:250:			"qcom/qcs8550/adsp_dtb.mbn";
+arch/arm64/boot/dts/qcom/qcs8550.dtsi:82:		adsp_mhi_mem: adsp-mhi-region@81f00000 {
+arch/arm64/boot/dts/qcom/qcs8550.dtsi:147:		q6_adsp_dtb_mem: q6-adsp-dtb-region@9e980000 {
+arch/arm64/boot/dts/qcom/qcs8550.dtsi:152:		adspslpi_mem: adspslpi-region@9ea00000 {
+arch/arm64/boot/dts/qcom/qm215-nokia-weeknd.dts:208:&adsp {
+arch/arm64/boot/dts/qcom/qm215-nokia-weeknd.dts:212:&adsp_mem {
+arch/arm64/boot/dts/qcom/qrb2210-rb1.dts:385:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/qrb2210-rb1.dts:386:	firmware-name = "qcom/qcm2290/adsp.mbn";
+arch/arm64/boot/dts/qcom/qrb4210-rb2.dts:383:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/qrb4210-rb2.dts:384:	firmware-name = "qcom/qrb4210/adsp.mbn";
+arch/arm64/boot/dts/qcom/qrb5165-rb5.dts:288:&adsp {
+arch/arm64/boot/dts/qcom/qrb5165-rb5.dts:290:	firmware-name = "qcom/sm8250/adsp.mbn";
+arch/arm64/boot/dts/qcom/sa8155p-adp.dts:383:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/sa8155p-adp.dts:385:	firmware-name = "qcom/sa8155p/adsp.mbn";
+arch/arm64/boot/dts/qcom/sa8295p-adp.dts:533:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/sa8295p-adp.dts:534:	firmware-name = "qcom/sa8540p/adsp.mbn";
+arch/arm64/boot/dts/qcom/sar2130p-qar2130p.dts:443:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/sar2130p-qar2130p.dts:444:	firmware-name = "qcom/sar2130p/adsp.mbn";
+arch/arm64/boot/dts/qcom/sar2130p.dtsi:356:		adsp_mem: adsp@87600000 {
+arch/arm64/boot/dts/qcom/sar2130p.dtsi:417:	smp2p-adsp {
+arch/arm64/boot/dts/qcom/sar2130p.dtsi:423:		mboxes = <&ipcc IPCC_CLIENT_LPASS
+arch/arm64/boot/dts/qcom/sar2130p.dtsi:429:		smp2p_adsp_out: master-kernel {
+arch/arm64/boot/dts/qcom/sar2130p.dtsi:434:		smp2p_adsp_in: slave-kernel {
+arch/arm64/boot/dts/qcom/sar2130p.dtsi:447:		mboxes = <&ipcc IPCC_CLIENT_CDSP
+arch/arm64/boot/dts/qcom/sar2130p.dtsi:1587:		remoteproc_adsp: remoteproc@3000000 {
+arch/arm64/boot/dts/qcom/sar2130p.dtsi:1588:			compatible = "qcom,sar2130p-adsp-pas";
+arch/arm64/boot/dts/qcom/sar2130p.dtsi:1592:					      <&smp2p_adsp_in 0 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sar2130p.dtsi:1593:					      <&smp2p_adsp_in 1 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sar2130p.dtsi:1594:					      <&smp2p_adsp_in 2 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sar2130p.dtsi:1595:					      <&smp2p_adsp_in 3 IRQ_TYPE_EDGE_RISING>;
+arch/arm64/boot/dts/qcom/sar2130p.dtsi:1606:			memory-region = <&adsp_mem>;
+arch/arm64/boot/dts/qcom/sar2130p.dtsi:1610:			qcom,smem-states = <&smp2p_adsp_out 0>;
+arch/arm64/boot/dts/qcom/sar2130p.dtsi:1615:			remoteproc_adsp_glink: glink-edge {
+arch/arm64/boot/dts/qcom/sar2130p.dtsi:1619:				mboxes = <&ipcc IPCC_CLIENT_LPASS
+arch/arm64/boot/dts/qcom/sar2130p.dtsi:1627:					qcom,glink-channels = "adsp_apps";
+arch/arm64/boot/dts/qcom/sar2130p.dtsi:1628:					qcom,domain = <GPR_DOMAIN_ID_ADSP>;
+arch/arm64/boot/dts/qcom/sar2130p.dtsi:1638:									 "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/sar2130p.dtsi:1655:									 "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/sar2130p.dtsi:1667:					label = "adsp";
+arch/arm64/boot/dts/qcom/sar2130p.dtsi:2436:			mboxes = <&ipcc IPCC_CLIENT_AOP IPCC_MPROC_SIGNAL_GLINK_QMP>;
+arch/arm64/boot/dts/qcom/sc7180-acer-aspire1.dts:49:		adsp_mem: adsp@8e400000 {
+arch/arm64/boot/dts/qcom/sc7180-acer-aspire1.dts:552:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/sc7180-acer-aspire1.dts:553:	memory-region = <&adsp_mem>;
+arch/arm64/boot/dts/qcom/sc7180-acer-aspire1.dts:554:	firmware-name = "qcom/sc7180/acer/aspire1/qcadsp7180.mbn";
+arch/arm64/boot/dts/qcom/sc7180.dtsi:708:		mboxes = <&apss_shared 6>;
+arch/arm64/boot/dts/qcom/sc7180.dtsi:732:		mboxes = <&apss_shared 10>;
+arch/arm64/boot/dts/qcom/sc7180.dtsi:737:		adsp_smp2p_out: master-kernel {
+arch/arm64/boot/dts/qcom/sc7180.dtsi:742:		adsp_smp2p_in: slave-kernel {
+arch/arm64/boot/dts/qcom/sc7180.dtsi:754:		mboxes = <&apss_shared 14>;
+arch/arm64/boot/dts/qcom/sc7180.dtsi:2166:				mboxes = <&apss_shared 12>;
+arch/arm64/boot/dts/qcom/sc7180.dtsi:3553:			mboxes = <&apss_shared 0>;
+arch/arm64/boot/dts/qcom/sc7180.dtsi:3905:		remoteproc_adsp: remoteproc@62400000 {
+arch/arm64/boot/dts/qcom/sc7180.dtsi:3906:			compatible = "qcom,sc7180-adsp-pas";
+arch/arm64/boot/dts/qcom/sc7180.dtsi:3910:					      <&adsp_smp2p_in 0 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sc7180.dtsi:3911:					      <&adsp_smp2p_in 1 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sc7180.dtsi:3912:					      <&adsp_smp2p_in 2 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sc7180.dtsi:3913:					      <&adsp_smp2p_in 3 IRQ_TYPE_EDGE_RISING>;
+arch/arm64/boot/dts/qcom/sc7180.dtsi:3928:			qcom,smem-states = <&adsp_smp2p_out 0>;
+arch/arm64/boot/dts/qcom/sc7180.dtsi:3937:				mboxes = <&apss_shared 8>;
+arch/arm64/boot/dts/qcom/sc7180.dtsi:3942:					qcom,domain = <APR_DOMAIN_ADSP>;
+arch/arm64/boot/dts/qcom/sc7180.dtsi:3948:						reg = <APR_SVC_ADSP_CORE>;
+arch/arm64/boot/dts/qcom/sc7180.dtsi:3949:						qcom,protection-domain = "avs/audio", "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/sc7180.dtsi:3955:						qcom,protection-domain = "avs/audio", "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/sc7180.dtsi:3973:						qcom,protection-domain = "avs/audio", "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/sc7180.dtsi:3987:						qcom,protection-domain = "avs/audio", "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/sc7180.dtsi:3999:					label = "adsp";
+arch/arm64/boot/dts/qcom/sc7180.dtsi:4037:			status = "reserved"; /* Controlled by ADSP */
+arch/arm64/boot/dts/qcom/sc7180.dtsi:4087:			status = "reserved"; /* Controlled by ADSP */
+arch/arm64/boot/dts/qcom/sc8180x-lenovo-flex-5g.dts:149:		adsp_mem: adsp-region@90800000 {
+arch/arm64/boot/dts/qcom/sc8180x-lenovo-flex-5g.dts:495:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/sc8180x-lenovo-flex-5g.dts:496:	memory-region = <&adsp_mem>;
+arch/arm64/boot/dts/qcom/sc8180x-lenovo-flex-5g.dts:497:	firmware-name = "qcom/sc8180x/LENOVO/82AK/qcadsp8180.mbn";
+arch/arm64/boot/dts/qcom/sc8180x-primus.dts:149:		adsp_mem: adsp-region@96e00000 {
+arch/arm64/boot/dts/qcom/sc8180x-primus.dts:596:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/sc8180x-primus.dts:597:	memory-region = <&adsp_mem>;
+arch/arm64/boot/dts/qcom/sc8180x-primus.dts:598:	firmware-name = "qcom/sc8180x/qcadsp8180.mbn";
+arch/arm64/boot/dts/qcom/sc8180x.dtsi:676:		mboxes = <&apss_shared 6>;
+arch/arm64/boot/dts/qcom/sc8180x.dtsi:700:		mboxes = <&apss_shared 10>;
+arch/arm64/boot/dts/qcom/sc8180x.dtsi:705:		adsp_smp2p_out: master-kernel {
+arch/arm64/boot/dts/qcom/sc8180x.dtsi:710:		adsp_smp2p_in: slave-kernel {
+arch/arm64/boot/dts/qcom/sc8180x.dtsi:724:		mboxes = <&apss_shared 14>;
+arch/arm64/boot/dts/qcom/sc8180x.dtsi:765:		mboxes = <&apss_shared 26>;
+arch/arm64/boot/dts/qcom/sc8180x.dtsi:2451:				mboxes = <&apss_shared 12>;
+arch/arm64/boot/dts/qcom/sc8180x.dtsi:2484:				mboxes = <&apss_shared 4>;
+arch/arm64/boot/dts/qcom/sc8180x.dtsi:3590:			mboxes = <&apss_shared 0>;
+arch/arm64/boot/dts/qcom/sc8180x.dtsi:3733:		remoteproc_adsp: remoteproc@17300000 {
+arch/arm64/boot/dts/qcom/sc8180x.dtsi:3734:			compatible = "qcom,sc8180x-adsp-pas";
+arch/arm64/boot/dts/qcom/sc8180x.dtsi:3738:					      <&adsp_smp2p_in 0 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sc8180x.dtsi:3739:					      <&adsp_smp2p_in 1 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sc8180x.dtsi:3740:					      <&adsp_smp2p_in 2 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sc8180x.dtsi:3741:					      <&adsp_smp2p_in 3 IRQ_TYPE_EDGE_RISING>;
+arch/arm64/boot/dts/qcom/sc8180x.dtsi:3753:			qcom,smem-states = <&adsp_smp2p_out 0>;
+arch/arm64/boot/dts/qcom/sc8180x.dtsi:3758:			remoteproc_adsp_glink: glink-edge {
+arch/arm64/boot/dts/qcom/sc8180x.dtsi:3762:				mboxes = <&apss_shared 8>;
+arch/arm64/boot/dts/qcom/sc8280xp-crd.dts:743:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/sc8280xp-crd.dts:744:	firmware-name = "qcom/sc8280xp/qcadsp8280.mbn";
+arch/arm64/boot/dts/qcom/sc8280xp-huawei-gaokun3.dts:960:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/sc8280xp-huawei-gaokun3.dts:961:	firmware-name = "qcom/sc8280xp/HUAWEI/gaokun3/qcadsp8280.mbn";
+arch/arm64/boot/dts/qcom/sc8280xp-lenovo-thinkpad-x13s.dts:1169:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/sc8280xp-lenovo-thinkpad-x13s.dts:1170:	firmware-name = "qcom/sc8280xp/LENOVO/21BX/qcadsp8280.mbn";
+arch/arm64/boot/dts/qcom/sc8280xp-microsoft-arcata.dts:591:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/sc8280xp-microsoft-arcata.dts:592:	firmware-name = "qcom/sc8280xp/MICROSOFT/SurfacePro9/qcadsp8280.mbn";
+arch/arm64/boot/dts/qcom/sc8280xp-microsoft-blackrock.dts:850:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/sc8280xp-microsoft-blackrock.dts:851:	firmware-name = "qcom/sc8280xp/microsoft/blackrock/qcadsp8280.mbn";
+arch/arm64/boot/dts/qcom/sc8280xp.dtsi:699:		pil_adsp_mem: adsp-region@86c00000 {
+arch/arm64/boot/dts/qcom/sc8280xp.dtsi:725:	smp2p-adsp {
+arch/arm64/boot/dts/qcom/sc8280xp.dtsi:731:		mboxes = <&ipcc IPCC_CLIENT_LPASS
+arch/arm64/boot/dts/qcom/sc8280xp.dtsi:737:		smp2p_adsp_out: master-kernel {
+arch/arm64/boot/dts/qcom/sc8280xp.dtsi:742:		smp2p_adsp_in: slave-kernel {
+arch/arm64/boot/dts/qcom/sc8280xp.dtsi:755:		mboxes = <&ipcc IPCC_CLIENT_CDSP
+arch/arm64/boot/dts/qcom/sc8280xp.dtsi:779:		mboxes = <&ipcc IPCC_CLIENT_NSP1
+arch/arm64/boot/dts/qcom/sc8280xp.dtsi:803:		mboxes = <&ipcc IPCC_CLIENT_SLPI
+arch/arm64/boot/dts/qcom/sc8280xp.dtsi:2894:				mboxes = <&ipcc IPCC_CLIENT_SLPI
+arch/arm64/boot/dts/qcom/sc8280xp.dtsi:2929:		remoteproc_adsp: remoteproc@3000000 {
+arch/arm64/boot/dts/qcom/sc8280xp.dtsi:2930:			compatible = "qcom,sc8280xp-adsp-pas";
+arch/arm64/boot/dts/qcom/sc8280xp.dtsi:2934:					      <&smp2p_adsp_in 0 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sc8280xp.dtsi:2935:					      <&smp2p_adsp_in 1 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sc8280xp.dtsi:2936:					      <&smp2p_adsp_in 2 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sc8280xp.dtsi:2937:					      <&smp2p_adsp_in 3 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sc8280xp.dtsi:2938:					      <&smp2p_adsp_in 7 IRQ_TYPE_EDGE_RISING>;
+arch/arm64/boot/dts/qcom/sc8280xp.dtsi:2949:			memory-region = <&pil_adsp_mem>;
+arch/arm64/boot/dts/qcom/sc8280xp.dtsi:2953:			qcom,smem-states = <&smp2p_adsp_out 0>;
+arch/arm64/boot/dts/qcom/sc8280xp.dtsi:2958:			remoteproc_adsp_glink: glink-edge {
+arch/arm64/boot/dts/qcom/sc8280xp.dtsi:2962:				mboxes = <&ipcc IPCC_CLIENT_LPASS
+arch/arm64/boot/dts/qcom/sc8280xp.dtsi:2970:					qcom,glink-channels = "adsp_apps";
+arch/arm64/boot/dts/qcom/sc8280xp.dtsi:2971:					qcom,domain = <GPR_DOMAIN_ID_ADSP>;
+arch/arm64/boot/dts/qcom/sc8280xp.dtsi:2981:									 "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/sc8280xp.dtsi:2997:									 "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/sc8280xp.dtsi:5216:			mboxes = <&ipcc IPCC_CLIENT_AOP IPCC_MPROC_SIGNAL_GLINK_QMP>;
+arch/arm64/boot/dts/qcom/sc8280xp.dtsi:5811:				mboxes = <&ipcc IPCC_CLIENT_CDSP
+arch/arm64/boot/dts/qcom/sc8280xp.dtsi:5946:				mboxes = <&ipcc IPCC_CLIENT_NSP1
+arch/arm64/boot/dts/qcom/sda660-inforce-ifc6560.dts:121:&adsp_pil {
+arch/arm64/boot/dts/qcom/sda660-inforce-ifc6560.dts:122:	firmware-name = "qcom/sda660/adsp.mbn";
+arch/arm64/boot/dts/qcom/sdm429-lenovo-tbx505x.dts:117:&adsp {
+arch/arm64/boot/dts/qcom/sdm429-lenovo-tbx505x.dts:121:&adsp_mem {
+arch/arm64/boot/dts/qcom/sdm429-lenovo-tbx505x.dts:483:	/* Voice call — hostless, routed through ADSP */
+arch/arm64/boot/dts/qcom/sdm429.dtsi:84:&apcs0 {
+arch/arm64/boot/dts/qcom/sdm429w-fossil-hoki.dts:124:&adsp {
+arch/arm64/boot/dts/qcom/sdm429w-fossil-hoki.dts:128:&adsp_mem {
+arch/arm64/boot/dts/qcom/sdm429w.dtsi:9:&adsp {
+arch/arm64/boot/dts/qcom/sdm439-nokia-panther.dts:100:&adsp {
+arch/arm64/boot/dts/qcom/sdm439-nokia-panther.dts:104:&adsp_mem {
+arch/arm64/boot/dts/qcom/sdm439-xiaomi-olive.dts:90:&adsp {
+arch/arm64/boot/dts/qcom/sdm439-xiaomi-olive.dts:94:&adsp_mem {
+arch/arm64/boot/dts/qcom/sdm439-xiaomi-pine.dts:91:&adsp {
+arch/arm64/boot/dts/qcom/sdm439-xiaomi-pine.dts:95:&adsp_mem {
+arch/arm64/boot/dts/qcom/sdm439.dtsi:121:&adsp {
+arch/arm64/boot/dts/qcom/sdm630-sony-xperia-nile.dtsi:159:&adsp_pil {
+arch/arm64/boot/dts/qcom/sdm630-sony-xperia-nile.dtsi:160:	firmware-name = "qcom/sdm630/Sony/nile/adsp.mbn";
+arch/arm64/boot/dts/qcom/sdm630.dtsi:373:			mboxes = <&apcs_glb 0>;
+arch/arm64/boot/dts/qcom/sdm630.dtsi:477:		adsp_region: adsp@92a00000 {
+arch/arm64/boot/dts/qcom/sdm630.dtsi:497:		adsp_mem: adsp-region@f6000000 {
+arch/arm64/boot/dts/qcom/sdm630.dtsi:526:	smp2p-adsp {
+arch/arm64/boot/dts/qcom/sdm630.dtsi:530:		mboxes = <&apcs_glb 10>;
+arch/arm64/boot/dts/qcom/sdm630.dtsi:534:		adsp_smp2p_out: master-kernel {
+arch/arm64/boot/dts/qcom/sdm630.dtsi:539:		adsp_smp2p_in: slave-kernel {
+arch/arm64/boot/dts/qcom/sdm630.dtsi:550:		mboxes = <&apcs_glb 14>;
+arch/arm64/boot/dts/qcom/sdm630.dtsi:1073:				mboxes = <&apcs_glb 15>;
+arch/arm64/boot/dts/qcom/sdm630.dtsi:2266:		adsp_pil: remoteproc@15700000 {
+arch/arm64/boot/dts/qcom/sdm630.dtsi:2267:			compatible = "qcom,sdm660-adsp-pas";
+arch/arm64/boot/dts/qcom/sdm630.dtsi:2272:				<&adsp_smp2p_in 0 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sdm630.dtsi:2273:				<&adsp_smp2p_in 1 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sdm630.dtsi:2274:				<&adsp_smp2p_in 2 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sdm630.dtsi:2275:				<&adsp_smp2p_in 3 IRQ_TYPE_EDGE_RISING>;
+arch/arm64/boot/dts/qcom/sdm630.dtsi:2282:			memory-region = <&adsp_region>;
+arch/arm64/boot/dts/qcom/sdm630.dtsi:2286:			qcom,smem-states = <&adsp_smp2p_out 0>;
+arch/arm64/boot/dts/qcom/sdm630.dtsi:2293:				mboxes = <&apcs_glb 9>;
+arch/arm64/boot/dts/qcom/sdm630.dtsi:2299:					qcom,domain = <APR_DOMAIN_ADSP>;
+arch/arm64/boot/dts/qcom/sdm630.dtsi:2304:						reg = <APR_SVC_ADSP_CORE>;
+arch/arm64/boot/dts/qcom/sdm632-fairphone-fp3.dts:101:	firmware-name = "qcom/msm8953/fairphone/fp3/adsp.mbn";
+arch/arm64/boot/dts/qcom/sdm670-google-sargo.dts:25:/delete-node/ &adsp_mem;
+arch/arm64/boot/dts/qcom/sdm670-google-sargo.dts:104:		adsp_mem: adsp@95800000 {
+arch/arm64/boot/dts/qcom/sdm670.dtsi:571:		adsp_mem: adsp@93e00000 {
+arch/arm64/boot/dts/qcom/sdm845-db845c.dts:281:&adsp_pas {
+arch/arm64/boot/dts/qcom/sdm845-db845c.dts:284:	firmware-name = "qcom/sdm845/adsp.mbn";
+arch/arm64/boot/dts/qcom/sdm845-lg-common.dtsi:16:/delete-node/ &adsp_mem;
+arch/arm64/boot/dts/qcom/sdm845-lg-common.dtsi:56:		adsp_mem: memory@8c500000 {
+arch/arm64/boot/dts/qcom/sdm845-lg-common.dtsi:153:&adsp_pas {
+arch/arm64/boot/dts/qcom/sdm845-lg-judyln.dts:42:&adsp_pas {
+arch/arm64/boot/dts/qcom/sdm845-lg-judyln.dts:43:	firmware-name = "qcom/sdm845/judyln/adsp.mbn";
+arch/arm64/boot/dts/qcom/sdm845-lg-judyp.dts:28:&adsp_pas {
+arch/arm64/boot/dts/qcom/sdm845-lg-judyp.dts:29:	firmware-name = "qcom/sdm845/judyp/adsp.mbn";
+arch/arm64/boot/dts/qcom/sdm845-mtp.dts:103:&adsp_pas {
+arch/arm64/boot/dts/qcom/sdm845-mtp.dts:105:	firmware-name = "qcom/sdm845/adsp.mbn";
+arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi:182:&adsp_pas {
+arch/arm64/boot/dts/qcom/sdm845-oneplus-common.dtsi:184:	firmware-name = "qcom/sdm845/oneplus6/adsp.mbn";
+arch/arm64/boot/dts/qcom/sdm845-samsung-starqltechn.dts:24:/delete-node/ &adsp_mem;
+arch/arm64/boot/dts/qcom/sdm845-samsung-starqltechn.dts:145:		adsp_mem: memory@97800000 {
+arch/arm64/boot/dts/qcom/sdm845-samsung-starqltechn.dts:701:&adsp_pas {
+arch/arm64/boot/dts/qcom/sdm845-samsung-starqltechn.dts:702:	firmware-name = "qcom/sdm845/starqltechn/adsp.mbn";
+arch/arm64/boot/dts/qcom/sdm845-shift-axolotl.dts:110:&adsp_pas {
+arch/arm64/boot/dts/qcom/sdm845-shift-axolotl.dts:112:	firmware-name = "qcom/sdm845/axolotl/adsp.mbn";
+arch/arm64/boot/dts/qcom/sdm845-sony-xperia-tama.dtsi:141:&adsp_pas {
+arch/arm64/boot/dts/qcom/sdm845-sony-xperia-tama.dtsi:142:	firmware-name = "qcom/sdm845/Sony/tama/adsp.mbn";
+arch/arm64/boot/dts/qcom/sdm845-xiaomi-beryllium-common.dtsi:21:/delete-node/ &adsp_mem;
+arch/arm64/boot/dts/qcom/sdm845-xiaomi-beryllium-common.dtsi:63:		adsp_mem: memory@8c500000 {
+arch/arm64/boot/dts/qcom/sdm845-xiaomi-beryllium-common.dtsi:137:&adsp_pas {
+arch/arm64/boot/dts/qcom/sdm845-xiaomi-beryllium-common.dtsi:139:	firmware-name = "qcom/sdm845/beryllium/adsp.mbn";
+arch/arm64/boot/dts/qcom/sdm845-xiaomi-polaris.dts:27:/delete-node/ &adsp_mem;
+arch/arm64/boot/dts/qcom/sdm845-xiaomi-polaris.dts:66:		adsp_mem: memory@8c500000 {
+arch/arm64/boot/dts/qcom/sdm845.dtsi:847:		adsp_mem: adsp@8c500000 {
+arch/arm64/boot/dts/qcom/sdm845.dtsi:902:	adsp_pas: remoteproc-adsp {
+arch/arm64/boot/dts/qcom/sdm845.dtsi:903:		compatible = "qcom,sdm845-adsp-pas";
+arch/arm64/boot/dts/qcom/sdm845.dtsi:906:				      <&adsp_smp2p_in 0 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sdm845.dtsi:907:				      <&adsp_smp2p_in 1 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sdm845.dtsi:908:				      <&adsp_smp2p_in 2 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sdm845.dtsi:909:				      <&adsp_smp2p_in 3 IRQ_TYPE_EDGE_RISING>;
+arch/arm64/boot/dts/qcom/sdm845.dtsi:916:		memory-region = <&adsp_mem>;
+arch/arm64/boot/dts/qcom/sdm845.dtsi:920:		qcom,smem-states = <&adsp_smp2p_out 0>;
+arch/arm64/boot/dts/qcom/sdm845.dtsi:929:			mboxes = <&apss_shared 8>;
+arch/arm64/boot/dts/qcom/sdm845.dtsi:934:				qcom,domain = <APR_DOMAIN_ADSP>;
+arch/arm64/boot/dts/qcom/sdm845.dtsi:940:					reg = <APR_SVC_ADSP_CORE>;
+arch/arm64/boot/dts/qcom/sdm845.dtsi:942:					qcom,protection-domain = "avs/audio", "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/sdm845.dtsi:948:					qcom,protection-domain = "avs/audio", "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/sdm845.dtsi:960:					qcom,protection-domain = "avs/audio", "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/sdm845.dtsi:973:					qcom,protection-domain = "avs/audio", "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/sdm845.dtsi:984:				label = "adsp";
+arch/arm64/boot/dts/qcom/sdm845.dtsi:1031:			mboxes = <&apss_shared 4>;
+arch/arm64/boot/dts/qcom/sdm845.dtsi:1097:		mboxes = <&apss_shared 6>;
+arch/arm64/boot/dts/qcom/sdm845.dtsi:1121:		mboxes = <&apss_shared 10>;
+arch/arm64/boot/dts/qcom/sdm845.dtsi:1126:		adsp_smp2p_out: master-kernel {
+arch/arm64/boot/dts/qcom/sdm845.dtsi:1131:		adsp_smp2p_in: slave-kernel {
+arch/arm64/boot/dts/qcom/sdm845.dtsi:1143:		mboxes = <&apss_shared 14>;
+arch/arm64/boot/dts/qcom/sdm845.dtsi:1174:		mboxes = <&apss_shared 26>;
+arch/arm64/boot/dts/qcom/sdm845.dtsi:3397:				mboxes = <&apss_shared 12>;
+arch/arm64/boot/dts/qcom/sdm845.dtsi:3447:				mboxes = <&apss_shared 24>;
+arch/arm64/boot/dts/qcom/sdm845.dtsi:3455:						      QCOM_SCM_VMID_SSC_Q6 QCOM_SCM_VMID_ADSP_Q6>;
+arch/arm64/boot/dts/qcom/sdm845.dtsi:5092:			mboxes = <&apss_shared 0>;
+arch/arm64/boot/dts/qcom/sdm845.dtsi:5268:		adsp_tbu: tbu@150dd000 {
+arch/arm64/boot/dts/qcom/sdm850-huawei-matebook-e-2019.dts:175:&adsp_pas {
+arch/arm64/boot/dts/qcom/sdm850-huawei-matebook-e-2019.dts:176:	firmware-name = "qcom/sdm850/HUAWEI/AL09/qcadsp850.mbn";
+arch/arm64/boot/dts/qcom/sdm850-lenovo-yoga-c630.dts:27:/delete-node/ &adsp_mem;
+arch/arm64/boot/dts/qcom/sdm850-lenovo-yoga-c630.dts:78:		adsp_mem: memory@8c600000 {
+arch/arm64/boot/dts/qcom/sdm850-lenovo-yoga-c630.dts:133:&adsp_pas {
+arch/arm64/boot/dts/qcom/sdm850-lenovo-yoga-c630.dts:134:	firmware-name = "qcom/sdm850/LENOVO/81JL/qcadsp850.mbn";
+arch/arm64/boot/dts/qcom/sdm850-samsung-w737.dts:31:/delete-node/ &adsp_mem;
+arch/arm64/boot/dts/qcom/sdm850-samsung-w737.dts:100:		adsp_mem: memory@96000000 {
+arch/arm64/boot/dts/qcom/sdm850-samsung-w737.dts:127:&adsp_pas {
+arch/arm64/boot/dts/qcom/sdm850-samsung-w737.dts:128:	firmware-name = "qcom/sdm850/samsung/w737/qcadsp850.mbn";
+arch/arm64/boot/dts/qcom/sdx75.dtsi:400:		mpssadsp_mem: mpssadsp@8e000000 {
+arch/arm64/boot/dts/qcom/sdx75.dtsi:427:		mboxes = <&ipcc IPCC_CLIENT_MPSS
+arch/arm64/boot/dts/qcom/sdx75.dtsi:952:			memory-region = <&mpssadsp_mem>, <&q6_mpss_dtb_mem>,
+arch/arm64/boot/dts/qcom/sdx75.dtsi:967:				mboxes = <&ipcc IPCC_CLIENT_MPSS
+arch/arm64/boot/dts/qcom/sdx75.dtsi:1119:			mboxes = <&ipcc IPCC_CLIENT_AOP IPCC_MPROC_SIGNAL_GLINK_QMP>;
+arch/arm64/boot/dts/qcom/sm6115-fxtec-pro1x.dts:294:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/sm6115-fxtec-pro1x.dts:295:	firmware-name = "qcom/sm6115/Fxtec/QX1050/adsp.mbn";
+arch/arm64/boot/dts/qcom/sm6115.dtsi:380:			mboxes = <&apcs_glb 0>;
+arch/arm64/boot/dts/qcom/sm6115.dtsi:492:		pil_adsp_mem: memory@53800000 {
+arch/arm64/boot/dts/qcom/sm6115.dtsi:537:	smp2p-adsp {
+arch/arm64/boot/dts/qcom/sm6115.dtsi:543:		mboxes = <&apcs_glb 10>;
+arch/arm64/boot/dts/qcom/sm6115.dtsi:548:		adsp_smp2p_out: master-kernel {
+arch/arm64/boot/dts/qcom/sm6115.dtsi:553:		adsp_smp2p_in: slave-kernel {
+arch/arm64/boot/dts/qcom/sm6115.dtsi:567:		mboxes = <&apcs_glb 30>;
+arch/arm64/boot/dts/qcom/sm6115.dtsi:591:		mboxes = <&apcs_glb 14>;
+arch/arm64/boot/dts/qcom/sm6115.dtsi:2089:				mboxes = <&apcs_glb 12>;
+arch/arm64/boot/dts/qcom/sm6115.dtsi:2705:		remoteproc_adsp: remoteproc@a400000 {
+arch/arm64/boot/dts/qcom/sm6115.dtsi:2706:			compatible = "qcom,sm6115-adsp-pas";
+arch/arm64/boot/dts/qcom/sm6115.dtsi:2710:					      <&adsp_smp2p_in 0 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sm6115.dtsi:2711:					      <&adsp_smp2p_in 1 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sm6115.dtsi:2712:					      <&adsp_smp2p_in 2 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sm6115.dtsi:2713:					      <&adsp_smp2p_in 3 IRQ_TYPE_EDGE_RISING>;
+arch/arm64/boot/dts/qcom/sm6115.dtsi:2723:			memory-region = <&pil_adsp_mem>;
+arch/arm64/boot/dts/qcom/sm6115.dtsi:2725:			qcom,smem-states = <&adsp_smp2p_out 0>;
+arch/arm64/boot/dts/qcom/sm6115.dtsi:2734:				mboxes = <&apcs_glb 8>;
+arch/arm64/boot/dts/qcom/sm6115.dtsi:2739:					qcom,domain = <APR_DOMAIN_ADSP>;
+arch/arm64/boot/dts/qcom/sm6115.dtsi:2744:						reg = <APR_SVC_ADSP_CORE>;
+arch/arm64/boot/dts/qcom/sm6115.dtsi:2747:									 "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/sm6115.dtsi:2754:									 "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/sm6115.dtsi:2772:									 "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/sm6115.dtsi:2798:									 "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/sm6115.dtsi:2809:					label = "adsp";
+arch/arm64/boot/dts/qcom/sm6115.dtsi:2875:				mboxes = <&apcs_glb 28>;
+arch/arm64/boot/dts/qcom/sm6115p-lenovo-j606f.dts:132:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/sm6115p-lenovo-j606f.dts:133:	firmware-name = "qcom/sm6115/LENOVO/J606F/adsp.mbn";
+arch/arm64/boot/dts/qcom/sm6125.dtsi:193:			mboxes = <&apcs_glb 0>;
+arch/arm64/boot/dts/qcom/sm6125.dtsi:314:		adsp_pil_mem: memory@55300000 {
+arch/arm64/boot/dts/qcom/sm6125.dtsi:359:		adsp_mem: memory@f3400000 {
+arch/arm64/boot/dts/qcom/sm6350.dtsi:622:		pil_adsp_mem: memory@88d00000 {
+arch/arm64/boot/dts/qcom/sm6350.dtsi:699:	smp2p-adsp {
+arch/arm64/boot/dts/qcom/sm6350.dtsi:705:		mboxes = <&ipcc IPCC_CLIENT_LPASS
+arch/arm64/boot/dts/qcom/sm6350.dtsi:711:		smp2p_adsp_out: master-kernel {
+arch/arm64/boot/dts/qcom/sm6350.dtsi:716:		smp2p_adsp_in: slave-kernel {
+arch/arm64/boot/dts/qcom/sm6350.dtsi:729:		mboxes = <&ipcc IPCC_CLIENT_CDSP
+arch/arm64/boot/dts/qcom/sm6350.dtsi:754:		mboxes = <&ipcc IPCC_CLIENT_MPSS
+arch/arm64/boot/dts/qcom/sm6350.dtsi:1316:		adsp: remoteproc@3000000 {
+arch/arm64/boot/dts/qcom/sm6350.dtsi:1317:			compatible = "qcom,sm6350-adsp-pas";
+arch/arm64/boot/dts/qcom/sm6350.dtsi:1321:					      <&smp2p_adsp_in 0 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sm6350.dtsi:1322:					      <&smp2p_adsp_in 1 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sm6350.dtsi:1323:					      <&smp2p_adsp_in 2 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sm6350.dtsi:1324:					      <&smp2p_adsp_in 3 IRQ_TYPE_EDGE_RISING>;
+arch/arm64/boot/dts/qcom/sm6350.dtsi:1335:			memory-region = <&pil_adsp_mem>;
+arch/arm64/boot/dts/qcom/sm6350.dtsi:1339:			qcom,smem-states = <&smp2p_adsp_out 0>;
+arch/arm64/boot/dts/qcom/sm6350.dtsi:1348:				mboxes = <&ipcc IPCC_CLIENT_LPASS
+arch/arm64/boot/dts/qcom/sm6350.dtsi:1357:					qcom,domain = <APR_DOMAIN_ADSP>;
+arch/arm64/boot/dts/qcom/sm6350.dtsi:1362:						reg = <APR_SVC_ADSP_CORE>;
+arch/arm64/boot/dts/qcom/sm6350.dtsi:1364:						qcom,protection-domain = "avs/audio", "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/sm6350.dtsi:1370:						qcom,protection-domain = "avs/audio", "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/sm6350.dtsi:1395:						qcom,protection-domain = "avs/audio", "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/sm6350.dtsi:1409:						qcom,protection-domain = "avs/audio", "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/sm6350.dtsi:1421:					label = "adsp";
+arch/arm64/boot/dts/qcom/sm6350.dtsi:1633:				mboxes = <&ipcc IPCC_CLIENT_MPSS
+arch/arm64/boot/dts/qcom/sm6350.dtsi:1672:				mboxes = <&ipcc IPCC_CLIENT_CDSP
+arch/arm64/boot/dts/qcom/sm6350.dtsi:2524:			mboxes = <&ipcc IPCC_CLIENT_AOP IPCC_MPROC_SIGNAL_GLINK_QMP>;
+arch/arm64/boot/dts/qcom/sm6375-sony-xperia-murray-pdx225.dts:190:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/sm6375-sony-xperia-murray-pdx225.dts:191:	firmware-name = "qcom/sm6375/Sony/murray/adsp.mbn";
+arch/arm64/boot/dts/qcom/sm6375.dtsi:318:		mboxes = <&ipcc IPCC_CLIENT_AOP IPCC_MPROC_SIGNAL_SMP2P>;
+arch/arm64/boot/dts/qcom/sm6375.dtsi:579:		pil_adsp_mem: pil-adsp@86700000 {
+arch/arm64/boot/dts/qcom/sm6375.dtsi:653:			mboxes = <&ipcc IPCC_CLIENT_AOP IPCC_MPROC_SIGNAL_GLINK_QMP>;
+arch/arm64/boot/dts/qcom/sm6375.dtsi:715:	smp2p-adsp {
+arch/arm64/boot/dts/qcom/sm6375.dtsi:721:		mboxes = <&ipcc IPCC_CLIENT_LPASS
+arch/arm64/boot/dts/qcom/sm6375.dtsi:727:		smp2p_adsp_out: master-kernel {
+arch/arm64/boot/dts/qcom/sm6375.dtsi:732:		smp2p_adsp_in: slave-kernel {
+arch/arm64/boot/dts/qcom/sm6375.dtsi:745:		mboxes = <&ipcc IPCC_CLIENT_CDSP
+arch/arm64/boot/dts/qcom/sm6375.dtsi:769:		mboxes = <&ipcc IPCC_CLIENT_MPSS
+arch/arm64/boot/dts/qcom/sm6375.dtsi:1559:				mboxes = <&ipcc IPCC_CLIENT_MPSS
+arch/arm64/boot/dts/qcom/sm6375.dtsi:1566:		remoteproc_adsp: remoteproc@a400000 {
+arch/arm64/boot/dts/qcom/sm6375.dtsi:1567:			compatible = "qcom,sm6375-adsp-pas";
+arch/arm64/boot/dts/qcom/sm6375.dtsi:1571:					      <&smp2p_adsp_in 0 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sm6375.dtsi:1572:					      <&smp2p_adsp_in 1 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sm6375.dtsi:1573:					      <&smp2p_adsp_in 2 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sm6375.dtsi:1574:					      <&smp2p_adsp_in 3 IRQ_TYPE_EDGE_RISING>;
+arch/arm64/boot/dts/qcom/sm6375.dtsi:1585:			memory-region = <&pil_adsp_mem>;
+arch/arm64/boot/dts/qcom/sm6375.dtsi:1587:			qcom,smem-states = <&smp2p_adsp_out 0>;
+arch/arm64/boot/dts/qcom/sm6375.dtsi:1596:				mboxes = <&ipcc IPCC_CLIENT_LPASS
+arch/arm64/boot/dts/qcom/sm6375.dtsi:1633:				mboxes = <&ipcc IPCC_CLIENT_CDSP
+arch/arm64/boot/dts/qcom/sm7125-xiaomi-common.dtsi:69:		adsp_mem: memory@91100000 {
+arch/arm64/boot/dts/qcom/sm7225-fairphone-fp4.dts:251:&adsp {
+arch/arm64/boot/dts/qcom/sm7225-fairphone-fp4.dts:252:	firmware-name = "qcom/sm7225/fairphone4/adsp.mbn";
+arch/arm64/boot/dts/qcom/sm7325-nothing-spacewar.dts:1257:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/sm7325-nothing-spacewar.dts:1258:	firmware-name = "qcom/sm7325/nothing/spacewar/adsp.mbn";
+arch/arm64/boot/dts/qcom/sm8150-hdk.dts:601:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/sm8150-hdk.dts:604:	firmware-name = "qcom/sm8150/adsp.mbn";
+arch/arm64/boot/dts/qcom/sm8150-microsoft-surface-duo.dts:454:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/sm8150-microsoft-surface-duo.dts:456:	firmware-name = "qcom/sm8150/microsoft/adsp.mbn";
+arch/arm64/boot/dts/qcom/sm8150-mtp.dts:384:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/sm8150-mtp.dts:386:	firmware-name = "qcom/sm8150/adsp.mbn";
+arch/arm64/boot/dts/qcom/sm8150-sony-xperia-kumano.dtsi:232:&adsp_mem {
+arch/arm64/boot/dts/qcom/sm8150.dtsi:746:		adsp_mem: memory@8be00000 {
+arch/arm64/boot/dts/qcom/sm8150.dtsi:809:		mboxes = <&apss_shared 6>;
+arch/arm64/boot/dts/qcom/sm8150.dtsi:833:		mboxes = <&apss_shared 10>;
+arch/arm64/boot/dts/qcom/sm8150.dtsi:838:		adsp_smp2p_out: master-kernel {
+arch/arm64/boot/dts/qcom/sm8150.dtsi:843:		adsp_smp2p_in: slave-kernel {
+arch/arm64/boot/dts/qcom/sm8150.dtsi:857:		mboxes = <&apss_shared 14>;
+arch/arm64/boot/dts/qcom/sm8150.dtsi:881:		mboxes = <&apss_shared 26>;
+arch/arm64/boot/dts/qcom/sm8150.dtsi:2207:				mboxes = <&apss_shared 24>;
+arch/arm64/boot/dts/qcom/sm8150.dtsi:2761:				mboxes = <&apss_shared 12>;
+arch/arm64/boot/dts/qcom/sm8150.dtsi:3383:				mboxes = <&apss_shared 4>;
+arch/arm64/boot/dts/qcom/sm8150.dtsi:4180:			mboxes = <&apss_shared 0>;
+arch/arm64/boot/dts/qcom/sm8150.dtsi:4319:		remoteproc_adsp: remoteproc@17300000 {
+arch/arm64/boot/dts/qcom/sm8150.dtsi:4320:			compatible = "qcom,sm8150-adsp-pas";
+arch/arm64/boot/dts/qcom/sm8150.dtsi:4324:					      <&adsp_smp2p_in 0 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sm8150.dtsi:4325:					      <&adsp_smp2p_in 1 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sm8150.dtsi:4326:					      <&adsp_smp2p_in 2 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sm8150.dtsi:4327:					      <&adsp_smp2p_in 3 IRQ_TYPE_EDGE_RISING>;
+arch/arm64/boot/dts/qcom/sm8150.dtsi:4336:			memory-region = <&adsp_mem>;
+arch/arm64/boot/dts/qcom/sm8150.dtsi:4340:			qcom,smem-states = <&adsp_smp2p_out 0>;
+arch/arm64/boot/dts/qcom/sm8150.dtsi:4349:				mboxes = <&apss_shared 8>;
+arch/arm64/boot/dts/qcom/sm8150.dtsi:4354:					label = "adsp";
+arch/arm64/boot/dts/qcom/sm8250-mtp.dts:171:&adsp {
+arch/arm64/boot/dts/qcom/sm8250-mtp.dts:173:	firmware-name = "qcom/sm8250/adsp.mbn";
+arch/arm64/boot/dts/qcom/sm8250-samsung-r8q.dts:13:&adsp {
+arch/arm64/boot/dts/qcom/sm8250-samsung-r8q.dts:14:	firmware-name = "qcom/sm8250/Samsung/r8q/adsp.mbn";
+arch/arm64/boot/dts/qcom/sm8250-samsung-x1q.dts:13:&adsp {
+arch/arm64/boot/dts/qcom/sm8250-samsung-x1q.dts:14:	firmware-name = "qcom/sm8250/Samsung/x1q/adsp.mbn";
+arch/arm64/boot/dts/qcom/sm8250-sony-xperia-edo.dtsi:13:/delete-node/ &adsp_mem;
+arch/arm64/boot/dts/qcom/sm8250-sony-xperia-edo.dtsi:109:		adsp_mem: memory@8a100000 {
+arch/arm64/boot/dts/qcom/sm8250-sony-xperia-edo.dtsi:141:&adsp {
+arch/arm64/boot/dts/qcom/sm8250-xiaomi-elish-common.dtsi:20:/delete-node/ &adsp_mem;
+arch/arm64/boot/dts/qcom/sm8250-xiaomi-elish-common.dtsi:193:		adsp_mem: adsp@8bb00000 {
+arch/arm64/boot/dts/qcom/sm8250-xiaomi-elish-common.dtsi:224:&adsp {
+arch/arm64/boot/dts/qcom/sm8250-xiaomi-elish-common.dtsi:225:	firmware-name = "qcom/sm8250/xiaomi/elish/adsp.mbn";
+arch/arm64/boot/dts/qcom/sm8250-xiaomi-pipa.dts:20:/delete-node/ &adsp_mem;
+arch/arm64/boot/dts/qcom/sm8250-xiaomi-pipa.dts:126:		adsp_mem: adsp@8bb00000 {
+arch/arm64/boot/dts/qcom/sm8250-xiaomi-pipa.dts:157:&adsp {
+arch/arm64/boot/dts/qcom/sm8250-xiaomi-pipa.dts:158:	firmware-name = "qcom/sm8250/xiaomi/pipa/adsp.mbn";
+arch/arm64/boot/dts/qcom/sm8250.dtsi:847:		adsp_mem: memory@8a100000 {
+arch/arm64/boot/dts/qcom/sm8250.dtsi:869:	smp2p-adsp {
+arch/arm64/boot/dts/qcom/sm8250.dtsi:875:		mboxes = <&ipcc IPCC_CLIENT_LPASS
+arch/arm64/boot/dts/qcom/sm8250.dtsi:881:		smp2p_adsp_out: master-kernel {
+arch/arm64/boot/dts/qcom/sm8250.dtsi:886:		smp2p_adsp_in: slave-kernel {
+arch/arm64/boot/dts/qcom/sm8250.dtsi:899:		mboxes = <&ipcc IPCC_CLIENT_CDSP
+arch/arm64/boot/dts/qcom/sm8250.dtsi:923:		mboxes = <&ipcc IPCC_CLIENT_SLPI
+arch/arm64/boot/dts/qcom/sm8250.dtsi:3109:				mboxes = <&ipcc IPCC_CLIENT_SLPI
+arch/arm64/boot/dts/qcom/sm8250.dtsi:3811:				mboxes = <&ipcc IPCC_CLIENT_CDSP
+arch/arm64/boot/dts/qcom/sm8250.dtsi:5087:			mboxes = <&ipcc IPCC_CLIENT_AOP
+arch/arm64/boot/dts/qcom/sm8250.dtsi:5979:		adsp: remoteproc@17300000 {
+arch/arm64/boot/dts/qcom/sm8250.dtsi:5980:			compatible = "qcom,sm8250-adsp-pas";
+arch/arm64/boot/dts/qcom/sm8250.dtsi:5984:					      <&smp2p_adsp_in 0 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sm8250.dtsi:5985:					      <&smp2p_adsp_in 1 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sm8250.dtsi:5986:					      <&smp2p_adsp_in 2 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sm8250.dtsi:5987:					      <&smp2p_adsp_in 3 IRQ_TYPE_EDGE_RISING>;
+arch/arm64/boot/dts/qcom/sm8250.dtsi:5998:			memory-region = <&adsp_mem>;
+arch/arm64/boot/dts/qcom/sm8250.dtsi:6002:			qcom,smem-states = <&smp2p_adsp_out 0>;
+arch/arm64/boot/dts/qcom/sm8250.dtsi:6011:				mboxes = <&ipcc IPCC_CLIENT_LPASS
+arch/arm64/boot/dts/qcom/sm8250.dtsi:6020:					qcom,domain = <APR_DOMAIN_ADSP>;
+arch/arm64/boot/dts/qcom/sm8250.dtsi:6025:						reg = <APR_SVC_ADSP_CORE>;
+arch/arm64/boot/dts/qcom/sm8250.dtsi:6027:						qcom,protection-domain = "avs/audio", "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/sm8250.dtsi:6033:						qcom,protection-domain = "avs/audio", "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/sm8250.dtsi:6050:						qcom,protection-domain = "avs/audio", "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/sm8250.dtsi:6063:						qcom,protection-domain = "avs/audio", "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/sm8250.dtsi:6074:					label = "adsp";
+arch/arm64/boot/dts/qcom/sm8350-hdk.dts:120:&adsp {
+arch/arm64/boot/dts/qcom/sm8350-hdk.dts:122:	firmware-name = "qcom/sm8350/adsp.mbn";
+arch/arm64/boot/dts/qcom/sm8350-microsoft-surface-duo2.dts:41:&adsp {
+arch/arm64/boot/dts/qcom/sm8350-microsoft-surface-duo2.dts:43:	firmware-name = "qcom/sm8350/microsoft/adsp.mbn";
+arch/arm64/boot/dts/qcom/sm8350-mtp.dts:41:&adsp {
+arch/arm64/boot/dts/qcom/sm8350-mtp.dts:43:	firmware-name = "qcom/sm8350/adsp.mbn";
+arch/arm64/boot/dts/qcom/sm8350-sony-xperia-sagami.dtsi:118:&adsp {
+arch/arm64/boot/dts/qcom/sm8350-sony-xperia-sagami.dtsi:120:	firmware-name = "qcom/sm8350/Sony/sagami/adsp.mbn";
+arch/arm64/boot/dts/qcom/sm8350.dtsi:475:		pil_adsp_mem: memory@86100000 {
+arch/arm64/boot/dts/qcom/sm8350.dtsi:555:	smp2p-adsp {
+arch/arm64/boot/dts/qcom/sm8350.dtsi:561:		mboxes = <&ipcc IPCC_CLIENT_LPASS
+arch/arm64/boot/dts/qcom/sm8350.dtsi:567:		smp2p_adsp_out: master-kernel {
+arch/arm64/boot/dts/qcom/sm8350.dtsi:572:		smp2p_adsp_in: slave-kernel {
+arch/arm64/boot/dts/qcom/sm8350.dtsi:585:		mboxes = <&ipcc IPCC_CLIENT_CDSP
+arch/arm64/boot/dts/qcom/sm8350.dtsi:609:		mboxes = <&ipcc IPCC_CLIENT_MPSS
+arch/arm64/boot/dts/qcom/sm8350.dtsi:644:		mboxes = <&ipcc IPCC_CLIENT_SLPI
+arch/arm64/boot/dts/qcom/sm8350.dtsi:1883:		adsp: remoteproc@3000000 {
+arch/arm64/boot/dts/qcom/sm8350.dtsi:1884:			compatible = "qcom,sm8350-adsp-pas";
+arch/arm64/boot/dts/qcom/sm8350.dtsi:1888:					      <&smp2p_adsp_in 0 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sm8350.dtsi:1889:					      <&smp2p_adsp_in 1 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sm8350.dtsi:1890:					      <&smp2p_adsp_in 2 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sm8350.dtsi:1891:					      <&smp2p_adsp_in 3 IRQ_TYPE_EDGE_RISING>;
+arch/arm64/boot/dts/qcom/sm8350.dtsi:1902:			memory-region = <&pil_adsp_mem>;
+arch/arm64/boot/dts/qcom/sm8350.dtsi:1906:			qcom,smem-states = <&smp2p_adsp_out 0>;
+arch/arm64/boot/dts/qcom/sm8350.dtsi:1915:				mboxes = <&ipcc IPCC_CLIENT_LPASS
+arch/arm64/boot/dts/qcom/sm8350.dtsi:1924:					qcom,domain = <APR_DOMAIN_ADSP>;
+arch/arm64/boot/dts/qcom/sm8350.dtsi:1929:						reg = <APR_SVC_ADSP_CORE>;
+arch/arm64/boot/dts/qcom/sm8350.dtsi:1931:						qcom,protection-domain = "avs/audio", "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/sm8350.dtsi:1937:						qcom,protection-domain = "avs/audio", "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/sm8350.dtsi:1955:						qcom,protection-domain = "avs/audio", "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/sm8350.dtsi:1981:						qcom,protection-domain = "avs/audio", "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/sm8350.dtsi:1993:					label = "adsp";
+arch/arm64/boot/dts/qcom/sm8350.dtsi:2254:				mboxes = <&ipcc IPCC_CLIENT_MPSS
+arch/arm64/boot/dts/qcom/sm8350.dtsi:2293:				mboxes = <&ipcc IPCC_CLIENT_SLPI
+arch/arm64/boot/dts/qcom/sm8350.dtsi:2537:				mboxes = <&ipcc IPCC_CLIENT_CDSP
+arch/arm64/boot/dts/qcom/sm8350.dtsi:3212:			mboxes = <&ipcc IPCC_CLIENT_AOP IPCC_MPROC_SIGNAL_GLINK_QMP>;
+arch/arm64/boot/dts/qcom/sm8450-hdk.dts:950:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/sm8450-hdk.dts:952:	firmware-name = "qcom/sm8450/adsp.mbn";
+arch/arm64/boot/dts/qcom/sm8450-qrd.dts:425:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/sm8450-qrd.dts:427:	firmware-name = "qcom/sm8450/adsp.mbn";
+arch/arm64/boot/dts/qcom/sm8450-sony-xperia-nagara.dtsi:16:/delete-node/ &adsp_mem;
+arch/arm64/boot/dts/qcom/sm8450-sony-xperia-nagara.dtsi:67:		adsp_mem: memory@85700000 {
+arch/arm64/boot/dts/qcom/sm8450-sony-xperia-nagara.dtsi:700:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/sm8450-sony-xperia-nagara.dtsi:701:	firmware-name = "qcom/sm8450/Sony/nagara/adsp.mbn";
+arch/arm64/boot/dts/qcom/sm8450.dtsi:665:		adsp_mem: memory@85e00000 {
+arch/arm64/boot/dts/qcom/sm8450.dtsi:821:	smp2p-adsp {
+arch/arm64/boot/dts/qcom/sm8450.dtsi:827:		mboxes = <&ipcc IPCC_CLIENT_LPASS
+arch/arm64/boot/dts/qcom/sm8450.dtsi:833:		smp2p_adsp_out: master-kernel {
+arch/arm64/boot/dts/qcom/sm8450.dtsi:838:		smp2p_adsp_in: slave-kernel {
+arch/arm64/boot/dts/qcom/sm8450.dtsi:851:		mboxes = <&ipcc IPCC_CLIENT_CDSP
+arch/arm64/boot/dts/qcom/sm8450.dtsi:875:		mboxes = <&ipcc IPCC_CLIENT_MPSS
+arch/arm64/boot/dts/qcom/sm8450.dtsi:910:		mboxes = <&ipcc IPCC_CLIENT_SLPI
+arch/arm64/boot/dts/qcom/sm8450.dtsi:2737:				mboxes = <&ipcc IPCC_CLIENT_SLPI
+arch/arm64/boot/dts/qcom/sm8450.dtsi:2773:		remoteproc_adsp: remoteproc@3000000 {
+arch/arm64/boot/dts/qcom/sm8450.dtsi:2774:			compatible = "qcom,sm8450-adsp-pas";
+arch/arm64/boot/dts/qcom/sm8450.dtsi:2778:					      <&smp2p_adsp_in 0 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sm8450.dtsi:2779:					      <&smp2p_adsp_in 1 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sm8450.dtsi:2780:					      <&smp2p_adsp_in 2 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sm8450.dtsi:2781:					      <&smp2p_adsp_in 3 IRQ_TYPE_EDGE_RISING>;
+arch/arm64/boot/dts/qcom/sm8450.dtsi:2792:			memory-region = <&adsp_mem>;
+arch/arm64/boot/dts/qcom/sm8450.dtsi:2796:			qcom,smem-states = <&smp2p_adsp_out 0>;
+arch/arm64/boot/dts/qcom/sm8450.dtsi:2801:			remoteproc_adsp_glink: glink-edge {
+arch/arm64/boot/dts/qcom/sm8450.dtsi:2805:				mboxes = <&ipcc IPCC_CLIENT_LPASS
+arch/arm64/boot/dts/qcom/sm8450.dtsi:2813:					qcom,glink-channels = "adsp_apps";
+arch/arm64/boot/dts/qcom/sm8450.dtsi:2814:					qcom,domain = <GPR_DOMAIN_ID_ADSP>;
+arch/arm64/boot/dts/qcom/sm8450.dtsi:2824:									 "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/sm8450.dtsi:2841:									 "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/sm8450.dtsi:2853:					label = "adsp";
+arch/arm64/boot/dts/qcom/sm8450.dtsi:3107:				mboxes = <&ipcc IPCC_CLIENT_CDSP
+arch/arm64/boot/dts/qcom/sm8450.dtsi:3215:				mboxes = <&ipcc IPCC_CLIENT_MPSS
+arch/arm64/boot/dts/qcom/sm8450.dtsi:3766:			mboxes = <&ipcc IPCC_CLIENT_AOP IPCC_MPROC_SIGNAL_GLINK_QMP>;
+arch/arm64/boot/dts/qcom/sm8550-hdk.dts:1139:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/sm8550-hdk.dts:1140:	firmware-name = "qcom/sm8550/adsp.mbn",
+arch/arm64/boot/dts/qcom/sm8550-hdk.dts:1141:			"qcom/sm8550/adsp_dtb.mbn";
+arch/arm64/boot/dts/qcom/sm8550-mtp.dts:796:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/sm8550-mtp.dts:797:	firmware-name = "qcom/sm8550/adsp.mbn",
+arch/arm64/boot/dts/qcom/sm8550-mtp.dts:798:			"qcom/sm8550/adsp_dtb.mbn";
+arch/arm64/boot/dts/qcom/sm8550-qrd.dts:1035:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/sm8550-qrd.dts:1036:	firmware-name = "qcom/sm8550/adsp.mbn",
+arch/arm64/boot/dts/qcom/sm8550-qrd.dts:1037:			"qcom/sm8550/adsp_dtb.mbn";
+arch/arm64/boot/dts/qcom/sm8550-samsung-q5q.dts:17:/delete-node/ &adspslpi_mem;
+arch/arm64/boot/dts/qcom/sm8550-samsung-q5q.dts:72:		adspslpi_mem: adspslpi@9ea00000 {
+arch/arm64/boot/dts/qcom/sm8550-samsung-q5q.dts:549:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/sm8550-samsung-q5q.dts:550:	firmware-name = "qcom/sm8550/adsp.mbn",
+arch/arm64/boot/dts/qcom/sm8550-samsung-q5q.dts:551:			"qcom/sm8550/adsp_dtb.mbn";
+arch/arm64/boot/dts/qcom/sm8550-sony-xperia-yodo-pdx234.dts:700:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/sm8550-sony-xperia-yodo-pdx234.dts:701:	firmware-name = "qcom/sm8550/Sony/yodo/adsp.mbn",
+arch/arm64/boot/dts/qcom/sm8550-sony-xperia-yodo-pdx234.dts:702:			"qcom/sm8550/Sony/yodo/adsp_dtb.mbn";
+arch/arm64/boot/dts/qcom/sm8550.dtsi:534:		adsp_mhi_mem: adsp-mhi-region@81f00000 {
+arch/arm64/boot/dts/qcom/sm8550.dtsi:621:		q6_adsp_dtb_mem: q6-adsp-dtb-region@9e980000 {
+arch/arm64/boot/dts/qcom/sm8550.dtsi:626:		adspslpi_mem: adspslpi-region@9ea00000 {
+arch/arm64/boot/dts/qcom/sm8550.dtsi:735:	smp2p-adsp {
+arch/arm64/boot/dts/qcom/sm8550.dtsi:741:		mboxes = <&ipcc IPCC_CLIENT_LPASS
+arch/arm64/boot/dts/qcom/sm8550.dtsi:747:		smp2p_adsp_out: master-kernel {
+arch/arm64/boot/dts/qcom/sm8550.dtsi:752:		smp2p_adsp_in: slave-kernel {
+arch/arm64/boot/dts/qcom/sm8550.dtsi:765:		mboxes = <&ipcc IPCC_CLIENT_CDSP
+arch/arm64/boot/dts/qcom/sm8550.dtsi:789:		mboxes = <&ipcc IPCC_CLIENT_MPSS
+arch/arm64/boot/dts/qcom/sm8550.dtsi:2736:				mboxes = <&ipcc IPCC_CLIENT_MPSS
+arch/arm64/boot/dts/qcom/sm8550.dtsi:2743:		remoteproc_adsp: remoteproc@6800000 {
+arch/arm64/boot/dts/qcom/sm8550.dtsi:2744:			compatible = "qcom,sm8550-adsp-pas";
+arch/arm64/boot/dts/qcom/sm8550.dtsi:2748:					      <&smp2p_adsp_in 0 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sm8550.dtsi:2749:					      <&smp2p_adsp_in 1 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sm8550.dtsi:2750:					      <&smp2p_adsp_in 2 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sm8550.dtsi:2751:					      <&smp2p_adsp_in 3 IRQ_TYPE_EDGE_RISING>;
+arch/arm64/boot/dts/qcom/sm8550.dtsi:2765:			memory-region = <&adspslpi_mem>, <&q6_adsp_dtb_mem>;
+arch/arm64/boot/dts/qcom/sm8550.dtsi:2769:			qcom,smem-states = <&smp2p_adsp_out 0>;
+arch/arm64/boot/dts/qcom/sm8550.dtsi:2774:			remoteproc_adsp_glink: glink-edge {
+arch/arm64/boot/dts/qcom/sm8550.dtsi:2778:				mboxes = <&ipcc IPCC_CLIENT_LPASS
+arch/arm64/boot/dts/qcom/sm8550.dtsi:2787:					label = "adsp";
+arch/arm64/boot/dts/qcom/sm8550.dtsi:2835:					qcom,glink-channels = "adsp_apps";
+arch/arm64/boot/dts/qcom/sm8550.dtsi:2836:					qcom,domain = <GPR_DOMAIN_ID_ADSP>;
+arch/arm64/boot/dts/qcom/sm8550.dtsi:2846:									 "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/sm8550.dtsi:2864:									 "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/sm8550.dtsi:4273:			mboxes = <&ipcc IPCC_CLIENT_AOP IPCC_MPROC_SIGNAL_GLINK_QMP>;
+arch/arm64/boot/dts/qcom/sm8550.dtsi:5611:				mboxes = <&ipcc IPCC_CLIENT_CDSP
+arch/arm64/boot/dts/qcom/sm8650-hdk.dts:1074:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/sm8650-hdk.dts:1075:	firmware-name = "qcom/sm8650/adsp.mbn",
+arch/arm64/boot/dts/qcom/sm8650-hdk.dts:1076:			"qcom/sm8650/adsp_dtb.mbn";
+arch/arm64/boot/dts/qcom/sm8650-mtp.dts:699:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/sm8650-mtp.dts:700:	firmware-name = "qcom/sm8650/adsp.mbn",
+arch/arm64/boot/dts/qcom/sm8650-mtp.dts:701:			"qcom/sm8650/adsp_dtb.mbn";
+arch/arm64/boot/dts/qcom/sm8650-qrd.dts:1018:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/sm8650-qrd.dts:1019:	firmware-name = "qcom/sm8650/adsp.mbn",
+arch/arm64/boot/dts/qcom/sm8650-qrd.dts:1020:			"qcom/sm8650/adsp_dtb.mbn";
+arch/arm64/boot/dts/qcom/sm8650.dtsi:1701:		adsp_mhi_mem: adsp-mhi@81f00000 {
+arch/arm64/boot/dts/qcom/sm8650.dtsi:1808:		q6_adsp_dtb_mem: q6-adsp-dtb@9de80000 {
+arch/arm64/boot/dts/qcom/sm8650.dtsi:1813:		adspslpi_mem: adspslpi@9df00000 {
+arch/arm64/boot/dts/qcom/sm8650.dtsi:1854:	smp2p-adsp {
+arch/arm64/boot/dts/qcom/sm8650.dtsi:1861:		mboxes = <&ipcc IPCC_CLIENT_LPASS
+arch/arm64/boot/dts/qcom/sm8650.dtsi:1868:		smp2p_adsp_out: master-kernel {
+arch/arm64/boot/dts/qcom/sm8650.dtsi:1873:		smp2p_adsp_in: slave-kernel {
+arch/arm64/boot/dts/qcom/sm8650.dtsi:1887:		mboxes = <&ipcc IPCC_CLIENT_CDSP
+arch/arm64/boot/dts/qcom/sm8650.dtsi:1913:		mboxes = <&ipcc IPCC_CLIENT_MPSS
+arch/arm64/boot/dts/qcom/sm8650.dtsi:4443:				mboxes = <&ipcc IPCC_CLIENT_MPSS
+arch/arm64/boot/dts/qcom/sm8650.dtsi:4452:		remoteproc_adsp: remoteproc@6800000 {
+arch/arm64/boot/dts/qcom/sm8650.dtsi:4453:			compatible = "qcom,sm8650-adsp-pas";
+arch/arm64/boot/dts/qcom/sm8650.dtsi:4457:					      <&smp2p_adsp_in 0 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sm8650.dtsi:4458:					      <&smp2p_adsp_in 1 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sm8650.dtsi:4459:					      <&smp2p_adsp_in 2 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sm8650.dtsi:4460:					      <&smp2p_adsp_in 3 IRQ_TYPE_EDGE_RISING>;
+arch/arm64/boot/dts/qcom/sm8650.dtsi:4478:			memory-region = <&adspslpi_mem>, <&q6_adsp_dtb_mem>;
+arch/arm64/boot/dts/qcom/sm8650.dtsi:4482:			qcom,smem-states = <&smp2p_adsp_out 0>;
+arch/arm64/boot/dts/qcom/sm8650.dtsi:4487:			remoteproc_adsp_glink: glink-edge {
+arch/arm64/boot/dts/qcom/sm8650.dtsi:4492:				mboxes = <&ipcc IPCC_CLIENT_LPASS
+arch/arm64/boot/dts/qcom/sm8650.dtsi:4504:					label = "adsp";
+arch/arm64/boot/dts/qcom/sm8650.dtsi:4560:					qcom,glink-channels = "adsp_apps";
+arch/arm64/boot/dts/qcom/sm8650.dtsi:4561:					qcom,domain = <GPR_DOMAIN_ID_ADSP>;
+arch/arm64/boot/dts/qcom/sm8650.dtsi:4571:									 "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/sm8650.dtsi:4589:									 "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/sm8650.dtsi:5868:			mboxes = <&ipcc IPCC_CLIENT_AOP IPCC_MPROC_SIGNAL_GLINK_QMP>;
+arch/arm64/boot/dts/qcom/sm8650.dtsi:7324:				mboxes = <&ipcc IPCC_CLIENT_CDSP
+arch/arm64/boot/dts/qcom/sm8750-mtp.dts:1056:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/sm8750-mtp.dts:1057:	firmware-name = "qcom/sm8750/adsp.mbn",
+arch/arm64/boot/dts/qcom/sm8750-mtp.dts:1058:			"qcom/sm8750/adsp_dtb.mbn";
+arch/arm64/boot/dts/qcom/sm8750-qrd.dts:943:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/sm8750-qrd.dts:944:	firmware-name = "qcom/sm8750/adsp.mbn",
+arch/arm64/boot/dts/qcom/sm8750-qrd.dts:945:			"qcom/sm8750/adsp_dtb.mbn";
+arch/arm64/boot/dts/qcom/sm8750.dtsi:365:		adsp_mhi_mem: adsp-mhi@82380000 {
+arch/arm64/boot/dts/qcom/sm8750.dtsi:487:		q6_adsp_dtb_mem: q6-adsp-dtb@9ed80000 {
+arch/arm64/boot/dts/qcom/sm8750.dtsi:492:		adspslpi_mem: adspslpi@9ee00000 {
+arch/arm64/boot/dts/qcom/sm8750.dtsi:529:	smp2p-adsp {
+arch/arm64/boot/dts/qcom/sm8750.dtsi:536:		mboxes = <&ipcc IPCC_CLIENT_LPASS
+arch/arm64/boot/dts/qcom/sm8750.dtsi:543:		smp2p_adsp_out: master-kernel {
+arch/arm64/boot/dts/qcom/sm8750.dtsi:548:		smp2p_adsp_in: slave-kernel {
+arch/arm64/boot/dts/qcom/sm8750.dtsi:562:		mboxes = <&ipcc IPCC_CLIENT_CDSP
+arch/arm64/boot/dts/qcom/sm8750.dtsi:588:		mboxes = <&ipcc IPCC_CLIENT_MPSS
+arch/arm64/boot/dts/qcom/sm8750.dtsi:2144:				mboxes = <&ipcc IPCC_CLIENT_MPSS
+arch/arm64/boot/dts/qcom/sm8750.dtsi:2153:		remoteproc_adsp: remoteproc@6800000 {
+arch/arm64/boot/dts/qcom/sm8750.dtsi:2154:			compatible = "qcom,sm8750-adsp-pas", "qcom,sm8550-adsp-pas";
+arch/arm64/boot/dts/qcom/sm8750.dtsi:2158:					      <&smp2p_adsp_in 0 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sm8750.dtsi:2159:					      <&smp2p_adsp_in 1 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sm8750.dtsi:2160:					      <&smp2p_adsp_in 2 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sm8750.dtsi:2161:					      <&smp2p_adsp_in 3 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/sm8750.dtsi:2162:					      <&smp2p_adsp_in 7 IRQ_TYPE_EDGE_RISING>;
+arch/arm64/boot/dts/qcom/sm8750.dtsi:2181:			memory-region = <&adspslpi_mem>, <&q6_adsp_dtb_mem>;
+arch/arm64/boot/dts/qcom/sm8750.dtsi:2185:			qcom,smem-states = <&smp2p_adsp_out 0>;
+arch/arm64/boot/dts/qcom/sm8750.dtsi:2190:			remoteproc_adsp_glink: glink-edge {
+arch/arm64/boot/dts/qcom/sm8750.dtsi:2194:				mboxes = <&ipcc IPCC_CLIENT_LPASS
+arch/arm64/boot/dts/qcom/sm8750.dtsi:2201:					qcom,glink-channels = "adsp_apps";
+arch/arm64/boot/dts/qcom/sm8750.dtsi:2202:					qcom,domain = <GPR_DOMAIN_ID_ADSP>;
+arch/arm64/boot/dts/qcom/sm8750.dtsi:2212:									 "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/sm8750.dtsi:2230:									 "msm/adsp/audio_pd";
+arch/arm64/boot/dts/qcom/sm8750.dtsi:2763:			mboxes = <&ipcc IPCC_CLIENT_AOP IPCC_MPROC_SIGNAL_GLINK_QMP>;
+arch/arm64/boot/dts/qcom/sm8750.dtsi:4106:				mboxes = <&ipcc IPCC_CLIENT_CDSP
+arch/arm64/boot/dts/qcom/talos.dtsi:494:	smp2p-adsp {
+arch/arm64/boot/dts/qcom/talos.dtsi:498:		/* On this platform, bit 26 (normally SLPI) is repurposed for ADSP */
+arch/arm64/boot/dts/qcom/talos.dtsi:499:		mboxes = <&apss_shared 26>;
+arch/arm64/boot/dts/qcom/talos.dtsi:504:		adsp_smp2p_out: master-kernel {
+arch/arm64/boot/dts/qcom/talos.dtsi:509:		adsp_smp2p_in: slave-kernel {
+arch/arm64/boot/dts/qcom/talos.dtsi:520:		mboxes = <&apss_shared 6>;
+arch/arm64/boot/dts/qcom/talos.dtsi:645:		rproc_adsp_mem: rproc-adsp@95900000 {
+arch/arm64/boot/dts/qcom/talos.dtsi:3498:				mboxes = <&apss_shared 4>;
+arch/arm64/boot/dts/qcom/talos.dtsi:4006:			mboxes = <&apss_shared 0>;
+arch/arm64/boot/dts/qcom/talos.dtsi:4502:		remoteproc_adsp: remoteproc@62400000 {
+arch/arm64/boot/dts/qcom/talos.dtsi:4503:			compatible = "qcom,qcs615-adsp-pas", "qcom,sm8150-adsp-pas";
+arch/arm64/boot/dts/qcom/talos.dtsi:4507:					      <&adsp_smp2p_in 0 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/talos.dtsi:4508:					      <&adsp_smp2p_in 1 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/talos.dtsi:4509:					      <&adsp_smp2p_in 2 IRQ_TYPE_EDGE_RISING>,
+arch/arm64/boot/dts/qcom/talos.dtsi:4510:					      <&adsp_smp2p_in 3 IRQ_TYPE_EDGE_RISING>;
+arch/arm64/boot/dts/qcom/talos.dtsi:4523:			memory-region = <&rproc_adsp_mem>;
+arch/arm64/boot/dts/qcom/talos.dtsi:4527:			qcom,smem-states = <&adsp_smp2p_out 0>;
+arch/arm64/boot/dts/qcom/talos.dtsi:4534:				mboxes = <&apss_shared 24>;
+arch/arm64/boot/dts/qcom/talos.dtsi:4541:					label = "adsp";
+arch/arm64/boot/dts/qcom/x1-crd.dtsi:1358:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/x1-crd.dtsi:1359:	firmware-name = "qcom/x1e80100/adsp.mbn",
+arch/arm64/boot/dts/qcom/x1-crd.dtsi:1360:			"qcom/x1e80100/adsp_dtb.mbn";
+arch/arm64/boot/dts/qcom/x1e001de-devkit.dts:1114:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/x1e001de-devkit.dts:1115:	firmware-name = "qcom/x1e80100/Thundercomm/DEVKIT/qcadsp8380.mbn",
+arch/arm64/boot/dts/qcom/x1e001de-devkit.dts:1116:			"qcom/x1e80100/Thundercomm/DEVKIT/adsp_dtbs.elf";
+arch/arm64/boot/dts/qcom/x1e78100-lenovo-thinkpad-t14s.dtsi:1199:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/x1e78100-lenovo-thinkpad-t14s.dtsi:1200:	firmware-name = "qcom/x1e80100/LENOVO/21N1/qcadsp8380.mbn",
+arch/arm64/boot/dts/qcom/x1e78100-lenovo-thinkpad-t14s.dtsi:1201:			"qcom/x1e80100/LENOVO/21N1/adsp_dtbs.elf";
+arch/arm64/boot/dts/qcom/x1e80100-asus-vivobook-s15.dts:710:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/x1e80100-asus-vivobook-s15.dts:711:	firmware-name = "qcom/x1e80100/ASUSTeK/vivobook-s15/qcadsp8380.mbn",
+arch/arm64/boot/dts/qcom/x1e80100-asus-vivobook-s15.dts:712:			"qcom/x1e80100/ASUSTeK/vivobook-s15/adsp_dtbs.elf";
+arch/arm64/boot/dts/qcom/x1e80100-asus-zenbook-a14.dts:109:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/x1e80100-asus-zenbook-a14.dts:110:	firmware-name = "qcom/x1e80100/ASUSTeK/zenbook-a14/qcadsp8380.mbn",
+arch/arm64/boot/dts/qcom/x1e80100-asus-zenbook-a14.dts:111:			"qcom/x1e80100/ASUSTeK/zenbook-a14/adsp_dtbs.elf";
+arch/arm64/boot/dts/qcom/x1e80100-dell-inspiron-14-plus-7441.dts:45:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/x1e80100-dell-inspiron-14-plus-7441.dts:46:	firmware-name = "qcom/x1e80100/dell/inspiron-14-plus-7441/qcadsp8380.mbn",
+arch/arm64/boot/dts/qcom/x1e80100-dell-inspiron-14-plus-7441.dts:47:			"qcom/x1e80100/dell/inspiron-14-plus-7441/adsp_dtbs.elf";
+arch/arm64/boot/dts/qcom/x1e80100-dell-latitude-7455.dts:46:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/x1e80100-dell-latitude-7455.dts:47:	firmware-name = "qcom/x1e80100/dell/latitude-7455/qcadsp8380.mbn",
+arch/arm64/boot/dts/qcom/x1e80100-dell-latitude-7455.dts:48:			"qcom/x1e80100/dell/latitude-7455/adsp_dtbs.elf";
+arch/arm64/boot/dts/qcom/x1e80100-dell-xps13-9345.dts:1038:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/x1e80100-dell-xps13-9345.dts:1039:	firmware-name = "qcom/x1e80100/dell/xps13-9345/qcadsp8380.mbn",
+arch/arm64/boot/dts/qcom/x1e80100-dell-xps13-9345.dts:1040:			"qcom/x1e80100/dell/xps13-9345/adsp_dtbs.elf";
+arch/arm64/boot/dts/qcom/x1e80100-hp-elitebook-ultra-g1q.dts:16:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/x1e80100-hp-elitebook-ultra-g1q.dts:17:	firmware-name = "qcom/x1e80100/hp/elitebook-ultra-g1q/qcadsp8380.mbn",
+arch/arm64/boot/dts/qcom/x1e80100-hp-elitebook-ultra-g1q.dts:18:			"qcom/x1e80100/hp/elitebook-ultra-g1q/adsp_dtbs.elf";
+arch/arm64/boot/dts/qcom/x1e80100-hp-omnibook-x14.dts:23:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/x1e80100-hp-omnibook-x14.dts:24:	firmware-name = "qcom/x1e80100/hp/omnibook-x14/qcadsp8380.mbn",
+arch/arm64/boot/dts/qcom/x1e80100-hp-omnibook-x14.dts:25:			"qcom/x1e80100/hp/omnibook-x14/adsp_dtbs.elf";
+arch/arm64/boot/dts/qcom/x1e80100-lenovo-yoga-slim7x.dts:1245:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/x1e80100-lenovo-yoga-slim7x.dts:1246:	firmware-name = "qcom/x1e80100/LENOVO/83ED/qcadsp8380.mbn",
+arch/arm64/boot/dts/qcom/x1e80100-lenovo-yoga-slim7x.dts:1247:			"qcom/x1e80100/LENOVO/83ED/adsp_dtbs.elf";
+arch/arm64/boot/dts/qcom/x1e80100-microsoft-romulus.dtsi:1225:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/x1e80100-microsoft-romulus.dtsi:1226:	firmware-name = "qcom/x1e80100/microsoft/Romulus/qcadsp8380.mbn",
+arch/arm64/boot/dts/qcom/x1e80100-microsoft-romulus.dtsi:1227:			"qcom/x1e80100/microsoft/Romulus/adsp_dtbs.elf";
+arch/arm64/boot/dts/qcom/x1e80100-qcp.dts:1066:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/x1e80100-qcp.dts:1067:	firmware-name = "qcom/x1e80100/adsp.mbn",
+arch/arm64/boot/dts/qcom/x1e80100-qcp.dts:1068:			"qcom/x1e80100/adsp_dtb.mbn";
+arch/arm64/boot/dts/qcom/x1p42100-asus-zenbook-a14.dtsi:107:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/x1p42100-asus-zenbook-a14.dtsi:108:	firmware-name = "qcom/x1p42100/ASUSTeK/zenbook-a14/qcadsp8380.mbn",
+arch/arm64/boot/dts/qcom/x1p42100-asus-zenbook-a14.dtsi:109:			"qcom/x1p42100/ASUSTeK/zenbook-a14/adsp_dtbs.elf";
+arch/arm64/boot/dts/qcom/x1p42100-hp-omnibook-x14.dts:21:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/x1p42100-hp-omnibook-x14.dts:22:	firmware-name = "qcom/x1p42100/hp/omnibook-x14/qcadsp8380.mbn",
+arch/arm64/boot/dts/qcom/x1p42100-hp-omnibook-x14.dts:23:			"qcom/x1p42100/hp/omnibook-x14/adsp_dtbs.elf";
+arch/arm64/boot/dts/qcom/x1p42100-lenovo-thinkbook-16.dts:1181:&remoteproc_adsp {
+arch/arm64/boot/dts/qcom/x1p42100-lenovo-thinkbook-16.dts:1182:	firmware-name = "qcom/x1p42100/LENOVO/21NH/qcadsp8380.mbn",
+arch/arm64/boot/dts/qcom/x1p42100-lenovo-thinkbook-16.dts:1183:			"qcom/x1p42100/LENOVO/21NH/adsp_dtbs.elf";

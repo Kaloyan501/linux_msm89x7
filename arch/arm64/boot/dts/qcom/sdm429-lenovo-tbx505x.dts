@@ -173,6 +173,17 @@
 	status = "okay";
 };
 
+&apr {
+	status = "okay";
+};
+
+&lpass_codec {
+	status = "okay";
+	pinctrl-names = "default", "sleep";
+	pinctrl-0 = <&cdc_pdm_a_active &cdc_pdm_b_active>;
+	pinctrl-1 = <&cdc_pdm_a_sleep  &cdc_pdm_b_sleep>;
+};
+
 &rpm_requests {
 	regulators {
 		compatible = "qcom,rpm-pm8953-regulators";
@@ -502,11 +513,13 @@
  * GPIOs 69,73,74 = cdc_pdm0 group A
  * GPIOs 70,71,72 = cdc_pdm0 group B
  */
+/*
 &lpass_codec {
 	pinctrl-names = "default", "sleep";
 	pinctrl-0 = <&cdc_pdm_a_active &cdc_pdm_b_active>;
 	pinctrl-1 = <&cdc_pdm_a_sleep  &cdc_pdm_b_sleep>;
 };
+*/
 
 /*
  * WCD analog codec — PM8953 internal.
