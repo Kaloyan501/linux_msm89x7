@@ -470,7 +470,7 @@
 		};
 
 		codec {
-			sound-dai = <&lpass_codec 0>, <&wcd_codec 0>;
+			sound-dai = <&wcd_codec 0>;
 		};
 	};
 
