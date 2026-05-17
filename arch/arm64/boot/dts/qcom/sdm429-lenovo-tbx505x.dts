@@ -469,11 +469,6 @@
 			sound-dai = <&q6routing>;
 		};
 
-		/* TEMPORARILY SIMPLIFIED. ENABLE LATER
-		codec {
-			sound-dai = <&lpass_codec 0>, <&wcd_codec 0>;
-		};
-		*/
 		codec {
 			sound-dai = <&lpass_codec 0>, <&wcd_codec 0>;
 		};
@@ -498,7 +493,10 @@
 		};
 	};
 	*/
+	/*
 	dai-link-primary-capture {
+		link-name = "Primary MI2S Capture";
+
 		cpu {
 			sound-dai = <&q6afedai PRIMARY_MI2S_TX>;
 		};
@@ -508,9 +506,10 @@
 		};
 
 		codec {
-			sound-dai = <&lpass_codec 1>, <&wcd_codec 1>;
+			sound-dai = <&wcd_codec>;
 		};
 	};
+	*/
 
 	/* Voice call — hostless, routed through ADSP */
 	/*
