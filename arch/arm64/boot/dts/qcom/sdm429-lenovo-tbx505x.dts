@@ -452,7 +452,7 @@
 	 * MIC BIAS External  → Handset Mic → AMIC1
 	 * MIC BIAS External2 → Headset Mic → AMIC2 (MBHC)
 	 */
-	/*
+
 	audio-routing =
 	"MIC BIAS External",  "Handset Mic",
 	"MIC BIAS External2", "Headset Mic",
