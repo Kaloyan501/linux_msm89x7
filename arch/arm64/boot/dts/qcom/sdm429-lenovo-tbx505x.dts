@@ -713,3 +713,7 @@
 &xo_board {
 	clock-frequency = <19200000>;
 };
+
+&q6afedai { status = "okay"; };
+&q6routing { status = "okay"; };
+&wcd_codec { status = "okay"; };
