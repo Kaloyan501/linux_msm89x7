@@ -451,10 +451,11 @@
 	"AMIC2", "MIC BIAS External2";
 
 	dai-link-primary-playback {
-		link-name = "Primary MI2S Playback";
+		link-name = "Primary Codec Playback";
 
 		cpu {
-			sound-dai = <&q6afedai PRIMARY_MI2S_RX>;
+			/* Switch from PRIMARY_MI2S_RX to the direct internal Digital Codec DMA engine */
+			sound-dai = <&q6afedai RX_CODEC_DMA_RX_0>;
 		};
 
 		platform {
@@ -462,11 +463,10 @@
 		};
 
 		codec {
-			sound-dai = <&lpass_codec 0>; /* Connects strictly to the digital LPASS DAI */
+			sound-dai = <&lpass_codec 0>;
 		};
 	};
 };
-
 /*
  * LPASS digital codec — PDM bus pinctrl.
  * GPIOs 69,73,74 = cdc_pdm0 group A
