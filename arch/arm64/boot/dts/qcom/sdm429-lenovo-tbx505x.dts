@@ -441,36 +441,25 @@
  */
 &sound {
 	status = "okay";
-	compatible = "qcom,msm8916-qdsp6-sndcard";
-	model = "tbx505x-audio";
+	compatible = "simple-audio-card";
+	simple-audio-card,name = "tbx505x-audio";
 
-	audio-routing =
-	"MIC BIAS External",  "Handset Mic",
-	"MIC BIAS External2", "Headset Mic",
+	simple-audio-card,widgets =
+	"Speaker", "Speaker",
+	"Microphone", "Handset Mic",
+	"Microphone", "Headset Mic";
+
+	simple-audio-card,routing =
 	"AMIC1", "MIC BIAS External",
 	"AMIC2", "MIC BIAS External2",
-	"HDMI Mixer", "NULL",
-	"USB_RX Audio Mixer", "NULL",
-	"MultiMedia1 Mixer", "MM_UL1",
-	"MultiMedia2 Mixer", "MM_UL2",
-	"MultiMedia3 Mixer", "MM_UL3",
-	"MultiMedia4 Mixer", "MM_UL4",
-	"MultiMedia5 Mixer", "MM_UL5",
-	"MultiMedia6 Mixer", "MM_UL6",
-	"MultiMedia7 Mixer", "MM_UL7",
-	"MultiMedia8 Mixer", "MM_UL8";
+	"MIC BIAS External", "Handset Mic",
+	"MIC BIAS External2", "Headset Mic";
 
 	dai-link-primary-playback {
-		link-name = "Primary Codec Playback";
-
+		format = "i2s";
 		cpu {
 			sound-dai = <&q6afedai PRIMARY_MI2S_RX>;
 		};
-
-		platform {
-			sound-dai = <&q6routing>;
-		};
-
 		codec {
 			sound-dai = <&lpass_codec 0>;
 		};
