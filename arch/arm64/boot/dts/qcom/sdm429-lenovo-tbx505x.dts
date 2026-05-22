@@ -441,16 +441,8 @@
  */
 &sound {
 	status = "okay";
+	compatible = "qcom,msm8916-qdsp6-sndcard";
 	model = "tbx505x-audio";
-	/*
-	// pinctrl-names = "default", "sleep";
-	// pinctrl-0 = <&cdc_pdm_a_active &cdc_pdm_b_active>;
-	// pinctrl-1 = <&cdc_pdm_a_sleep  &cdc_pdm_b_sleep>;
-
-	/*
-	 * MIC BIAS External  → Handset Mic → AMIC1
-	 * MIC BIAS External2 → Headset Mic → AMIC2 (MBHC)
-	 */
 
 	audio-routing =
 	"MIC BIAS External",  "Handset Mic",
@@ -458,7 +450,6 @@
 	"AMIC1", "MIC BIAS External",
 	"AMIC2", "MIC BIAS External2";
 
-	/* Internal codec — headphone + speaker playback via PDM */
 	dai-link-primary-playback {
 		link-name = "Primary MI2S Playback";
 
@@ -471,61 +462,9 @@
 		};
 
 		codec {
-			sound-dai = <&lpass_codec 0>, <&wcd_codec 0>;
+			sound-dai = <&lpass_codec 0>; /* Connects strictly to the digital LPASS DAI */
 		};
 	};
-
-	/* Internal codec — mic capture via PDM */
-	/* TEMPORARILY DISABLED. ENABLE LATER.
-	dai-link-primary-capture {
-		link-name = "Primary MI2S Capture";
-
-		cpu {
-			sound-dai = <&q6afedai PRIMARY_MI2S_TX>;
-		};
-
-		platform {
-			sound-dai = <&q6routing>;
-		};
-
-		codec {
-			sound-dai = <&lpass_codec 1>, <&wcd_codec 1>;
-		};
-	};
-	*/
-	/*
-	dai-link-primary-capture {
-		link-name = "Primary MI2S Capture";
-
-		cpu {
-			sound-dai = <&q6afedai PRIMARY_MI2S_TX>;
-		};
-
-		platform {
-			sound-dai = <&q6routing>;
-		};
-
-		codec {
-			sound-dai = <&wcd_codec>;
-		};
-	};
-	*/
-
-	/* Voice call — hostless, routed through ADSP */
-	/*
-	dai-link-voice-call {
-		link-name = "Voice Call";
-		no-pcm;
-
-		cpu {
-			sound-dai = <&q6voicedai VOICE_SESSION_VSID>;
-		};
-
-		codec {
-			sound-dai = <&q6voicedai VOICE_SESSION_VSID>;
-		};
-	};
-	*/
 };
 
 /*
