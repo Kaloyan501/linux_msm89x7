@@ -441,9 +441,8 @@
  */
 &sound {
 	status = "okay";
-	/*
 	model = "tbx505x-audio";
-
+	/*
 	// pinctrl-names = "default", "sleep";
 	// pinctrl-0 = <&cdc_pdm_a_active &cdc_pdm_b_active>;
 	// pinctrl-1 = <&cdc_pdm_a_sleep  &cdc_pdm_b_sleep>;
@@ -460,7 +459,6 @@
 	"AMIC2", "MIC BIAS External2";
 
 	/* Internal codec — headphone + speaker playback via PDM */
-	/*
 	dai-link-primary-playback {
 		link-name = "Primary MI2S Playback";
 
@@ -477,7 +475,6 @@
 		};
 	};
 
-	*/
 	/* Internal codec — mic capture via PDM */
 	/* TEMPORARILY DISABLED. ENABLE LATER.
 	dai-link-primary-capture {
