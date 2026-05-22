@@ -441,6 +441,7 @@
  */
 &sound {
 	status = "okay";
+	/*
 	model = "tbx505x-audio";
 
 	// pinctrl-names = "default", "sleep";
@@ -451,6 +452,7 @@
 	 * MIC BIAS External  → Handset Mic → AMIC1
 	 * MIC BIAS External2 → Headset Mic → AMIC2 (MBHC)
 	 */
+	/*
 	audio-routing =
 	"MIC BIAS External",  "Handset Mic",
 	"MIC BIAS External2", "Headset Mic",
@@ -458,6 +460,7 @@
 	"AMIC2", "MIC BIAS External2";
 
 	/* Internal codec — headphone + speaker playback via PDM */
+	/*
 	dai-link-primary-playback {
 		link-name = "Primary MI2S Playback";
 
@@ -474,7 +477,7 @@
 		};
 	};
 
-
+	*/
 	/* Internal codec — mic capture via PDM */
 	/* TEMPORARILY DISABLED. ENABLE LATER.
 	dai-link-primary-capture {
