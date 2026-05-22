@@ -448,7 +448,9 @@
 	"MIC BIAS External",  "Handset Mic",
 	"MIC BIAS External2", "Headset Mic",
 	"AMIC1", "MIC BIAS External",
-	"AMIC2", "MIC BIAS External2";
+	"AMIC2", "MIC BIAS External2",
+	"RX_BIAS", "MCLK",
+	"SPK_OUT", "Speaker";
 
 	dai-link-primary-playback {
 		link-name = "Primary Codec Playback";
