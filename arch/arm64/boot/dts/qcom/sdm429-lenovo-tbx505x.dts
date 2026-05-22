@@ -438,34 +438,33 @@
  * msm8937.dtsi defines sound: sound-card@c051000 with status = "disabled"
  * and the required reg/reg-names for the iomux registers. We enable it
  * here and add the board-specific DAI links and routing.
- */
-&sound {
-	status = "okay";
-	compatible = "qcom,msm8916-qdsp6-sndcard";
-	model = "tbx505x-audio";
+ & s*ound {
+ status = "okay";
+ compatible = "qcom,msm8916-qdsp6-sndcard";
+ model = "tbx505x-audio";
 
-	audio-routing =
-	"MIC BIAS External",  "Handset Mic",
-	"MIC BIAS External2", "Headset Mic",
-	"AMIC1", "MIC BIAS External",
-	"AMIC2", "MIC BIAS External2";
+ audio-routing =
+ "MIC BIAS External",  "Handset Mic",
+"MIC BIAS External2", "Headset Mic",
+"AMIC1", "MIC BIAS External",
+"AMIC2", "MIC BIAS External2";
 
-	dai-link-primary-playback {
-		link-name = "Primary Codec Playback";
+dai-link-primary-playback {
+link-name = "Primary Codec Playback";
 
-		cpu {
-			/* Switch from PRIMARY_MI2S_RX to the direct internal Digital Codec DMA engine */
-			sound-dai = <&q6afedai RX_CODEC_DMA_RX_0>;
-		};
+cpu {
+/* Revert back to standard front-end RX stream expected by the driver */
+sound-dai = <&q6afedai PRIMARY_MI2S_RX>;
+};
 
-		platform {
-			sound-dai = <&q6routing>;
-		};
+platform {
+	sound-dai = <&q6routing>;
+};
 
-		codec {
-			sound-dai = <&lpass_codec 0>;
-		};
-	};
+codec {
+	sound-dai = <&lpass_codec 0>;
+};
+};
 };
 /*
  * LPASS digital codec — PDM bus pinctrl.
