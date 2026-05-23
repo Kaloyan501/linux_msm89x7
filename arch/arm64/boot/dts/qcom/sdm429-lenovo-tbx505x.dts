@@ -442,12 +442,6 @@
 &sound {
     status = "okay";
     model = "tbx505x-audio";
-    /* do NOT override compatible — keep qcom,msm8916-qdsp6-sndcard */
-    audio-routing =
-        "AMIC1", "MIC BIAS External1",
-        "AMIC2", "MIC BIAS External2",
-        "MIC BIAS External1", "Handset Mic",
-        "MIC BIAS External2", "Headset Mic";
 };
 /*
  * LPASS digital codec — PDM bus pinctrl.
