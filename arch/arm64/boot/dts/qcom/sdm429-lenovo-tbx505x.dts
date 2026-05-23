@@ -617,3 +617,4 @@
 
 &q6afedai { status = "okay"; };
 &q6routing { status = "okay"; };
+&q6asmdai  { status = "okay"; }; 
