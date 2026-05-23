@@ -16,7 +16,6 @@
 		cpu {
 			sound-dai = <&q6asmdai MSM_FRONTEND_DAI_MULTIMEDIA1>;
 		};
-		platform { sound-dai = <&q6routing>; };
 	};
 
 	mm2-dai-link {
@@ -24,7 +23,6 @@
 		cpu {
 			sound-dai = <&q6asmdai MSM_FRONTEND_DAI_MULTIMEDIA2>;
 		};
-		platform { sound-dai = <&q6routing>; };
 	};
 
 	mm3-dai-link {
@@ -32,7 +30,6 @@
 		cpu {
 			sound-dai = <&q6asmdai MSM_FRONTEND_DAI_MULTIMEDIA3>;
 		};
-		platform { sound-dai = <&q6routing>; };
 	};
 
 	mm4-dai-link {
@@ -40,7 +37,6 @@
 		cpu {
 			sound-dai = <&q6asmdai MSM_FRONTEND_DAI_MULTIMEDIA4>;
 		};
-		platform { sound-dai = <&q6routing>; };
 	};
 
 	primary-mi2s-dai-link {
