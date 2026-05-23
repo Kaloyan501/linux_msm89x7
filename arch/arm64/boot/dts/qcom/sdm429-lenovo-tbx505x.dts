@@ -14,6 +14,7 @@
 #include "sdm429.dtsi"
 #include "pm8953.dtsi"
 #include "pmi632.dtsi"
+#include "msm8937-qdsp6.dtsi"
 
 / {
 	model = "Lenovo Tab M10 HD";
