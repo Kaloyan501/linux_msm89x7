@@ -440,30 +440,14 @@
  * here and add the board-specific DAI links and routing.
  */
 &sound {
-	status = "okay";
-	compatible = "simple-audio-card";
-	simple-audio-card,name = "tbx505x-audio";
-
-	simple-audio-card,widgets =
-	"Speaker", "Speaker",
-	"Microphone", "Handset Mic",
-	"Microphone", "Headset Mic";
-
-	simple-audio-card,routing =
-	"AMIC1", "MIC BIAS External",
-	"AMIC2", "MIC BIAS External2",
-	"MIC BIAS External", "Handset Mic",
-	"MIC BIAS External2", "Headset Mic";
-
-	dai-link-primary-playback {
-		format = "i2s";
-		cpu {
-			sound-dai = <&q6afedai PRIMARY_MI2S_RX>;
-		};
-		codec {
-			sound-dai = <&lpass_codec 0>;
-		};
-	};
+    status = "okay";
+    model = "tbx505x-audio";
+    /* do NOT override compatible — keep qcom,msm8916-qdsp6-sndcard */
+    audio-routing =
+        "AMIC1", "MIC BIAS External1",
+        "AMIC2", "MIC BIAS External2",
+        "MIC BIAS External1", "Handset Mic",
+        "MIC BIAS External2", "Headset Mic";
 };
 /*
  * LPASS digital codec — PDM bus pinctrl.
@@ -471,11 +455,7 @@
  * GPIOs 70,71,72 = cdc_pdm0 group B
  */
 /*
-&lpass_codec {
-	pinctrl-names = "default", "sleep";
-	pinctrl-0 = <&cdc_pdm_a_active &cdc_pdm_b_active>;
-	pinctrl-1 = <&cdc_pdm_a_sleep  &cdc_pdm_b_sleep>;
-};
+&lpass_codec { status = "okay"; };
 */
 
 /*
@@ -495,17 +475,6 @@
 */
 &wcd_codec {
 	status = "okay";
-	qcom,hphl-jack-type-normally-open;
-	qcom,gnd-jack-type-normally-open;
-	qcom,micbias1-ext-cap;
-	qcom,micbias2-ext-cap;
-	qcom,mbhc-vthreshold-low = <75 150 237 450 500>;
-	qcom,mbhc-vthreshold-high = <75 150 237 450 500>;
-	spkr-pa-gpios = <&tlmm 48 GPIO_ACTIVE_HIGH>;
-
-	vdd-cdc-io-supply = <&pm8953_l5>;
-	vdd-cdc-tx-rx-cx-supply = <&pm8953_s4>;
-	vdd-micbias-supply = <&pm8953_l13>;
 };
 
 &tlmm {
