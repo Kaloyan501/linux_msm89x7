@@ -180,10 +180,13 @@
 
 &lpass_codec {
 	status = "okay";
+};
+
+/*
 	pinctrl-names = "default", "sleep";
 	pinctrl-0 = <&cdc_pdm_a_active &cdc_pdm_b_active>;
 	pinctrl-1 = <&cdc_pdm_a_sleep  &cdc_pdm_b_sleep>;
-};
+*/
 
 &rpm_requests {
 	regulators {
