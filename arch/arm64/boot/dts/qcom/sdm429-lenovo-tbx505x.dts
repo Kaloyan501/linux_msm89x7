@@ -182,12 +182,6 @@
 	status = "okay";
 };
 
-/*
-	pinctrl-names = "default", "sleep";
-	pinctrl-0 = <&cdc_pdm_a_active &cdc_pdm_b_active>;
-	pinctrl-1 = <&cdc_pdm_a_sleep  &cdc_pdm_b_sleep>;
-*/
-
 &rpm_requests {
 	regulators {
 		compatible = "qcom,rpm-pm8953-regulators";
@@ -444,8 +438,16 @@
  * here and add the board-specific DAI links and routing.
  */
 &sound {
-    status = "okay";
-    model = "tbx505x-audio";
+	status = "okay";
+	model = "tbx505x-audio";
+
+	audio-routing =
+		"AMIC1", "MIC BIAS External1",
+		"AMIC2", "MIC BIAS External2",
+		"MM_DL1", "MultiMedia1 Playback",
+		"MM_DL3", "MultiMedia3 Playback",
+		"MM_DL4", "MultiMedia4 Playback",
+		"MultiMedia2 Capture", "MM_UL2";
 };
 /*
  * LPASS digital codec — PDM bus pinctrl.
