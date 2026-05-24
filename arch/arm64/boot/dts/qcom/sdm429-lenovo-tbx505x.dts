@@ -441,13 +441,11 @@
     status = "okay";
     model = "tbx505x-audio";
     audio-routing =
-        "Headphone Jack", "HPHL",
-        "Headphone Jack", "HPHR",
+        "Headphone Jack", "HPH_L",
+        "Headphone Jack", "HPH_R",
         "Speaker", "SPK_OUT",
         "AMIC1", "MIC BIAS External1",
-        "AMIC2", "MIC BIAS External2",
-        "MIC BIAS External1", "Handset Mic",
-        "MIC BIAS External2", "Headset Mic";
+        "AMIC2", "MIC BIAS External2";
 };
 /*
  * LPASS digital codec — PDM bus pinctrl.
