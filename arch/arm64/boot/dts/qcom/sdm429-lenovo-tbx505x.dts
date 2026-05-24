@@ -442,7 +442,7 @@
 	model = "tbx505x-audio";
 
 	audio-routing =
-		"Speaker", "SPK_OUT",
+		"SPK_OUT", "SPK PA",
 		"AMIC1", "MIC BIAS External1",
 		"AMIC2", "MIC BIAS External2",
 		"MM_DL1", "MultiMedia1 Playback",
