@@ -438,17 +438,16 @@
  * here and add the board-specific DAI links and routing.
  */
 &sound {
-	status = "okay";
-	model = "tbx505x-audio";
-
-	audio-routing =
-		"SPK_OUT", "SPK PA",
-		"AMIC1", "MIC BIAS External1",
-		"AMIC2", "MIC BIAS External2",
-		"MM_DL1", "MultiMedia1 Playback",
-		"MM_DL3", "MultiMedia3 Playback",
-		"MM_DL4", "MultiMedia4 Playback",
-		"MultiMedia2 Capture", "MM_UL2";
+    status = "okay";
+    model = "tbx505x-audio";
+    audio-routing =
+        "Headphone Jack", "HPHL",
+        "Headphone Jack", "HPHR",
+        "Speaker", "SPK_OUT",
+        "AMIC1", "MIC BIAS External1",
+        "AMIC2", "MIC BIAS External2",
+        "MIC BIAS External1", "Handset Mic",
+        "MIC BIAS External2", "Headset Mic";
 };
 /*
  * LPASS digital codec — PDM bus pinctrl.

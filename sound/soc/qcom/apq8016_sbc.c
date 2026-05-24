@@ -282,6 +282,7 @@ static void msm8916_qdsp6_add_ops(struct snd_soc_card *card)
 static const struct snd_kcontrol_new apq8016_sbc_snd_controls[] = {
 	SOC_DAPM_PIN_SWITCH("Headphone Jack"),
 	SOC_DAPM_PIN_SWITCH("Mic Jack"),
+	SOC_DAPM_PIN_SWITCH("Speaker"), 
 };
 
 static const struct snd_soc_dapm_widget apq8016_sbc_dapm_widgets[] = {
@@ -292,6 +293,7 @@ static const struct snd_soc_dapm_widget apq8016_sbc_dapm_widgets[] = {
 	SND_SOC_DAPM_MIC("Secondary Mic", NULL),
 	SND_SOC_DAPM_MIC("Digital Mic1", NULL),
 	SND_SOC_DAPM_MIC("Digital Mic2", NULL),
+	SND_SOC_DAPM_SPK("Speaker", NULL),
 };
 
 static int apq8016_sbc_platform_probe(struct platform_device *pdev)
