@@ -473,7 +473,7 @@
     qcom,micbias2-ext-cap;
     qcom,mbhc-vthreshold-low  = <75 150 237 450 500>;
     qcom,mbhc-vthreshold-high = <75 150 237 450 500>;
-    spkr-pa-gpios = <&tlmm 48 GPIO_ACTIVE_LOW>;
+    spkr-pa-gpios = <&tlmm 48 GPIO_ACTIVE_HIGH>;
 
     vdd-cdc-io-supply       = <&pm8953_l5>;
     vdd-cdc-tx-rx-cx-supply = <&pm8953_s4>;
