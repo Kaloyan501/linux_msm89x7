@@ -630,6 +630,20 @@
 		drive-strength = <2>;
 		bias-pull-down;
 	};
+
+	speaker_amp_right_default: speaker-amp-right-default-state {
+		pins = "gpio62";
+		function = "gpio";
+		drive-strength = <2>;
+		bias-disable;
+	};
+
+	speaker_amp_left_default: speaker-amp-left-default-state {
+		pins = "gpio68";
+		function = "gpio";
+		drive-strength = <2>;
+		bias-disable;
+	};
 };
 
 &usb {
