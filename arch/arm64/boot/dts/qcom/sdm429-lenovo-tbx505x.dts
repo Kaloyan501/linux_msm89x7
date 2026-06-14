@@ -471,7 +471,7 @@
 	"Speaker Amp Right IN", "HPH_R";
 
 	status = "okay";
-*/};
+};*/
 
 /*
  * LPASS digital codec — PDM bus pinctrl.
