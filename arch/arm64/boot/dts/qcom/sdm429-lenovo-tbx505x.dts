@@ -70,6 +70,24 @@
 		};
 	};
 
+	speaker_amp_right: audio-amplifier-right {
+		compatible = "awinic,aw8738";
+		mode-gpios = <&tlmm 62 GPIO_ACTIVE_HIGH>;
+		awinic,mode = <5>;
+		sound-name-prefix = "Speaker Amp Right";
+		pinctrl-0 = <&speaker_amp_right_default>;
+		pinctrl-names = "default";
+	};
+
+	speaker_amp_left: audio-amplifier-left {
+		compatible = "awinic,aw8738";
+		mode-gpios = <&tlmm 68 GPIO_ACTIVE_HIGH>;
+		awinic,mode = <5>;
+		sound-name-prefix = "Speaker Amp Left";
+		pinctrl-0 = <&speaker_amp_left_default>;
+		pinctrl-names = "default";
+	};
+
 	gpio-keys {
 		compatible = "gpio-keys";
 
