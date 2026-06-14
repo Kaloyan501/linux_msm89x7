@@ -70,24 +70,6 @@
 		};
 	};
 
-	speaker_amp_right: audio-amplifier-right {
-		compatible = "awinic,aw8738";
-		mode-gpios = <&tlmm 62 GPIO_ACTIVE_HIGH>;
-		awinic,mode = <5>;
-		sound-name-prefix = "Speaker Amp Right";
-		pinctrl-0 = <&speaker_amp_right_default>;
-		pinctrl-names = "default";
-	};
-
-	speaker_amp_left: audio-amplifier-left {
-		compatible = "awinic,aw8738";
-		mode-gpios = <&tlmm 68 GPIO_ACTIVE_HIGH>;
-		awinic,mode = <5>;
-		sound-name-prefix = "Speaker Amp Left";
-		pinctrl-0 = <&speaker_amp_left_default>;
-		pinctrl-names = "default";
-	};
-
 	gpio-keys {
 		compatible = "gpio-keys";
 
@@ -455,7 +437,6 @@
  * and the required reg/reg-names for the iomux registers. We enable it
  * here and add the board-specific DAI links and routing.
  */
-/*
 &sound {
     status = "okay";
     model = "tbx505x-audio";
@@ -466,9 +447,8 @@
         "AMIC1", "MIC BIAS External1",
         "AMIC2", "MIC BIAS External2";
 };
-*/
 
-&sound {
+/*&sound {
 	model = "tbx505x-audio";
 
 	widgets = "Speaker", "Speakers";
@@ -491,7 +471,7 @@
 	"Speaker Amp Right IN", "HPH_R";
 
 	status = "okay";
-};
+*/};
 
 /*
  * LPASS digital codec — PDM bus pinctrl.
@@ -629,20 +609,6 @@
 		function = "pri_mi2s_ws";
 		drive-strength = <2>;
 		bias-pull-down;
-	};
-
-	speaker_amp_right_default: speaker-amp-right-default-state {
-		pins = "gpio62";
-		function = "gpio";
-		drive-strength = <2>;
-		bias-disable;
-	};
-
-	speaker_amp_left_default: speaker-amp-left-default-state {
-		pins = "gpio68";
-		function = "gpio";
-		drive-strength = <2>;
-		bias-disable;
 	};
 };
 
