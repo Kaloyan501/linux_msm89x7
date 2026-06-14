@@ -468,7 +468,7 @@
 };
 */
 
-sound {
+&sound {
 	model = "tbx505x-audio";
 
 	widgets = "Speaker", "Speakers";
