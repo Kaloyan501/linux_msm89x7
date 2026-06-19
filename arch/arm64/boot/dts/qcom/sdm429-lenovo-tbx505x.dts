@@ -448,31 +448,6 @@
         "AMIC2", "MIC BIAS External2";
 };
 
-/*&sound {
-	model = "tbx505x-audio";
-
-	widgets = "Speaker", "Speakers";
-
-	aux-devs = <&speaker_amp_right>, <&speaker_amp_left>;
-	pin-switches = "Speaker";
-
-	audio-routing =
-	"AMIC1", "MIC BIAS Internal1",
-	"AMIC2", "MIC BIAS Internal2",
-	"AMIC3", "MIC BIAS External1",
-	"MM_DL1", "MultiMedia1 Playback",
-	"MM_DL3", "MultiMedia3 Playback",
-	"MM_DL4", "MultiMedia4 Playback",
-	"MultiMedia2 Capture", "MM_UL2",
-	"Speaker Amp Right IN", "HPH_R",
-	"Speakers", "Speaker Amp Right OUT",
-	"Speakers", "Speaker Amp Left OUT",
-	"Speaker Amp Left IN", "HPH_L",
-	"Speaker Amp Right IN", "HPH_R";
-
-	status = "okay";
-};*/
-
 /*
  * LPASS digital codec — PDM bus pinctrl.
  * GPIOs 69,73,74 = cdc_pdm0 group A
