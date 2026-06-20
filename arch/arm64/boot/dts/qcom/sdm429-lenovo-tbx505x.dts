@@ -113,19 +113,6 @@
 		regulator-always-on;
 		regulator-boot-on;
 	};
-
-	/*
-	 * Simple audio amplifier, used to toggle the speaker.
-	 */
-
-	speaker_amp: audio-amplifier {
-		compatible = "simple-audio-amplifier";
-		enable-gpios = <&tlmm 48 GPIO_ACTIVE_HIGH>;
-		sound-name-prefix = "Speaker Amp";
-		pinctrl-names = "default", "sleep";
-		pinctrl-0 = <&ext_spk_pa_default>;
-		pinctrl-1 = <&ext_spk_pa_sleep>;
-	};
 };
 
 &adsp {
