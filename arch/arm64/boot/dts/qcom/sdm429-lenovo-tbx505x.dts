@@ -40,12 +40,12 @@
 			format = "r8g8b8";
 
 			clocks = <&gcc GCC_MDSS_AHB_CLK>,
-				<&gcc GCC_MDSS_AXI_CLK>,
-				<&gcc GCC_MDSS_VSYNC_CLK>,
-				<&gcc GCC_MDSS_MDP_CLK>,
-				<&gcc GCC_MDSS_BYTE0_CLK>,
-				<&gcc GCC_MDSS_PCLK0_CLK>,
-				<&gcc GCC_MDSS_ESC0_CLK>;
+			<&gcc GCC_MDSS_AXI_CLK>,
+			<&gcc GCC_MDSS_VSYNC_CLK>,
+			<&gcc GCC_MDSS_MDP_CLK>,
+			<&gcc GCC_MDSS_BYTE0_CLK>,
+			<&gcc GCC_MDSS_PCLK0_CLK>,
+			<&gcc GCC_MDSS_ESC0_CLK>;
 			power-domains = <&gcc MDSS_GDSC>;
 		};
 	};
@@ -451,35 +451,47 @@
  * here and add the board-specific DAI links and routing.
  */
 &sound {
-	status = "okay";
-	model = "tbx505x-audio";
-	aux-devs = <&speaker_amp>;
-
-	audio-routing =
-		"Speaker Amp INP", "SPK_OUT",
-		"Speaker", "Speaker Amp OUT",
-		"Headphone Jack", "HPH_L",
-		"Headphone Jack", "HPH_R",
-		"AMIC1", "MIC BIAS External1",
-		"AMIC2", "MIC BIAS External2";
+    status = "okay";
+    model = "tbx505x-audio";
+    audio-routing =
+        "Headphone Jack", "HPH_L",
+        "Headphone Jack", "HPH_R",
+        "Speaker", "SPK_OUT",
+        "AMIC1", "MIC BIAS External1",
+        "AMIC2", "MIC BIAS External2";
 };
 
 /*
+ * LPASS digital codec — PDM bus pinctrl.
+ * GPIOs 69,73,74 = cdc_pdm0 group A
+ * GPIOs 70,71,72 = cdc_pdm0 group B
+ */
+/*
+&lpass_codec { status = "okay"; };
+*/
+
+/*
  * WCD analog codec — PM8953 internal.
+ * GPIO 48 = external speaker PA enable.
  */
 &wcd_codec {
-	status = "okay";
+    status = "okay";
 
-	qcom,hphl-jack-type-normally-open;
-	qcom,gnd-jack-type-normally-open;
-	qcom,micbias1-ext-cap;
-	qcom,micbias2-ext-cap;
-	qcom,mbhc-vthreshold-low  = <75 150 237 450 500>;
-	qcom,mbhc-vthreshold-high = <75 150 237 450 500>;
+	pinctrl-0 = <&ext_spk_pa_active>;
+	pinctrl-1 = <&ext_spk_pa_sleep>;
+	pinctrl-names = "default", "sleep";
 
-	vdd-cdc-io-supply       = <&pm8953_l5>;
-	vdd-cdc-tx-rx-cx-supply = <&pm8953_s4>;
-	vdd-micbias-supply      = <&pm8953_l13>;
+    qcom,hphl-jack-type-normally-open;
+    qcom,gnd-jack-type-normally-open;
+    qcom,micbias1-ext-cap;
+    qcom,micbias2-ext-cap;
+    qcom,mbhc-vthreshold-low  = <75 150 237 450 500>;
+    qcom,mbhc-vthreshold-high = <75 150 237 450 500>;
+    spkr-pa-gpios = <&tlmm 48 GPIO_ACTIVE_HIGH>;
+
+    vdd-cdc-io-supply       = <&pm8953_l5>;
+    vdd-cdc-tx-rx-cx-supply = <&pm8953_s4>;
+    vdd-micbias-supply      = <&pm8953_l13>;
 };
 
 &tlmm {
@@ -510,7 +522,7 @@
 	 * PDM bus — downstream misleadingly named "pri-mi2s-gpios"
 	 * but function is cdc_pdm0, not MI2S.
 	 */
-	cdc_pdm_a_default: cdc-pdm-a-default-state {
+	cdc_pdm_a_active: cdc-pdm-a-active-state {
 		pins = "gpio69", "gpio73", "gpio74";
 		function = "cdc_pdm0";
 		drive-strength = <8>;
@@ -524,7 +536,7 @@
 		bias-disable;
 	};
 
-	cdc_pdm_b_default: cdc-pdm-b-default-state {
+	cdc_pdm_b_active: cdc-pdm-b-active-state {
 		pins = "gpio70", "gpio71", "gpio72";
 		function = "cdc_pdm0";
 		drive-strength = <8>;
@@ -539,7 +551,7 @@
 	};
 
 	/* External speaker PA — GPIO 48 */
-	ext_spk_pa_default: ext-spk-pa-default-state {
+	ext_spk_pa_active: ext-spk-pa-active-state {
 		pins = "gpio48";
 		function = "gpio";
 		drive-strength = <8>;
@@ -625,14 +637,6 @@
 	clock-frequency = <19200000>;
 };
 
-&q6afedai {
-	status = "okay";
-};
-
-&q6routing {
-	status = "okay";
-};
-
-&q6asmdai  {
-	status = "okay";
-};
+&q6afedai { status = "okay"; };
+&q6routing { status = "okay"; };
+&q6asmdai  { status = "okay"; }; 
