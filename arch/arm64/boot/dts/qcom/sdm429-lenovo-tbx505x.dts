@@ -113,20 +113,6 @@
 		regulator-always-on;
 		regulator-boot-on;
 	};
-
-	/*
-	 * Simple audio amplifier, used to toggle the speaker.
-	 */
-
-	speaker_amp: audio-amplifier {
-		compatible = "simple-audio-amplifier";
-		enable-gpios = <&tlmm 48 GPIO_ACTIVE_HIGH>;
-		sound-name-prefix = "Speaker Amp";
-		VCC-supply = <&vph_pwr>;
-		pinctrl-names = "default", "sleep";
-		pinctrl-0 = <&ext_spk_pa_default>;
-		pinctrl-1 = <&ext_spk_pa_sleep>;
-	};
 };
 
 &adsp {
@@ -454,11 +440,8 @@
 &sound {
 	status = "okay";
 	model = "tbx505x-audio";
-	aux-devs = <&speaker_amp>;
 
 	audio-routing =
-		"Speaker Amp INL", "HPH_L",
-		"Speaker Amp INR", "HPH_R",
 		"Headphone Jack", "HPH_L",
 		"Headphone Jack", "HPH_R",
 		"AMIC1", "MIC BIAS External1",
