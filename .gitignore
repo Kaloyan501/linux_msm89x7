@@ -184,3 +184,8 @@ sphinx_*/
 
 # Rust analyzer configuration
 /rust-project.json
+output.txt
+xargs
+out
+arch/arm64/configs/config-postmarketos-qcom-msm89x7
+arch/arm64/configs/example_defconfig
