@@ -50,8 +50,11 @@
 		};
 	};
 
-	usb_vbus: extcon-usb-dummy {
-		compatible = "linux,extcon-usb-dummy";
+	usb_id: extcon-usb-gpio {
+		compatible = "linux,extcon-usb-gpio";
+		id-gpio = <&tlmm 124 GPIO_ACTIVE_HIGH>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&otgid_default>;
 	};
 
 	gpio-hall-sensor {
@@ -570,11 +573,18 @@
 		drive-strength = <2>;
 		bias-pull-down;
 	};
+
+	otgid_default: otgid-default-state {
+		pins = "gpio124";
+		function = "gpio";
+		drive-strength = <2>;
+		bias-pull-up;
+		input-enable;
+	};
 };
 
 &usb {
-	extcon = <&usb_vbus>;
-
+	extcon = <&usb_id>;
 	status = "okay";
 };
 
