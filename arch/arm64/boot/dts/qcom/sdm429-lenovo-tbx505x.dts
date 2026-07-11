@@ -578,7 +578,7 @@
 		pins = "gpio124";
 		function = "gpio";
 		drive-strength = <2>;
-		bias-pull-up;
+		bias-disable;
 		input-enable;
 	};
 };
