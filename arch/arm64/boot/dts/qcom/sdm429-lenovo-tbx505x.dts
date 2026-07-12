@@ -52,7 +52,7 @@
 
 	usb_id: extcon-usb-gpio {
 		compatible = "linux,extcon-usb-gpio";
-		id-gpio = <&tlmm 124 GPIO_ACTIVE_HIGH>;
+		id-gpio = <&tlmm 124 GPIO_ACTIVE_LOW>;
 		pinctrl-names = "default";
 		pinctrl-0 = <&otgid_default>;
 	};
@@ -578,7 +578,7 @@
 		pins = "gpio124";
 		function = "gpio";
 		drive-strength = <2>;
-		bias-disable;
+		bias-pull-up;
 		input-enable;
 	};
 };
